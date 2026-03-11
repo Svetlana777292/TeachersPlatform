@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="registration.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<form id="registration-form" class="container">
+    <h1>
+        Создайте аккаунт
+    </h1>
+
+    <div class="fullname-container">
+        <!--Ввод имени-->
+        <label for="name-input" class="fullname">
+            Имя
+            <input
+                    class="fullname"
+                    placeholder="Иван"
+                    type="text"
+                    name="name"
+                    id="name-input">
+            <div id="nameError" class="error-container" hidden></div>
+        </label>
+
+        <!--Ввод фамилии-->
+        <label for="surname-input" class="fullname">
+            Фамилия
+            <input
+                    class="fullname"
+                    placeholder="Иванов"
+                    type="text"
+                    name="surname"
+                    id="surname-input">
+            <div id="surnameError" class="error-container" hidden></div>
+        </label>
+    </div>
+
+    <!--Выбор роли-->
+    <div class="roles-container">
+        <label>
+            <input
+                    type="radio"
+                    name="role"
+                    class="role"
+                    value="teacher"
+                    checked>
+            Я учитель
+        </label>
+
+        <label>
+            <input
+                    type="radio"
+                    name="role"
+                    value="student"
+                    class="role">
+            Я ученик
+        </label>
+    </div>
+
+    <label for="username-input">
+        Имя пользователя
+        <input
+                placeholder="ivanov_ivan"
+                type="text"
+                name="username"
+                id="username-input">
+        <div id="usernameError" class="error-container" hidden></div>
+    </label>
+
+    <!--Ввод электронной почты-->
+    <label for="email-input">
+        Электронная почта
+        <input
+                placeholder="ivan.ivanov@example.com"
+                type="email"
+                name="email"
+                id="email-input">
+        <div id="emailError" class="error-container" hidden></div>
+    </label>
+
+    <!--Ввод пароля-->
+    <label for="password-input">
+        Пароль
+        <input
+                placeholder="Password123"
+                type="password"
+                name="password"
+                id="password-input">
+        <div id="passwordError" class="error-container" hidden></div>
+    </label>
+
+    <button class="register-button" type="submit" formmethod="post">Зарегестрироваться</button>
+
+    <!--Переход на вход-->
+    <h2 class="login-redirection">
+        Уже есть учетная запись?
+        <a href='login.html' class="login-redirection-link">Войти</a>
+    </h2>
+</form>
+<script src="/front/config.js"></script>
+<script src="registration.js"></script>
+</body>
+</html>
