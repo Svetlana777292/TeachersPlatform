@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<section class="container">
+    <form id="login-form" class="form-container">
+        <h1>
+            Добро пожаловать!
+        </h1>
+        <div class="roles-container">
+        <!--Выбор роли-->
+        <label>
+        <input
+        type="radio"
+        name="role"
+        class="role"
+        value="teacher"
+        checked
+        >
+        Я учитель
+        </label>
+
+        <label>
+        <input
+        type="radio"
+        name="role"
+        value="student"
+        class="role"
+        >
+        Я ученик
+        </label>
+        </div>
+
+        <!--Ввод электронной почты-->
+        <label for="email-input">
+            Электронная почта
+        <input
+        placeholder="ivan.ivanov@example.com"
+        type="email"
+        name="email"
+        id="email-input">
+        </label>
+
+        <!--Ввод пароля-->
+        <label for="password-input">
+            Пароль
+        <input
+        placeholder="Password123"
+        type="password"
+        name="password"
+        id="password-input">
+        </label>
+        <div id="login-error" class="error-container"></div>
+        <button class="login-button" type="submit">Войти</button><!--Переход на регистрацию-->
+        <h2 class="registration-redirection">
+            Нет учетной записи?
+            <a class="registration-redirection-link" href ='registration.html'>Зарегестрироваться</a>
+        </h2>
+    </form>
+
+
+</section>
+<script src="/front/config.js"></script>
+<script type="module" src="login.js"></script>
+</body>
+</html>
