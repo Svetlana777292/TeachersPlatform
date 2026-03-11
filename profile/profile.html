@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
     <title>Профиль</title>
-    <link rel="stylesheet" href="/front/profile/profile.css">
+    <link rel="stylesheet" href="./profile.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <div id='loadingScreen' class="loading">
     <div class="gear-wrapper">
-        <img class="gear" src="/front/images/gear.svg" alt="Загрузка">
+        <img class="gear" src="/images/gear.svg" alt="Загрузка">
     </div>
     <h2>Загружаем ваш профиль...</h2>
 </div>
@@ -24,8 +24,8 @@
 
     <nav class="menu">
         <ul id="menuList" class="menu-list">
-            <li class="link"><a href="/front/finance/finance.html">Финансы</a></li>
-            <li class="link"><a href="/front/schedule/schedule.html">Расписание</a></li>
+            <li class="link"><a href="/finance/finance.html">Финансы</a></li>
+            <li class="link"><a href=".">Расписание</a></li>
             <li class="link target-link">Профиль</li>
         </ul>
     </nav>
@@ -35,7 +35,8 @@
 
         <!--Аватарка-->
         <div class="avatar-wrapper">
-            <img src="/front/images/avatar.png" alt="" class="avatar-img">
+            <input type="file" id="avatarArea" class="avatar-input" accept="image/*">
+            <img id="avatarImg" src="/images/avatar.png" alt="" class="avatar-img">
         </div>
 
         <!--Полное имя и роль-->
@@ -84,7 +85,7 @@
             <!--Добавить номер телефона-->
             <div class="form-group">
                 <label for="change-phone">Номер телефона</label>
-                <input name="phone" id="change-phone" placeholder="+1 (11) 111-11-11" value="" type="text" class="info-areas" disabled>
+                <input name="phoneNumber" id="change-phone" placeholder="+1 (11) 111-11-11" value="" type="text" class="info-areas" disabled>
             </div>
 
             <!--Добавить перечень предметов-->
@@ -96,7 +97,7 @@
             <!--Добавить биографию-->
             <div class="form-group">
                 <label for="bio">О себе</label>
-                <textarea name="bio" id="bio" placeholder="" maxlength="200" class="info-areas" disabled></textarea>
+                <textarea name="description" id="bio" placeholder="" maxlength="200" class="info-areas" disabled></textarea>
             </div>
 
         </form>
@@ -113,6 +114,6 @@
 <footer class="footer">
 </footer>
 </body>
-<script src="/front/config.js"></script>
-<script src="/front/profile/profile.js"></script>
+<script src="../config.js"></script>
+<script src="/profile/profile.js"></script>
 </html>

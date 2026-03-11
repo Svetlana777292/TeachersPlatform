@@ -8,13 +8,19 @@ const logoutBtn = document.getElementById('exitBtn')
 const inputs = document.querySelectorAll('.info-areas')
 const fullNameTitle = document.getElementById('fullName')
 const loadingScreen = document.getElementById('loadingScreen')
+const avatarArea = document.getElementById('avatarArea')
 
+//Загрузка данных
 function loadProfile(userData) {
     fullNameTitle.innerText = userData.name + ' ' + userData.surname
 
     inputs[0].value = userData.name
     inputs[1].value = userData.surname
     inputs[2].value = userData.email
+    inputs[3].value = userData.phoneNumber || ''
+    inputs[4].value = userData.subjects || ''
+    inputs[5].value = userData.description || ''
+
 
     inputs.forEach(input => {
         input.placeholder = input.value
@@ -23,6 +29,7 @@ function loadProfile(userData) {
     return 'Done'
 }
 
+//Получение данных
 async function loadUser(){
     try{
         const response = await fetch(`${CONFIG.API_URL}/me`, {
@@ -43,7 +50,7 @@ async function loadUser(){
 
         }
         else{
-            window.location.href = '/front/auth/login.html'
+            window.location.href = '/auth/login.html'
         }
     }
     catch(error){
@@ -51,7 +58,8 @@ async function loadUser(){
     }
 }
 
-async function checkToken(){
+//Проверка токена
+async function checkToken(func){
     try{
         const response = await fetch(`${CONFIG.API_URL}/token/verify`, {
             method: 'POST',
@@ -63,28 +71,79 @@ async function checkToken(){
 
         if(response.ok){
             console.log('Токен действителен')
+            func()
         }
         else{
             console.log('Токен не обнаружен или срок его действия истек')
-            window.location.href = '/front/auth/login.html'
+            window.location.href = '/auth/login.html'
         }
     }
     catch(error){
         console.error('Ошибка доступа: ', error)
-        window.location.href = '/front/auth/login.html'
+        window.location.href = '/auth/login.html'
     }
 }
 
 document.addEventListener('DOMContentLoaded', async () =>{
-    await checkToken()
-    await loadUser()
+    await checkToken(loadUser)
 })
 
+//Открытие меню
 menuBtn.addEventListener('click', () => {
     console.log('menu is opened')
     menu.classList.toggle('is-open')
 })
 
+editPhotoBtn.addEventListener('click', () => {
+    avatarArea.click()
+})
+
+avatarArea.onchange = async () => {
+    const selectedFile = avatarArea.files[0]
+
+    if(!selectedFile){
+        return
+    }
+
+    console.log('Файл выбран: ', selectedFile)
+    await checkToken(() => setUserPhoto(selectedFile))
+}
+
+async function setUserPhoto(file){
+
+    const formData = new FormData()
+    formData.append('photo', file)
+
+    try{
+        const response = await fetch(`${CONFIG.API_URL}/storage/avatar`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+            },
+            body: formData,
+            credentials: 'include'
+        })
+
+        if(response.ok){
+            const data = await response.json()
+            const photoUrl = data.url
+            const userAvatarImg = document.getElementById('avatarImg')
+            userAvatarImg.src = photoUrl
+        }
+        else{
+            console.log('Ошибка загрузки: ', response.status)
+        }
+    }
+    catch(error){
+        console.error(error)
+    }
+}
+
+editPhotoBtn.addEventListener('click', (e) => {
+    avatarArea.click()
+})
+
+//Активация формы
 editInfoBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -107,6 +166,7 @@ editInfoBtn.addEventListener('click', (e) => {
     }
 })
 
+//Выход из профиля
 async function logout() {
     try{
         const response = await fetch(`${CONFIG.API_URL}/logout`,{
@@ -115,7 +175,7 @@ async function logout() {
         })
 
         if(response.ok){
-            window.location.replace('/front/auth/login.html')
+            window.location.replace('/auth/login.html')
         } else {
             console.log('logout error')
         }

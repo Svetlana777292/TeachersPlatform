@@ -10,6 +10,10 @@ a{
     color: inherit;
 }
 
+.avatar-input{
+    display: none;
+}
+
 body, .main-header, .main-container, .avatar-img, .btn, .user-info, .edit-account-info, .info-areas, .action-btns-container, .form-group, .menu, .menu-list {
     width: 100%;
 }
