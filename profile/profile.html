@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Профиль</title>
+    <link rel="stylesheet" href="/front/profile/profile.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div id='loadingScreen' class="loading">
+    <div class="gear-wrapper">
+        <img class="gear" src="/front/images/gear.svg" alt="Загрузка">
+    </div>
+    <h2>Загружаем ваш профиль...</h2>
+</div>
+<!--Шапка-->
+<header class="main-header">
+    <h1 class="page-title">Профиль</h1>
+    <button id="burgerBtn" type="button" class="burger-btn">
+        <svg class="burger-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6H20M4 12H20M4 18H20" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <nav class="menu">
+        <ul id="menuList" class="menu-list">
+            <li class="link"><a href="/front/finance/finance.html">Финансы</a></li>
+            <li class="link"><a href="/front/schedule/schedule.html">Расписание</a></li>
+            <li class="link target-link">Профиль</li>
+        </ul>
+    </nav>
+</header>
+<div class="main-container">
+    <aside class="user-info">
+
+        <!--Аватарка-->
+        <div class="avatar-wrapper">
+            <img src="/front/images/avatar.png" alt="" class="avatar-img">
+        </div>
+
+        <!--Полное имя и роль-->
+        <h1 id="fullName" class="main-title">Иван Иванов</h1>
+        <h3 id="user-role" class="role"></h3>
+
+        <!--Кнопка для редактирования аватарки-->
+        <button id="editProfileBtn" class="btn edit-avatar-btn">Редактировать фото</button>
+
+        <!--Информация о пользователе-->
+        <dl class="account-info">
+            <dt>Дата регистрации</dt>
+            <dd>02.03.2025</dd>
+            <dt>Учеников за все время</dt>
+            <dd>24</dd>
+            <dt>Рейтинг</dt>
+            <dd>4.5/5.0</dd>
+        </dl>
+    </aside>
+    <main class="edit-account-info">
+        <h2 class="account-info-title">Иформация о профиле</h2>
+
+        <!--Кнопка для активации формы редактирования профиля-->
+        <button type="button" id="editInfoBtn" class="btn edit-profile-btn" value="edit">Изменить профиль</button>
+
+        <!--Редактировать профиль-->
+        <form id="editInfoForm" class="edit-profile">
+            <!--Изменить имя-->
+            <div class="form-group">
+                <label for="change-name">Имя</label>
+                <input name="name" id="change-name" placeholder="Иван" value="" type="text" class="info-areas" disabled>
+            </div>
+
+            <!--Изменить фамилию-->
+            <div class="form-group">
+                <label for="change-surname">Фамилия</label>
+                <input name="surname" id="change-surname" placeholder="Иванов" value="" type="text" class="info-areas" disabled>
+            </div>
+
+            <!--Изменить электронный адрес-->
+            <div class="form-group">
+                <label for="change-email">Электронная почта</label>
+                <input name="email" id="change-email" placeholder="ivan.ivanov@example.com" value="" type="email" class="info-areas" disabled>
+            </div>
+
+            <!--Добавить номер телефона-->
+            <div class="form-group">
+                <label for="change-phone">Номер телефона</label>
+                <input name="phone" id="change-phone" placeholder="+1 (11) 111-11-11" value="" type="text" class="info-areas" disabled>
+            </div>
+
+            <!--Добавить перечень предметов-->
+            <div class="form-group">
+                <label for="subjects">Предметы</label>
+                <input name="subjects" id="subjects" placeholder="Математика, физика" value="" type="text" class="info-areas" disabled>
+            </div>
+
+            <!--Добавить биографию-->
+            <div class="form-group">
+                <label for="bio">О себе</label>
+                <textarea name="bio" id="bio" placeholder="" maxlength="200" class="info-areas" disabled></textarea>
+            </div>
+
+        </form>
+    </main>
+    <div class="action-btns-container">
+        <h3 class="action-title">Управление аккаунтом</h3>
+        <!--Кнопка для выхода из профиля-->
+        <button type="submit" id="exitBtn" class="btn exit-btn">Выйти из профиля</button>
+        <!--Кнопка для удаления профиля-->
+        <button id="deleteProfileBtn" type="button" class="btn delete-btn">Удалить профиль</button>
+    </div>
+</div>
+
+<footer class="footer">
+</footer>
+</body>
+<script src="/front/config.js"></script>
+<script src="/front/profile/profile.js"></script>
+</html>
