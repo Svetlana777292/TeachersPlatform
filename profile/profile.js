@@ -9,9 +9,13 @@ const inputs = document.querySelectorAll('.info-areas')
 const fullNameTitle = document.getElementById('fullName')
 const loadingScreen = document.getElementById('loadingScreen')
 const avatarArea = document.getElementById('avatarArea')
+const userAvatarImg = document.getElementById('avatarImg')
+let user_id = null
 
 //Загрузка данных
 function loadProfile(userData) {
+    checkToken(() => getUserPhoto())
+
     fullNameTitle.innerText = userData.name + ' ' + userData.surname
 
     inputs[0].value = userData.name
@@ -47,7 +51,8 @@ async function loadUser(){
             if(loadingStatus === 'Done'){
                 loadingScreen.classList.toggle('disabled')
             }
-
+            user_id = data.id
+            return user_id
         }
         else{
             window.location.href = '/auth/login.html'
@@ -94,10 +99,6 @@ menuBtn.addEventListener('click', () => {
     menu.classList.toggle('is-open')
 })
 
-editPhotoBtn.addEventListener('click', () => {
-    avatarArea.click()
-})
-
 avatarArea.onchange = async () => {
     const selectedFile = avatarArea.files[0]
 
@@ -107,6 +108,28 @@ avatarArea.onchange = async () => {
 
     console.log('Файл выбран: ', selectedFile)
     await checkToken(() => setUserPhoto(selectedFile))
+    await checkToken(() => getUserPhoto())
+}
+
+async function getUserPhoto(){
+
+    try{
+        const response = await fetch(`${CONFIG.API_URL}/storage/avatar/${user_id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        })
+
+        if(response.ok){
+            const photoUrl = await response.json()
+            userAvatarImg.src = photoUrl.url
+        }
+    }
+    catch(error){
+        console.error(error)
+    }
 }
 
 async function setUserPhoto(file){
@@ -126,12 +149,12 @@ async function setUserPhoto(file){
 
         if(response.ok){
             const data = await response.json()
-            const photoUrl = data.url
-            const userAvatarImg = document.getElementById('avatarImg')
-            userAvatarImg.src = photoUrl
+            console.log('Фото успешно загружено, URL: ', data.storage_key)
+
         }
         else{
             console.log('Ошибка загрузки: ', response.status)
+            getUserPhoto()
         }
     }
     catch(error){
