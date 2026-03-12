@@ -24,7 +24,7 @@ async function submitFormData(){
         })
 
         if(response.ok){
-            window.location.replace('/front/profile/profile.html')
+            window.location.replace('/profile/profile.html')
         }
         else{
             alert('Ошибка сервера: ' + response.status)

@@ -96,26 +96,23 @@ async function submitFormData(){
     try{
         const response = await fetch(`${CONFIG.API_URL}/register`, {
             method: 'POST',
-            credentials: 'include',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formData)
-
+            body: JSON.stringify(formData),
+            credentials: 'include'
         })
 
-        if(response.status === 200){
-            const data = await response.json()
-            localStorage.setItem('token', data)
-            window.location.href = '/front/profile/profile.html'
+        if(response.ok){
+            window.location.replace('/profile/profile.html')
         }
         else{
-            alert('Ошибка сервера' + response.status)
+            alert('Ошибка сервера: ' + response.status)
         }
     }
     catch(error){
-        console.error('Ошибка сети: ', error)
-        alert('Не удалось отправить форму')
+        errorArea.innerText = 'Проверьте корректность введенных данных.'
+        console.log('Ошибка сети: ', error)
     }
 
 }
