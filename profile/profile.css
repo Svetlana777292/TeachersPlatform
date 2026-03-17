@@ -14,11 +14,11 @@ a{
     display: none;
 }
 
-body, .main-header, .main-container, .avatar-img, .btn, .user-info, .edit-account-info, .info-areas, .action-btns-container, .form-group, .menu, .menu-list {
+body, .main-header, .main-container, .avatar-img, .btn, .user-info, .edit-account-info, .info-areas, .action-btns-container, .form-group, .menu, .menu-list, .password-btns {
     width: 100%;
 }
 
-body, .main-container, .user-info, .action-btns-container, .menu-list, .burger-btn, .loading {
+body, .main-container, .user-info, .action-btns-container, .menu-list, .burger-btn, .loading, .change-password, .password-btns {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -187,11 +187,54 @@ dd { font-size: 1rem; }
     background-color: #EAEAEA;
 }
 
+.active{
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+.change-password{
+    display: none;
+}
+
+.change-password-enable{
+    z-index: 9999;
+    position: fixed;
+    top: 20%;
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 90vw;
+    background-color: #FFFFFF;
+    padding: 0.5rem 1rem;
+    border: 1px solid #EAEAEA;
+    border-radius: 1rem;
+}
+
+.change-password-title{
+    align-self: start;
+    margin: 0.5rem;
+    font-weight: 600;
+}
+
+.password-btns{
+    margin: 1rem 0;
+    gap: 1rem;
+}
+
 .edit-avatar-btn{
     background-color: #FFFFFF;
 }
 
-.edit-profile-btn{
+.edit-profile-btn, .confirm-changes-btn{
     background-color: #000000;
     color: #FFFFFF;
 }

@@ -10,19 +10,32 @@ const fullNameTitle = document.getElementById('fullName')
 const loadingScreen = document.getElementById('loadingScreen')
 const avatarArea = document.getElementById('avatarArea')
 const userAvatarImg = document.getElementById('avatarImg')
+const registrationDate = document.getElementById('registrationDate')
+let currentUser = null
 let user_id = null
+
+function formatDate(isoString){
+    const date = new Date(isoString)
+
+    const day = String(date.getDate()).padStart(2, '0')
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const year = date.getFullYear()
+
+    return `${day}.${month}.${year}`
+}
 
 //Загрузка данных
 function loadProfile(userData) {
     checkToken(() => getUserPhoto())
 
     fullNameTitle.innerText = userData.name + ' ' + userData.surname
+    registrationDate.innerText = formatDate(userData.createdAt)
 
     inputs[0].value = userData.name
     inputs[1].value = userData.surname
     inputs[2].value = userData.email
     inputs[3].value = userData.phoneNumber || ''
-    inputs[4].value = userData.subjects || ''
+    inputs[4].value = userData.discipline || ''
     inputs[5].value = userData.description || ''
 
 
@@ -52,6 +65,7 @@ async function loadUser(){
                 loadingScreen.classList.toggle('disabled')
             }
             user_id = data.id
+            currentUser = data
             return user_id
         }
         else{
@@ -166,26 +180,74 @@ editPhotoBtn.addEventListener('click', (e) => {
     avatarArea.click()
 })
 
-//Активация формы
-editInfoBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+function getEditedFields() {
+    let editedFields = {}
+    const oldData = currentUser
 
-    switch (editInfoBtn.value) {
-        case 'edit':
-            editInfoBtn.innerText = 'Сохранить'
-            inputs.forEach((input) => {
-                input.disabled = false
-            })
-            inputs[0].focus()
-            editInfoBtn.value = 'save'
-            break
-        case 'save':
+    inputs.forEach(input => {
+        const fieldName = input.name
+        const newData = input.value.trim()
+
+        if(newData !== oldData[fieldName]){
+            editedFields[fieldName] = newData
+        }
+    })
+
+    return editedFields
+}
+
+async function saveChanges(){
+    const changes = getEditedFields()
+
+    try{
+        const response = await fetch(`${CONFIG.API_URL}/me`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify(changes)
+        })
+
+        if(response.ok){
+            const data = await response.json()
+            currentUser = data
+            console.log('Данные успешно обновлены!', data)
+
+            return data
+        }
+    }
+    catch(error){
+        console.error(error)
+    }
+}
+
+//Активация формы
+let isEditing = false
+
+editInfoBtn.addEventListener('click', async(e) => {
+    e.preventDefault()
+
+    if(!isEditing){
+        isEditing = true
+        editInfoBtn.innerText = 'Сохранить'
+        inputs.forEach(input => {
+            input.disabled = false
+        })
+    }
+    else {
+        isEditing = false
+        console.log('Saving')
+
+        const changedData = await saveChanges()
+
+        if(changedData){
+            fullNameTitle.innerText = changedData.name + ' ' + changedData.surname
             editInfoBtn.innerText = 'Изменить профиль'
-            inputs.forEach((input) => {
+            inputs.forEach(input => {
                 input.disabled = true
             })
-            editInfoBtn.value = 'edit'
-            break
+        }
     }
 })
 
