@@ -13,6 +13,9 @@ const registrationDate = document.getElementById('registrationDate')
 const changePasswordBtn = document.getElementById('changePasswordBtn')
 const changePasswordWindow = document.getElementById('changePasswordWindow')
 const cancelBtn = document.getElementById('cancelBtn')
+const passwordField = document.getElementById('newPassword')
+const repeatPasswordField = document.getElementById('newPasswordRepeat')
+const passwordErrorField = document.getElementById('passwordErrorField')
 let currentUser = null
 let user_id = null
 
@@ -290,3 +293,21 @@ cancelBtn.addEventListener('click', (e) => {
     changePasswordWindow.classList.remove('change-password-enable')
     document.getElementById("overlay").classList.remove('overlay')
 })
+
+function validatePassword() {
+    const newPassword = passwordField.value
+    const repeatedNewPassword = repeatPasswordField.value
+    const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+
+    if(!passwordPattern.test(newPassword)){
+        passwordErrorField.innerText = 'Пароль слишком слабый (минимум 8 симоволов).'
+    }
+
+    if(newPassword !== repeatedNewPassword){
+        passwordErrorField.innerText = 'Пароли не совпадают.'
+    }
+}
+
+async function changePassword(){
+    
+}

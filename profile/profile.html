@@ -52,9 +52,7 @@
             <dt>Дата регистрации</dt>
             <dd id="registrationDate">02.03.2025</dd>
             <dt>Учеников за все время</dt>
-            <dd>24</dd>
-            <dt>Рейтинг</dt>
-            <dd>4.5/5.0</dd>
+            <dd>0</dd>
         </dl>
     </aside>
     <main class="edit-account-info">
@@ -116,10 +114,6 @@
     <section id="changePasswordWindow" class="change-password">
         <h2 class="change-password-title">Смена пароля</h2>
         <div class="form-group">
-            <label for="currentPassword">Старый пароль</label>
-            <input name="currentPassword" id="currentPassword" value="" type="password" class="info-areas" disabled>
-        </div>
-        <div class="form-group">
             <label for="newPassword">Новый пароль</label>
             <input name="newPassword" id="newPassword" value="" type="password" class="info-areas" disabled>
         </div>
@@ -127,6 +121,7 @@
             <label for="newPasswordRepeat">Подтвердите новый пароль</label>
             <input name="newPasswordRepeat" id="newPasswordRepeat" value="" type="password" class="info-areas" disabled>
         </div>
+        <div id="passwordErrorField"></div>
         <div id="cancelChangingPasswordBtn" class="password-btns">
             <button id="cancelBtn" class="btn">Отмена</button>
             <button class="confirm-changes-btn btn" type="submit">Сменить пароль</button>
