@@ -1,7 +1,6 @@
 const menuBtn = document.getElementById('burgerBtn')
 const menu = document.getElementById('menuList')
 const editPhotoBtn = document.getElementById('editProfileBtn')
-const editInfoForm = document.getElementById('editInfoForm')
 const editInfoBtn = document.getElementById('editInfoBtn')
 const deleteProfileBtn = document.getElementById('deleteProfileBtn')
 const logoutBtn = document.getElementById('exitBtn')
@@ -11,6 +10,9 @@ const loadingScreen = document.getElementById('loadingScreen')
 const avatarArea = document.getElementById('avatarArea')
 const userAvatarImg = document.getElementById('avatarImg')
 const registrationDate = document.getElementById('registrationDate')
+const changePasswordBtn = document.getElementById('changePasswordBtn')
+const changePasswordWindow = document.getElementById('changePasswordWindow')
+const cancelBtn = document.getElementById('cancelBtn')
 let currentUser = null
 let user_id = null
 
@@ -272,4 +274,19 @@ async function logout() {
 logoutBtn.addEventListener('click', async (e) => {
     e.preventDefault()
     await logout()
+})
+
+changePasswordBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    changePasswordWindow.classList.toggle('change-password-enable')
+
+    const overlay = document.getElementById("overlay")
+    overlay.classList.toggle('overlay')
+})
+
+cancelBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    changePasswordWindow.classList.remove('change-password-enable')
+    document.getElementById("overlay").classList.remove('overlay')
 })
