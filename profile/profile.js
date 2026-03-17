@@ -16,6 +16,7 @@ const cancelBtn = document.getElementById('cancelBtn')
 const passwordField = document.getElementById('newPassword')
 const repeatPasswordField = document.getElementById('newPasswordRepeat')
 const passwordErrorField = document.getElementById('passwordErrorField')
+const confirmPasswordBtn = document.getElementById('confirmPasswordBtn')
 let currentUser = null
 let user_id = null
 
@@ -292,22 +293,62 @@ cancelBtn.addEventListener('click', (e) => {
     e.preventDefault();
     changePasswordWindow.classList.remove('change-password-enable')
     document.getElementById("overlay").classList.remove('overlay')
+    changePasswordWindow.reset()
 })
 
 function validatePassword() {
     const newPassword = passwordField.value
     const repeatedNewPassword = repeatPasswordField.value
     const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+    let isValide = true
 
     if(!passwordPattern.test(newPassword)){
         passwordErrorField.innerText = 'Пароль слишком слабый (минимум 8 симоволов).'
+        isValide = false
     }
 
     if(newPassword !== repeatedNewPassword){
         passwordErrorField.innerText = 'Пароли не совпадают.'
+        isValide = false
+    }
+
+    return isValide
+}
+
+async function changePassword(newPassword){
+    const password = {
+        password: newPassword
+    }
+
+    try{
+        const response = await fetch(`${CONFIG.API_URL}/me`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify(password)
+        })
+
+        if(response.ok){
+            const data = await response.json()
+            console.log(data)
+        }
+    }
+    catch(error){
+        console.error(error)
     }
 }
 
-async function changePassword(){
-    
-}
+confirmPasswordBtn.addEventListener('click', async (e) => {
+    e.preventDefault()
+
+    const isValid = validatePassword()
+
+    if(isValid){
+        const newPassword = passwordField.value
+        await changePassword(newPassword)
+        changePasswordWindow.classList.remove('change-password-enable')
+        document.getElementById("overlay").classList.remove('overlay')
+    }
+})
