@@ -5,6 +5,12 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
+button:active, button:focus, button:hover {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
 a{
     text-decoration: none;
     color: inherit;
@@ -321,4 +327,90 @@ dd { font-size: 1rem; }
 @keyframes pulse{
     0%, 100% {transform: scale(1);}
     50%{transform: scale(1.2);}
+}
+
+@media (min-width: 1024px){
+    header, .main-container{
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .burger-btn{
+        display: none;
+    }
+
+    .main-header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 10rem;
+    }
+
+    .page-title{
+        margin: 0;
+        padding: 1rem 1rem;
+        font-size: 1.6rem;
+        font-weight: 700;
+    }
+
+    .menu-list{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: end;
+        padding: 1rem 1rem;
+        font-size: 1.1rem;
+    }
+
+    .link, .target-link, .target-link:hover{
+        background: none;
+        width: auto;
+        height: auto;
+        display: inline-flex;
+        background: transparent !important;
+    }
+
+    .target-link{
+        color: #000000 !important;
+    }
+
+    .link:hover{
+        color: #878787;
+    }
+
+    .target-link:hover{
+        color: #000000 !important;
+    }
+
+    .main-container{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto auto;
+        padding: 1rem 10rem;
+    }
+
+    .user-info{
+        grid-row: 1/3;
+        height: auto;
+    }
+
+    .edit-info-title{
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 0.5fr;
+        margin-bottom: 1rem;
+    }
+
+    .account-info-title{
+        font-size: 1.2rem;
+        justify-self: start;
+    }
+
+    .fullname-container{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 1rem;
+    }
 }

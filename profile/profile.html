@@ -56,24 +56,27 @@
         </dl>
     </aside>
     <main class="edit-account-info">
-        <h2 class="account-info-title">Иформация о профиле</h2>
-
-        <!--Кнопка для активации формы редактирования профиля-->
-        <button type="button" id="editInfoBtn" class="btn edit-profile-btn" >Изменить профиль</button>
+        <div class ="edit-info-title">
+            <h2 class="account-info-title">Информация о профиле</h2>
+            <!--Кнопка для активации формы редактирования профиля-->
+            <button type="button" id="editInfoBtn" class="btn edit-profile-btn" >Изменить профиль</button>
+        </div>
 
         <!--Редактировать профиль-->
         <form id="editInfoForm" class="edit-profile">
 
-            <!--Изменить имя-->
-            <div class="form-group">
-                <label for="change-name">Имя</label>
-                <input name="name" id="change-name" placeholder="Иван" value="" type="text" class="info-areas" disabled>
-            </div>
+            <div class="fullname-container">
+                <!--Изменить имя-->
+                <div class="form-group">
+                    <label for="change-name">Имя</label>
+                    <input name="name" id="change-name" placeholder="Иван" value="" type="text" class="info-areas" disabled>
+                </div>
 
-            <!--Изменить фамилию-->
-            <div class="form-group">
-                <label for="change-surname">Фамилия</label>
-                <input name="surname" id="change-surname" placeholder="Иванов" value="" type="text" class="info-areas" disabled>
+                <!--Изменить фамилию-->
+                <div class="form-group">
+                    <label for="change-surname">Фамилия</label>
+                    <input name="surname" id="change-surname" placeholder="Иванов" value="" type="text" class="info-areas" disabled>
+                </div>
             </div>
 
             <!--Изменить электронный адрес-->
