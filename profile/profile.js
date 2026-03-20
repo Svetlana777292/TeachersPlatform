@@ -32,7 +32,7 @@ function formatDate(isoString){
 
 //Загрузка данных
 function loadProfile(userData) {
-    checkToken(() => getUserPhoto())
+    checkToken(async () => await getUserPhoto())
 
     fullNameTitle.innerText = userData.name + ' ' + userData.surname
     registrationDate.innerText = formatDate(userData.createdAt)
@@ -96,7 +96,7 @@ async function checkToken(func){
 
         if(response.ok){
             console.log('Токен действителен')
-            func()
+            await func()
         }
         else{
             console.log('Токен не обнаружен или срок его действия истек')
@@ -115,6 +115,8 @@ document.addEventListener('DOMContentLoaded', async () =>{
 
 //Открытие меню
 menuBtn.addEventListener('click', () => {
+    const menuIcon = document.getElementById('menuIcon')
+    menuIcon.classList.toggle('rotated')
     console.log('menu is opened')
     menu.classList.toggle('is-open')
 })
@@ -132,7 +134,6 @@ avatarArea.onchange = async () => {
 }
 
 async function getUserPhoto(){
-
     try{
         const response = await fetch(`${CONFIG.API_URL}/storage/avatar/${user_id}`, {
             method: 'GET',
