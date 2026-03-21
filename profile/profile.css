@@ -414,7 +414,8 @@ dd { font-size: 1rem; }
     .main-container{
         display: grid;
         grid-template-columns: 1fr 2fr;
-        grid-template-rows: auto auto;
+        grid-template-rows: auto 1fr;
+        row-gap: 0;
         padding: 0.5rem 10rem;
         align-items: start;
     }
@@ -424,6 +425,7 @@ dd { font-size: 1rem; }
         grid-column: 1;
         height: auto;
         align-self: start;
+        margin-bottom: 1rem;
     }
 
     .edit-account-info{
@@ -434,7 +436,6 @@ dd { font-size: 1rem; }
         grid-row: 2;
         grid-column: 1;
         align-self: start;
-        margin-bottom: 0;
     }
 
     .edit-info-title{
@@ -463,5 +464,9 @@ dd { font-size: 1rem; }
 
     .change-password-enable{
         position: fixed;
+    }
+
+    .exit-btn:hover{
+        background-color: rgb(225, 225, 225);
     }
 }
