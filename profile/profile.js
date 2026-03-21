@@ -294,6 +294,7 @@ cancelBtn.addEventListener('click', (e) => {
     e.preventDefault();
     changePasswordWindow.classList.remove('change-password-enable')
     document.getElementById("overlay").classList.remove('overlay')
+    passwordErrorField.innerText = ''
     changePasswordWindow.reset()
 })
 
