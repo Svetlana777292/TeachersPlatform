@@ -16,7 +16,7 @@ const ProfilePage = () => {
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
-
+    const [menuOpened, setMenuOpened] = useState(false)
 
     useEffect(() => {
         const isActive = checkToken()
@@ -84,15 +84,15 @@ const ProfilePage = () => {
         <>
             <header className="main-header">
                 <h1 className="page-title">Profile</h1>
-                <Button className="burger-btn" type="button">
-                    <svg id="menuIcon" className="burger-icon" viewBox="0 0 24 24" fill="none"
+                <Button className="burger-btn" type="button" onClick={() => setMenuOpened(!menuOpened)}>
+                    <svg id="menuIcon" className={`burger-icon ${menuOpened ? "rotated" : ""}`} viewBox="0 0 24 24" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path d="M4 6H20M4 12H20M4 18H20" stroke="black" strokeWidth="2" strokeLinecap="round"
                               strokeLinejoin="round"/>
                     </svg>
                 </Button>
 
-                <NavBar />
+                <NavBar className={`menu-list ${menuOpened ? "is-open" : ""}`}/>
             </header>
 
             <div className="main-container">

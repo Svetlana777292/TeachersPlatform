@@ -6,10 +6,10 @@ const navItems = [
     {href: "/", text: "Profile"},
 ]
 
-const NavBar = () => {
+const NavBar = (props) => {
     return (
         <nav className="menu">
-            <ul className="menu-list">
+            <ul className={props.className}>
                 {navItems.map((item) => (
                     <li className="link">
                         <Link to={item.href}>{item.text}</Link>
