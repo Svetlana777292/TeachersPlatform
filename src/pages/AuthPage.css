@@ -79,7 +79,11 @@ input {
     border-radius: 0.4rem;
     background-color: #F3F4F6;
     color: #9CA3AF;
-    padding-left: 0.5rem;
+    text-indent: 0.5rem;
+}
+
+input::placeholder {
+    color: #9CA3AF;
 }
 
 .fullname-field {
@@ -95,6 +99,10 @@ input[type=radio] {
     border-radius: 0.5rem;
     cursor: pointer;
     margin-right: 0.5rem;
+}
+
+input[type=text]:focus {
+    padding-left: 1rem;
 }
 
 input[type=radio]:checked {

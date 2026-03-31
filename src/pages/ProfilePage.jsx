@@ -8,6 +8,7 @@ import {useEffect, useState} from "react";
 import CONFIG from "../utils/config.js";
 import Loading from "../components/Loading.jsx";
 import {useNavigate} from "react-router-dom";
+import checkToken from "../utils/checkToken.js"
 
 const ProfilePage = () => {
     const navigate = useNavigate()
@@ -15,6 +16,15 @@ const ProfilePage = () => {
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
+
+
+    useEffect(() => {
+        const isActive = checkToken()
+
+        if (!isActive) {
+            navigate("/login")
+        }
+    }, [navigate])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -94,7 +104,7 @@ const ProfilePage = () => {
 
                     <dl className="account-info">
                         <dt>Registration date</dt>
-                        <dd id="registrationDate">{formatDate(user.createdAt)}</dd>
+                        <dd>{formatDate(user.createdAt)}</dd>
                         <dt>Total students</dt>
                         <dd>0</dd>
                     </dl>

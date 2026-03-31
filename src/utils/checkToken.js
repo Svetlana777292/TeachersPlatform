@@ -1,6 +1,6 @@
-async function checkToken(func){
+async function checkToken(){
     try{
-        const response = await fetch(`${CONFIG.API_URL}/token/verify`, {
+        const response = await fetch(`/api/token/verify`, {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -10,16 +10,16 @@ async function checkToken(func){
 
         if(response.ok){
             console.log('Токен действителен')
-            await func()
+            return true
         }
         else{
             console.log('Токен не обнаружен или срок его действия истек')
-            window.location.href = '/auth/login.html'
+            return false
         }
     }
     catch(error){
         console.error('Ошибка доступа: ', error)
-        window.location.href = '/auth/login.html'
+        return false
     }
 }
 

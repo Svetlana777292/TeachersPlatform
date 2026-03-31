@@ -6,7 +6,8 @@ const RadioField = (props) => {
                 name={props.name}
                 className={props.className}
                 value={props.value}
-                defaultChecked={props.checked} />
+                onChange={props.onChange}
+                checked={props.checked}/>
             {props.label}
         </label>
     )

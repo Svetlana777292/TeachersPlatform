@@ -3,7 +3,7 @@ import ErrorField from "./ErrorField.jsx";
 const InputField = (props) => {
 
     return (
-        <label className={props.className}>
+        <label>
             {props.label}
             <input
                 className={props.className}

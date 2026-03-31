@@ -8,7 +8,6 @@ import handleSubmit from "../utils/responses.js";
 import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
-    const [role, setRole] = useState("teacher")  
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -18,6 +17,8 @@ const LoginPage = () => {
     const navigate = useNavigate()
 
     const handleChange = (e) => {
+
+        console.log(e.target.name, e.target.value)
 
         setFormData({
             ...formData,
@@ -32,8 +33,8 @@ const LoginPage = () => {
             </h1>
 
             <div className="roles-group">
-                <RadioField name="role" className="role" label="I'm a teacher" value="teacher" checked={role === 'teacher'} onChange={handleChange} />
-                <RadioField name="role" className="role" label="I'm a student" value="student" checked={role === 'teacher'} onChange={handleChange}/>
+                <RadioField name="role" className="role" label="I'm a teacher" value="teacher" checked={formData.role === 'teacher'} onChange={handleChange} />
+                <RadioField name="role" className="role" label="I'm a student" value="student" checked={formData.role === 'student'} onChange={handleChange}/>
             </div>
 
             <InputField name="email" type="email" placeholder="ivan.ivanov@example.com" label="Email" value={formData.email} onChange={handleChange}/>

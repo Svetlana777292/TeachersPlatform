@@ -3,7 +3,7 @@ async function handleSubmit(formData, path, e, navigate) {
     e.preventDefault()
 
     try{
-        const response = await fetch(`api/${path}`, {
+        const response = await fetch(`/api/${path}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

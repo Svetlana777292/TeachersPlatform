@@ -109,6 +109,7 @@ body {
 .role{
     font-size: 1rem;
     font-weight: 400;
+    color: #515151;
 }
 
 .avatar-wrapper {
@@ -125,6 +126,11 @@ body {
 .account-info {
     align-self: start;
     text-align: start;
+    margin-top: 1rem;
+}
+
+dt{
+    color: #515151;
 }
 
 .avatar-img {
@@ -343,7 +349,7 @@ dd { font-size: 1rem; }
     gap: 0.5rem;
 }
 
-.info-areas, .info-areas:disabled {
+.info-areas, .info-areas:disabled{
     min-height: 3rem;
     border-radius: 0.5rem;
     padding-left: 0;
@@ -351,7 +357,8 @@ dd { font-size: 1rem; }
 }
 
 input::placeholder{
-    padding-left: 1rem;
+    padding-left: 0.5rem;
+    color: #878787;
 }
 
 .info-areas {
