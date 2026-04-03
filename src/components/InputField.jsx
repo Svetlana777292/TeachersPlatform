@@ -10,7 +10,7 @@ const InputField = (props) => {
                 placeholder={props.placeholder}
                 type={props.type}
                 name={props.name}
-                value={props.value}
+                defaultValue={props.value}
                 onChange={props.onChange}/>
             <ErrorField />
         </label>

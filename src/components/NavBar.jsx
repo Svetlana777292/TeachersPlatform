@@ -11,7 +11,7 @@ const NavBar = (props) => {
         <nav className="menu">
             <ul className={props.className}>
                 {navItems.map((item) => (
-                    <li className="link">
+                    <li className="link" key={item.text}>
                         <Link to={item.href}>{item.text}</Link>
                     </li>
                 ))}

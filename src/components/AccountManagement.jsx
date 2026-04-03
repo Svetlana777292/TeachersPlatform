@@ -2,9 +2,11 @@ import ChangePasswordWindow from "./ChangePasswordWindow.jsx";
 import CONFIG from "../utils/config.js";
 import Button from "./Button.jsx";
 import {useNavigate} from "react-router-dom";
+import {useState} from "react";
 
 const AccountManagement = () => {
     const navigate = useNavigate()
+    const [editingPasswordEnabled, setEditingPasswordEnabled] = useState(false)
 
     async function handleLogout(e, navigate){
         e.preventDefault()
@@ -28,12 +30,16 @@ const AccountManagement = () => {
     }
 
     return(
-        <div className="action-btns-container">
-            <h3 className="action-title">Управление аккаунтом</h3>
-            <Button type="button" className="btn exit-btn" value="disabled">Change password</Button>
-            <Button type="button" className="btn exit-btn" value="disabled" onClick={(e) => handleLogout(e, navigate)}>Exit</Button>
-            <Button type="button" className="btn delete-btn" value="disabled">Delete profile</Button>
-        </div>
+        <>
+            <div className="action-btns-container">
+                <h3 className="action-title">Account management</h3>
+                <Button type="button" className="btn exit-btn" onClick={() => setEditingPasswordEnabled(true)}>Change password</Button>
+                <Button type="button" className="btn exit-btn" onClick={(e) => handleLogout(e, navigate)}>Exit</Button>
+                <Button type="button" className="btn delete-btn" >Delete profile</Button>
+            </div>
+
+            <ChangePasswordWindow isOpen={editingPasswordEnabled} onClose={() => setEditingPasswordEnabled(false)} />
+        </>
     )
 }
 
