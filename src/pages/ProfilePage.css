@@ -361,7 +361,7 @@ input::placeholder{
     color: #000000;
 }
 
-#passwordErrorField{
+.errorMessage{
     font-size: 0.8rem;
     color: red;
 }

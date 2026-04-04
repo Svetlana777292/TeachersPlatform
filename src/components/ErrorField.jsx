@@ -1,6 +1,6 @@
 const ErrorField = (props) => {
     return(
-        <div id={props.id} className={props.className} hidden></div>
+        <div id={props.id} className="errorMessage">{props.errorMessage}</div>
     )
 }
 
