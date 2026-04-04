@@ -89,11 +89,11 @@ const ChangePasswordWindow = (props) => {
                     <InputField name="confirmPassword" label="Confirm new password" value={newPassword.confirmPassword} type="password" className="info-areas" onChange={handleChange} />
                     <ErrorField errorMessage={error}/>
                     <div className="password-btns">
-                        <Button type="button" className="btn cancelBtn" onClick={handleClose}>Отмена</Button>
+                        <Button type="button" className="btn cancelBtn" onClick={handleClose}>Cancel</Button>
                         <Button type="submit" className="confirm-changes-btn btn" onClick={() => {
                             validatePassword()
                             changePassword()
-                        }}>Сменить пароль</Button>
+                        }}>Change password</Button>
                     </div>
             </Modal>
         </>
