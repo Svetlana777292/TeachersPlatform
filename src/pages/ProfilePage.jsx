@@ -14,7 +14,6 @@ Modal.setAppElement('#root');
 
 const ProfilePage = () => {
     const navigate = useNavigate()
-    const [isEditing, setIsEditing] = useState(false)
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -43,7 +42,16 @@ const ProfilePage = () => {
                 if(response.ok){
                     const data = await response.json()
                     setUser(data)
-                    getUserPhoto()
+
+                    const photoResponse = await fetch(`/api/storage/avatar/${data.id}`, {
+                        method: 'GET',
+                        credentials: 'include'
+                    })
+
+                    if (photoResponse.ok) {
+                        const photoData = await photoResponse.json()
+                        setPhoto(photoData.url)
+                    }
                 }
                 else{
                     setError("Unautorized")
@@ -107,7 +115,6 @@ const ProfilePage = () => {
             }
             else{
                 console.log('Ошибка загрузки: ', response.status)
-                //getUserPhoto()
             }
         }
         catch(error){
@@ -142,6 +149,10 @@ const ProfilePage = () => {
         await setUserPhoto(selectedPhoto)
         const url = await getUserPhoto()
         setPhoto(url)
+    }
+
+    async function handleSaveUserInfo(updatedUser) {
+        setUser(updatedUser)
     }
 
     return (
@@ -180,17 +191,7 @@ const ProfilePage = () => {
                 </aside>
 
                 <main className="edit-account-info">
-                    <div className="edit-info-title">
-                        <h2 className="account-info-title">Account information</h2>
-                        <Button type="button"
-                                className="btn edit-profile-btn"
-                                onClick={() => setIsEditing(!isEditing)}
-                                >
-                                {isEditing ? "Save" : "Change account"}
-                        </Button>
-                    </div>
-
-                    <UserInfoForm user={user}/>
+                    <UserInfoForm user={user} onSave={handleSaveUserInfo}/>
                 </main>
 
                 <AccountManagement />

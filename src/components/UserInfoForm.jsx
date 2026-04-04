@@ -1,21 +1,75 @@
 import InputField from "./InputField.jsx";
+import {useState} from "react";
+import Button from "./Button.jsx";
 
-const UserInfoForm = ({user}) => {
+const UserInfoForm = ({user, onSave}) => {
+    const [isEditing, setIsEditing] = useState(false)
+    const [changedData, setChangedData] = useState({
+        name: user.name,
+        surname: user.surname,
+        email: user.email,
+        phoneNumber: user.phoneNumber || "",
+        discipline: user.discipline || "",
+        description: user.description || ""
+    })
+
+    const handleChange = (e) => {
+        setChangedData({
+            ...changedData,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    async function saveChanges(e){
+        e.preventDefault()
+
+        try{
+            const response = await fetch(`/api/me`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify(changedData)
+            })
+
+            if(response.ok){
+                const updatedUser = await response.json()
+                console.log('Данные успешно обновлены!', user)
+
+                onSave(updatedUser)
+            }
+        }
+        catch(error){
+            console.error(error)
+        }
+    }
 
     return (
-        <form id="editInfoForm" className="edit-profile">
-            <div className="fullname-container">
-                <InputField label="Name" className="info-areas" disabled name="name" placeholder={user.name} value={user.name} type="text"></InputField>
-                <InputField label="Surname" className="info-areas" disabled name="surname" placeholder={user.surname} value={user.surname} type="text"></InputField>
+        <form className="edit-profile" onSubmit={saveChanges}>
+
+            <div className="edit-info-title">
+                <h2 className="account-info-title">Account information</h2>
+                <Button type={isEditing ? "button" : "submit"}
+                        className="btn edit-profile-btn"
+                        onClick={() => setIsEditing(!isEditing)}
+                >
+                    {isEditing ? "Save" : "Change account"}
+                </Button>
             </div>
 
-            <InputField label="Email" className="info-areas" disabled name="email" placeholder={user.email} value={user.email} type="text"></InputField>
-            <InputField label="Phone number" className="info-areas" disabled name="phone" placeholder="+1 (11) 111-11-11" value={user.phoneNumber} type="text"></InputField>
-            <InputField label="Subjects" className="info-areas" disabled name="discipline" placeholder="Math, physics" value={user.discipline} type="text"></InputField>
+            <div className="fullname-container">
+                <InputField label="Name" className="info-areas" disabled={!isEditing} name="name" placeholder={user.name} value={changedData.name} type="text" onChange={handleChange} ></InputField>
+                <InputField label="Surname" className="info-areas" disabled={!isEditing} name="surname" placeholder={user.surname} value={changedData.surname} type="text" onChange={handleChange}></InputField>
+            </div>
+
+            <InputField label="Email" className="info-areas" disabled={!isEditing} name="email" placeholder={user.email} value={user.email} type="text" onChange={handleChange}></InputField>
+            <InputField label="Phone number" className="info-areas" disabled={!isEditing} name="phone" placeholder="+1 (11) 111-11-11" value={changedData.phoneNumber ? changedData.phoneNumber : "+1 (11) 111-11-11"} type="text" onChange={handleChange}></InputField>
+            <InputField label="Subjects" className="info-areas" disabled={!isEditing} name="discipline" placeholder="Math, physics" value={changedData.discipline ? changedData.discipline : "Math, physics"} type="text" onChange={handleChange}></InputField>
 
             <div className="form-group">
                 <label htmlFor="bio">Bio</label>
-                <textarea name="description" placeholder="" maxLength="200" value={user.description ? user.description : undefined} className="info-areas"  disabled></textarea>
+                <textarea name="description" placeholder="" maxLength="200" value={changedData.description ? changedData.description : undefined} className="info-areas"  disabled={!isEditing} onChange={handleChange}></textarea>
             </div>
         </form>
     )

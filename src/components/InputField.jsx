@@ -11,7 +11,8 @@ const InputField = (props) => {
                 type={props.type}
                 name={props.name}
                 defaultValue={props.value}
-                onChange={props.onChange}/>
+                onChange={props.onChange}
+                disabled={props.disabled}/>
             <ErrorField />
         </label>
     )
