@@ -19,6 +19,7 @@ const ProfilePage = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
     const [menuOpened, setMenuOpened] = useState(false)
+    const [photo, setPhoto] = useState(null)
 
     useEffect(() => {
         const isActive = checkToken()
@@ -42,6 +43,7 @@ const ProfilePage = () => {
                 if(response.ok){
                     const data = await response.json()
                     setUser(data)
+                    getUserPhoto()
                 }
                 else{
                     setError("Unautorized")
@@ -82,6 +84,66 @@ const ProfilePage = () => {
         return `${day}.${month}.${year}`
     }
 
+    async function setUserPhoto(file){
+
+        const formData = new FormData()
+        formData.append('photo', file)
+
+        try{
+            const response = await fetch(`/api/storage/avatar`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                },
+                body: formData,
+                credentials: 'include'
+            })
+
+            if(response.ok){
+                const data = await response.json()
+                console.log(data)
+                console.log('Фото успешно загружено, URL: ', data.storage_key)
+
+            }
+            else{
+                console.log('Ошибка загрузки: ', response.status)
+                //getUserPhoto()
+            }
+        }
+        catch(error){
+            console.error(error)
+        }
+    }
+
+    async function getUserPhoto(){
+        try{
+            const response = await fetch(`/api/storage/avatar/${user.id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include'
+            })
+
+            if(response.ok){
+                const photoUrl = await response.json()
+                return photoUrl.url
+            }
+        }
+        catch(error){
+            console.error(error)
+        }
+    }
+
+    async function handleAvatarChange(e){
+        const selectedPhoto = e.target.files[0]
+        if(!selectedPhoto) return
+
+        await setUserPhoto(selectedPhoto)
+        const url = await getUserPhoto()
+        setPhoto(url)
+    }
+
     return (
         <>
             <header className="main-header">
@@ -100,14 +162,14 @@ const ProfilePage = () => {
             <div className="main-container">
                 <aside className="user-info">
                     <div className="avatar-wrapper">
-                        <input type="file" className="avatar-input" accept="image/*"/>
-                        <img id="avatarImg" src="/" alt="" className="avatar-img"/>
+                        <input id="avatarInput" type="file" className="avatar-input" accept="image/*" onChange={handleAvatarChange}/>
+                        <img src={photo} alt="" className="avatar-img"/>
                     </div>
 
-                    <h1 id="fullName" className="main-title">{user.name + " " + user.surname}</h1>
+                    <h1 className="main-title">{user.name + " " + user.surname}</h1>
                     <h3 className="role">{user.role}</h3>
 
-                    <Button className="btn edit-avatar-btn" type="button">Edit avatar</Button>
+                    <label htmlFor="avatarInput" className="btn edit-avatar-btn" type="button">Edit avatar</label>
 
                     <dl className="account-info">
                         <dt>Registration date</dt>

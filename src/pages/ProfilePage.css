@@ -283,6 +283,8 @@ dd { font-size: 1rem; }
 }
 
 .edit-avatar-btn{
+    text-align: center;
+    align-items: center;
     background-color: #FFFFFF;
     color: #000000
 }
