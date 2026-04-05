@@ -28,7 +28,7 @@ body, .main-header, .main-container, .avatar-img, .btn, .user-info, .edit-accoun
     width: 100%;
 }
 
-body, .main-container, .user-info, .action-btns-container, .menu-list, .burger-btn, .loading, .change-password, .password-btns {
+body, .main-container, .user-info, .action-btns-container, .menu-list, .burger-btn, .loading, .change-password, .password-btns, .btn {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -286,7 +286,8 @@ dd { font-size: 1rem; }
     text-align: center;
     align-items: center;
     background-color: #FFFFFF;
-    color: #000000
+    color: #000000;
+    font-size: 1rem;
 }
 
 .edit-profile-btn, .confirm-changes-btn{
