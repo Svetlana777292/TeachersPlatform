@@ -1,6 +1,5 @@
-// AuthRedirection.jsx (пример)
 import React from 'react';
-import { Link } from 'react-router-dom'; // Предполагаем, что ты используешь react-router-dom
+import { Link } from 'react-router-dom';
 
 const AuthRedirection = ({ className, linkClassName, text, linkText, to }) => {
     return (

@@ -41,9 +41,8 @@ const RegisterPage = () => {
                 </div>
 
                 <div className="roles-group">
-                    <RadioField name="role" className="role" label="I'm a teacher" value="teacher" checked={role === 'teacher'} onChange={(e) => {setRole(e.target.value)}}/>
-                    <RadioField name="role" className="role" label="I'm a student" value="student" checked={role === 'student'} onChange={(e) => {setRole(e.target.value)}}/>
-                </div>
+                    <RadioField name="role" className="role" label="I'm a teacher" value="teacher" checked={formData.role === 'teacher'} onChange={handleChange} />
+                    <RadioField name="role" className="role" label="I'm a student" value="student" checked={formData.role === 'student'} onChange={handleChange}/></div>
 
                 <InputField name="username" type="text" placeholder="ivanovivan" label="Username" value={formData.username} onChange={handleChange}/>
 
