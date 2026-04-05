@@ -1,14 +1,15 @@
-import NavBar from "../components/NavBar.jsx";
-import Button from "../components/Button.jsx";
+import NavBar from "../../components/NavBar.jsx";
+import Button from "../../components/Button.jsx";
 import './ProfilePage.css'
-import ChangePasswordWindow from "../components/ChangePasswordWindow.jsx";
-import AccountManagement from "../components/AccountManagement.jsx";
+import ChangePasswordWindow from "../../components/ChangePasswordWindow.jsx";
+import AccountManagement from "../../components/AccountManagement.jsx";
 import {useEffect, useState} from "react";
-import Loading from "../components/Loading.jsx";
+import Loading from "../../components/Loading.jsx";
 import {useNavigate} from "react-router-dom";
-import UserInfoForm from "../components/UserInfoForm.jsx";
+import UserInfoForm from "../../components/UserInfoForm.jsx";
 import Modal from "react-modal";
-import UserInfo from "../components/UserInfo.jsx";
+import UserInfo from "../../components/UserInfo.jsx";
+import Header from "../../components/Header.jsx";
 
 Modal.setAppElement('#root');
 
@@ -17,7 +18,6 @@ const ProfilePage = () => {
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
-    const [menuOpened, setMenuOpened] = useState(false)
     const [photo, setPhoto] = useState(null)
 
     useEffect(() => {
@@ -80,18 +80,7 @@ const ProfilePage = () => {
 
     return (
         <>
-            <header className="main-header">
-                <h1 className="page-title">Profile</h1>
-                <Button className="burger-btn" type="button" onClick={() => setMenuOpened(!menuOpened)}>
-                    <svg id="menuIcon" className={`burger-icon ${menuOpened ? "rotated" : ""}`} viewBox="0 0 24 24" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4 6H20M4 12H20M4 18H20" stroke="black" strokeWidth="2" strokeLinecap="round"
-                              strokeLinejoin="round"/>
-                    </svg>
-                </Button>
-
-                <NavBar className={`menu-list ${menuOpened ? "is-open" : ""}`}/>
-            </header>
+            <Header />
 
             <div className="main-container">
                 <UserInfo user={user} photo={photo} setPhoto={setPhoto}/>

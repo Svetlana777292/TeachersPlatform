@@ -8,7 +8,6 @@ import {useNavigate} from "react-router-dom";
 import handleSubmit from "../utils/responses.js";
 
 const RegisterPage = () => {
-    const [role, setRole] = useState("teacher")
     const [formData, setFormData] = useState({
         name: "",
         surname: "",

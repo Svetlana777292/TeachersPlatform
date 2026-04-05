@@ -2,7 +2,7 @@ import InputField from "./InputField.jsx";
 import ErrorField from "./ErrorField.jsx";
 import Button from "./Button.jsx";
 import Modal from "react-modal";
-import '../pages/ProfilePage.css';
+import '../pages/Dashboard/ProfilePage.css';
 import {useState} from "react";
 
 const ChangePasswordWindow = (props) => {

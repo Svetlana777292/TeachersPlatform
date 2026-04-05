@@ -1,7 +1,7 @@
 import {Route, Routes} from "react-router-dom";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import ProfilePage from "./pages/ProfilePage.jsx";
+import ProfilePage from "./pages/Dashboard/ProfilePage.jsx";
 import {useEffect, useRef, useState} from "react";
 import checkToken from "./utils/checkToken.js";
 import Loading from "./components/Loading.jsx";
