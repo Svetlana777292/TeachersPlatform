@@ -80,7 +80,7 @@ const ProfilePage = () => {
 
     return (
         <>
-            <Header />
+            <Header user={user}/>
 
             <div className="main-container">
                 <UserInfo user={user} photo={photo} setPhoto={setPhoto}/>

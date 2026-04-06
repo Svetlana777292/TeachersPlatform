@@ -6,7 +6,7 @@ import NavBar from "./NavBar.jsx";
 import Button from "./Button.jsx";
 import {useState} from "react";
 
-const Header = () => {
+const Header = (props) => {
 
     const [menuOpened, setMenuOpened] = useState(false)
 
@@ -21,7 +21,7 @@ const Header = () => {
                 </svg>
             </Button>
 
-            <NavBar className={`menu-list ${menuOpened ? "is-open" : ""}`}/>
+            <NavBar role={props.user.role} className={`menu-list ${menuOpened ? "is-open" : ""}`}/>
         </header>
     )
 }

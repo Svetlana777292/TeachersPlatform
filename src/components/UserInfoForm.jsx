@@ -66,11 +66,22 @@ const UserInfoForm = ({user, onSave}) => {
             <InputField label="Email" className="info-areas" disabled={!isEditing} name="email" placeholder={user.email} value={user.email} type="text" onChange={handleChange}></InputField>
             <InputField label="Phone number" className="info-areas" disabled={!isEditing} name="phone" placeholder="+1 (11) 111-11-11" value={changedData.phoneNumber ? changedData.phoneNumber : "+1 (11) 111-11-11"} type="text" onChange={handleChange}></InputField>
 
-            <InputField label="Subjects" className="info-areas" disabled={!isEditing} name="discipline" placeholder="Math, physics" value={changedData.discipline ? changedData.discipline : "Math, physics"} type="text" onChange={handleChange}></InputField>
-            <div className="form-group">
+            {user.role === "teacher" && <InputField label="Subjects" className="info-areas" disabled={!isEditing} name="discipline"
+                         placeholder="Math, physics"
+                         value={changedData.discipline ? changedData.discipline : "Math, physics"} type="text"
+                         onChange={handleChange}></InputField>}
+
+            {user.role === "student" && <InputField label="Grade" className="info-areas" disabled={!isEditing} name="description"
+                                                    placeholder=""
+                                                    value={changedData.discipline ? changedData.discipline : "10th Grade"} type="text"
+                                                    onChange={handleChange}></InputField>}
+
+            { user.role === "teacher" && <div className="form-group">
                 <label htmlFor="bio">Bio</label>
-                <textarea name="description" placeholder="" maxLength="200" value={changedData.description ? changedData.description : undefined} className="info-areas"  disabled={!isEditing} onChange={handleChange}></textarea>
-            </div>
+                <textarea name="description" placeholder="" maxLength="200"
+                          value={changedData.description ? changedData.description : undefined} className="info-areas"
+                          disabled={!isEditing} onChange={handleChange}></textarea>
+            </div>}
         </form>
     )
 }
