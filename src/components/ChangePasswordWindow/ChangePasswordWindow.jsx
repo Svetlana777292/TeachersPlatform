@@ -1,9 +1,10 @@
-import InputField from "./InputField.jsx";
-import ErrorField from "./ErrorField.jsx";
-import Button from "./Button.jsx";
+import InputField from "../Inputs/InputField.jsx";
+import ErrorField from "../ErrorField/ErrorField.jsx";
+import Button from "../Button/Button.jsx";
 import Modal from "react-modal";
-import '../pages/Dashboard/ProfilePage.css';
+import '../../pages/Profile/ProfilePage.css';
 import {useState} from "react";
+import "./ChangePasswordWindow.css"
 
 const ChangePasswordWindow = (props) => {
     const [error, setError] = useState(null)

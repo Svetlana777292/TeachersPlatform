@@ -1,0 +1,27 @@
+.exit-btn{
+    background-color: #e7e9ed;
+    font-weight: 500;
+    border: 0.5px solid #e6e5e5;
+}
+
+.delete-btn{
+    background-color: #f92c36;
+    color: #FFFFFF;
+    border: 0.5px solid #cd1623;
+}
+
+.action-btns-container {
+    gap: 0.5em;
+    margin-bottom: 1em;
+}
+
+.action-title{
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.exit-btn, .delete-btn{
+    height: 3em;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+}

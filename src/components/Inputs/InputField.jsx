@@ -1,4 +1,5 @@
-import ErrorField from "./ErrorField.jsx";
+import ErrorField from "../ErrorField/ErrorField.jsx";
+import "./Inputs.css"
 
 const InputField = (props) => {
 

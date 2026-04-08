@@ -1,11 +1,11 @@
-import InputField from '../components/InputField.jsx'
-import Button from "../components/Button.jsx";
-import AuthRedirection from "../components/AuthRedirection.jsx";
-import RadioField from "../components/RadioField.jsx";
+import InputField from '../../components/Inputs/InputField.jsx'
+import Button from "../../components/Button/Button.jsx";
+import AuthRedirection from "../../components/AuthRedirection/AuthRedirection.jsx";
+import RadioField from "../../components/Inputs/RadioField.jsx";
 import "./AuthPage.css"
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import handleSubmit from "../utils/responses.js";
+import handleSubmit from "../../utils/responses.js";
 
 const RegisterPage = () => {
     const [formData, setFormData] = useState({

@@ -1,8 +1,9 @@
-import ChangePasswordWindow from "./ChangePasswordWindow.jsx";
-import CONFIG from "../utils/config.js";
-import Button from "./Button.jsx";
+import ChangePasswordWindow from "../ChangePasswordWindow/ChangePasswordWindow.jsx";
+import CONFIG from "../../utils/config.js";
+import Button from "../Button/Button.jsx";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
+import "./AccountManagement.css"
 
 const AccountManagement = () => {
     const navigate = useNavigate()

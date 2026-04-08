@@ -1,3 +1,5 @@
+import "./Inputs.css"
+
 const RadioField = (props) => {
     return(
         <label>

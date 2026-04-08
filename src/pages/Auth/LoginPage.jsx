@@ -1,10 +1,10 @@
-import InputField from '../components/InputField.jsx'
-import Button from "../components/Button.jsx";
-import AuthRedirection from "../components/AuthRedirection.jsx";
-import RadioField from "../components/RadioField.jsx";
+import InputField from '../../components/Inputs/InputField.jsx'
+import Button from "../../components/Button/Button.jsx";
+import AuthRedirection from "../../components/AuthRedirection/AuthRedirection.jsx";
+import RadioField from "../../components/Inputs/RadioField.jsx";
 import "./AuthPage.css"
 import {useState} from "react";
-import handleSubmit from "../utils/responses.js";
+import handleSubmit from "../../utils/responses.js";
 import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
@@ -44,8 +44,6 @@ const LoginPage = () => {
             <Button type="submit" className="auth-button" >Sign in</Button>
 
             <AuthRedirection
-                className="auth-redirection-text"
-                linkClassName="auth-redirection-link"
                 text="Already have an account?"
                 linkText="Sign up"
                 to="/register"
