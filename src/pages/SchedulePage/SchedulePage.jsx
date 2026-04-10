@@ -1,12 +1,10 @@
-import Header from "../../components/Header/Header.jsx";
+import "./SchedulePage.css"
 import useUser from "../../hooks/useUser.js";
 import Loading from "../../components/Loading/Loading.jsx";
-import Modal from "react-modal";
-import "./StudentsList.css"
+import Header from "../../components/Header/Header.jsx";
+import ScheduleList from "../../components/ScheduleList/ScheduleList.jsx";
 
-Modal.setAppElement('#root');
-
-const StudentsList = () => {
+const SchedulePage = () => {
     const {user, isLoading} = useUser()
 
     if (!user) return null
@@ -16,9 +14,11 @@ const StudentsList = () => {
     return(
         <div className="page-container">
             <Header user={user}/>
-
+            <div className="schedule-container">
+                <ScheduleList />
+            </div>
         </div>
     )
 }
 
-export default StudentsList
+export default SchedulePage

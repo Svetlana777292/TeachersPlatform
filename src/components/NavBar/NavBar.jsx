@@ -3,7 +3,7 @@ import "./NavBar.css"
 
 const teacherItems = [
     {href: "/", text: "Finance"},
-    {href: "/", text: "Schedule"},
+    {href: "/schedule", text: "Schedule"},
     {href: "/studentsList", text: "My students"},
     {href: "/", text: "Profile"},
 ]

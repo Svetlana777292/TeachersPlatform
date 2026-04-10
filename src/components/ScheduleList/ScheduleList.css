@@ -1,0 +1,11 @@
+.scheduleCard {
+    display: flex;
+    flex-direction: column;
+    border: 0.07rem solid #EAEAEA;
+    margin: 1rem;
+    font-size: 0.8rem;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+

@@ -6,6 +6,7 @@ import {useEffect, useRef, useState} from "react";
 import checkToken from "./utils/checkToken.js";
 import Loading from "./components/Loading/Loading.jsx";
 import StudentsList from "./pages/StudentsList/StudentsList.jsx";
+import SchedulePage from "./pages/SchedulePage/SchedulePage.jsx";
 
 function App() {
   const [token, setToken] = useState(false)
@@ -46,6 +47,7 @@ function App() {
         <Route path="/" element={token ? <ProfilePage /> : <LoginPage/>}/>
         <Route path="/Profile/" element={<ProfilePage/>}/>
         <Route path="/studentsList/" element={<StudentsList/>}/>
+        <Route path="/schedule/" element={<SchedulePage/>}/>
       </Routes>
     </>
   )
