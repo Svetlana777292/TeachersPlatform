@@ -91,7 +91,7 @@ const ChangePasswordWindow = (props) => {
                     <ErrorField errorMessage={error}/>
                     <div className="password-btns">
                         <Button type="button" className="btn cancelBtn" onClick={handleClose}>Cancel</Button>
-                        <Button type="submit" className="confirm-changes-btn btn" onClick={() => {
+                        <Button type="submit" className="confirmBtn btn" onClick={() => {
                             validatePassword()
                             changePassword()
                         }}>Change password</Button>

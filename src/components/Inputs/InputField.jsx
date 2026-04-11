@@ -7,7 +7,7 @@ const InputField = (props) => {
         <label>
             {props.label}
             <input
-                className={props.className}
+                className={`${props.className}`}
                 placeholder={props.placeholder}
                 type={props.type}
                 name={props.name}

@@ -6,3 +6,8 @@
     font-weight: 600;
     cursor: pointer;
 }
+
+.confirmBtn {
+    background: #000000;
+    color: #FFFFFF;
+}

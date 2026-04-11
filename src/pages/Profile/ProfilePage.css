@@ -40,7 +40,7 @@ body, .main-container, .action-btns-container, .menu-list, .loading, .change-pas
     border: 1px solid #EAEAEA;
     border-radius: 1rem;
     padding: 1em;
-    box-shadow: 2px 2px 8px #EAEAEA;
+    box-shadow: 0 0 5px #d5d5d5;
 }
 
 .action-title {
@@ -233,7 +233,7 @@ body {
 }
 
 .info-areas, .info-areas:disabled{
-    min-height: 3rem;
+    min-height: 2.5rem;
     border-radius: 0.5rem;
     padding-left: 0;
     color: #878787;

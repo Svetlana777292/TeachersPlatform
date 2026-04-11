@@ -9,3 +9,41 @@
     border-radius: 1rem;
 }
 
+.schedule-title {
+    align-self: start;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 1rem 1rem 0.5rem 1rem;
+}
+
+.current-week {
+    align-self: start;
+    font-size: 0.8rem;
+    padding: 0 1rem;
+    font-weight: 400;
+    color: #515151;
+}
+
+.weeks-switcher {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.4fr;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.week-switch-button {
+    background: #FFFFFF;
+    color: #000000;
+    border: 0.07rem solid #EAEAEA;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.add-lesson-btn{
+    color: #FFFFFF;
+    font-weight: 500;
+    background: #000000;
+}
+
+

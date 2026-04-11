@@ -1,9 +1,12 @@
 import Button from "../Button/Button.jsx";
 import {useState} from "react";
 import "./ScheduleList.css"
+import Select from "react-select"
+import InputField from "../Inputs/InputField.jsx";
 
 const ScheduleList = (props) => {
     const [weekOffset, setWeekOffset] = useState(0)
+    const [creatingLesson, setCreatingLesson] = useState(false)
 
     function getMonday(weekOffset){
         const today = new Date()
@@ -43,11 +46,12 @@ const ScheduleList = (props) => {
 
     return (
         <>
-            <h1 className="schedule-title">My schedule</h1>
+            <h1 className="schedule-title">My Schedule</h1>
             <h2 className="current-week">{firstDay.toLocaleDateString()} - {lastDay.toLocaleDateString()}</h2>
             <div className="weeks-switcher">
                 <Button className="week-switch-button" onClick={() => setWeekOffset(weekOffset - 1)}>Previous week</Button>
                 <Button className="week-switch-button" onClick={() => setWeekOffset(weekOffset + 1)}>Next week</Button>
+                <Button className="add-lesson-btn" onClick={() => setCreatingLesson(true)}>+</Button>
             </div>
                 <div>
                     {scheduleCards}
