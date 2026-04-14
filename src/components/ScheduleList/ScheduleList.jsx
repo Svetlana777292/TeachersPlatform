@@ -3,6 +3,7 @@ import {useState} from "react";
 import "./ScheduleList.css"
 import Select from "react-select"
 import InputField from "../Inputs/InputField.jsx";
+import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
 
 const ScheduleList = (props) => {
     const [weekOffset, setWeekOffset] = useState(0)
@@ -32,7 +33,7 @@ const ScheduleList = (props) => {
 
     function renderScheduleCards(){
         return Array.from({length: 7}, (_, i) =>
-            (<div className="scheduleCard">
+            (<div key={i} className="scheduleCard">
                 <h3 style={{fontWeight: 500}}>
                     {`${weekDays[i]}, ${days[i].toLocaleDateString()}`}
                 </h3>
@@ -56,6 +57,8 @@ const ScheduleList = (props) => {
                 <div>
                     {scheduleCards}
                 </div>
+
+            <CreateLessonWindow isOpen={creatingLesson} onClose={() => setCreatingLesson(false)} />
         </>
     )
 }

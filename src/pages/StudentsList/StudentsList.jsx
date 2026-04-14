@@ -3,6 +3,7 @@ import useUser from "../../hooks/useUser.js";
 import Loading from "../../components/Loading/Loading.jsx";
 import Modal from "react-modal";
 import "./StudentsList.css"
+import CreateLessonWindow from "../../components/CreateLessonWindow/CreateLessonWindow.jsx";
 
 Modal.setAppElement('#root');
 

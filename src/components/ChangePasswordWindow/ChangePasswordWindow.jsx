@@ -84,7 +84,7 @@ const ChangePasswordWindow = (props) => {
 
     return(
         <>
-            <Modal className="change-password" onRequestClose={props.onClose} isOpen={props.isOpen} >
+            <Modal className="modalWindow" onRequestClose={props.onClose} isOpen={props.isOpen} >
                     <h2 className="change-password-title">Change password</h2>
                     <InputField name="newPassword" label="New password" value={newPassword.newPassword} type="password" className="info-areas" onChange={handleChange} />
                     <InputField name="confirmPassword" label="Confirm new password" value={newPassword.confirmPassword} type="password" className="info-areas" onChange={handleChange} />

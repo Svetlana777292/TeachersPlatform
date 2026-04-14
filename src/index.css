@@ -33,6 +33,42 @@ body {
   top: 0;
 }
 
+.modalWindow{
+  display: flex;
+  opacity: 1;
+  transition: display 0.4s allow-discrete,
+  opacity 0.4s ease;
+
+  z-index: 9999;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  width: 90vw;
+  max-width: 400px;
+  background-color: #FFFFFF;
+  padding: 0.5rem 1rem;
+  border: 1px solid #EAEAEA;
+  border-radius: 1rem;
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 1024px)  {
+  .modalWindow {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 #root {
   max-width: 100%;
   margin: 0 auto;

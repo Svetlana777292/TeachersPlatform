@@ -3,6 +3,9 @@ import useUser from "../../hooks/useUser.js";
 import Loading from "../../components/Loading/Loading.jsx";
 import Header from "../../components/Header/Header.jsx";
 import ScheduleList from "../../components/ScheduleList/ScheduleList.jsx";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root")
 
 const SchedulePage = () => {
     const {user, isLoading} = useUser()

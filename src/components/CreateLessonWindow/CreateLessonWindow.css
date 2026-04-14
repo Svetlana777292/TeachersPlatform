@@ -1,10 +1,5 @@
-.newLessonWindow {
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
-    padding: 1rem;
-    border: 0.07rem solid #EAEAEA;
-    border-radius: 1rem;
+.createLessonWindow {
+    top: 10% !important;
 }
 
 .newLessonTitle {
@@ -21,10 +16,8 @@
     margin-bottom: 1rem;
 }
 
-.buttons{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.cancel {
+    margin-bottom: 2rem;
 }
 
 .selectDuration__control {
