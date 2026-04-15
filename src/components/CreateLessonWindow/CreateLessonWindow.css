@@ -1,12 +1,13 @@
 .createLessonWindow {
-    top: 10% !important;
+    top: 13% !important;
+    padding: 1rem !important;
 }
 
 .newLessonTitle {
     align-self: start;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 500;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .selects {
@@ -17,5 +18,105 @@
 }
 
 .cancel {
-    margin-bottom: 2rem;
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
 }
+
+.selectLabel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.dateLabel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.dateTimeGroup {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.customDateInput {
+    background-color: #F3F4F6 !important;
+    border: 1px solid #EAEAEA !important;
+    border-radius: 0.4rem !important;
+    font-size: 1rem !important;
+    outline: none !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    height: 2.5em !important;
+    padding: 0.5em 0;
+    color: #000 !important;
+    text-indent: 0.5rem !important;
+}
+
+/* Календарь */
+.react-datepicker {
+    border-radius: 0.75rem !important;
+    border: 1px solid #EAEAEA !important;
+    font-family: inherit !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Шапка */
+.react-datepicker__header {
+    background-color: #F3F4F6 !important;
+    border-bottom: 1px solid #EAEAEA !important;
+    border-radius: 0.75rem 0.75rem 0 0 !important;
+}
+
+/* Дни недели */
+.react-datepicker__day-name {
+    color: #6B7280 !important;
+    font-weight: 600 !important;
+}
+
+/* Текущий день */
+.react-datepicker__day--today {
+    font-weight: bold !important;
+    color: #000000 !important;
+    background-color: transparent !important;
+}
+
+/* Выбранный день */
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range {
+    background-color: #000000 !important;
+    color: white !important;
+    border-radius: 0.375rem !important;
+}
+
+/* Ховер */
+.react-datepicker__day:hover {
+    background-color: #E5E7EB !important;
+    border-radius: 0.375rem !important;
+    color: #000 !important;
+}
+
+/* Отключённые дни */
+.react-datepicker__day--disabled {
+    color: #D1D5DB !important;
+}
+
+/* Кнопки навигации */
+.react-datepicker__navigation {
+    top: 10px !important;
+}
+
+.react-datepicker__navigation-icon::before {
+    border-color: #000000 !important;
+}
+
+.dateLabel input[type=text] {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+
+

@@ -27,7 +27,7 @@ const LoginPage = () => {
     }
 
     return(
-        <form id="login-form" className="auth-container" onSubmit={(e) => handleSubmit(formData, 'login', e, navigate)}>
+        <form id="login-form" className="auth-container" onSubmit={(e) => handleSubmit(formData, 'login', e, () => navigate("/profile/"))}>
             <h1>
                 Welcome back!
             </h1>

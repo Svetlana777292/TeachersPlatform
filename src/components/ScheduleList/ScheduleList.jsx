@@ -33,7 +33,7 @@ const ScheduleList = (props) => {
 
     function renderScheduleCards(){
         return Array.from({length: 7}, (_, i) =>
-            (<div key={i} className="scheduleCard">
+            (<div key={weekDays[i]} className="scheduleCard">
                 <h3 style={{fontWeight: 500}}>
                     {`${weekDays[i]}, ${days[i].toLocaleDateString()}`}
                 </h3>

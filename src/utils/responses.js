@@ -1,5 +1,5 @@
 
-async function handleSubmit(formData, path, e, navigate) {
+async function handleSubmit(formData, path, e, func) {
     e.preventDefault()
 
     try{
@@ -13,7 +13,7 @@ async function handleSubmit(formData, path, e, navigate) {
         })
 
         if(response.ok){
-            navigate('/profile/')
+            func()
         }
         else{
             alert('Ошибка сервера: ' + response.status)

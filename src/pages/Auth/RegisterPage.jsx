@@ -29,7 +29,7 @@ const RegisterPage = () => {
 
     return(
         <>
-            <form  className="auth-container" onSubmit={(e) => handleSubmit(formData, 'register', e, navigate)}>
+            <form  className="auth-container" onSubmit={(e) => handleSubmit(formData, 'register', e, () => navigate("/profile/"))}>
                 <h1>
                     Create an account
                 </h1>
