@@ -7,7 +7,7 @@ const Loading = () => {
                 <div className="gear-wrapper">
                     <img className="gear" src="/gear.svg" alt="Загрузка"/>
                 </div>
-                <h2>Загружаем ваш профиль...</h2>
+                <h2>Your profile is loading...</h2>
             </div>
         </>
     )

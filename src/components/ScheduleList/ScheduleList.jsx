@@ -4,6 +4,7 @@ import "./ScheduleList.css"
 import Select from "react-select"
 import InputField from "../Inputs/InputField.jsx";
 import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
+import LessonCard from "../LessonCard/LessonCard.tsx";
 
 const ScheduleList = (props) => {
     const [weekOffset, setWeekOffset] = useState(0)
@@ -31,14 +32,15 @@ const ScheduleList = (props) => {
     const lastDay = days[6]
     const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
+    const lesson = false
     function renderScheduleCards(){
         return Array.from({length: 7}, (_, i) =>
             (<div key={weekDays[i]} className="scheduleCard">
                 <h3 style={{fontWeight: 500}}>
                     {`${weekDays[i]}, ${days[i].toLocaleDateString()}`}
                 </h3>
-
-                <div style={{color: "#515151"}}>No lessons scheduled</div>
+                {lesson ? <LessonCard color="#398E39" title="Math" studentName="Ivanov Ivan" beginTime="2:00 AM"
+                             duration="1 hour"/> : <div style={{color: "#515151"}}>No lessons scheduled</div>}
             </div>)
         )
     }

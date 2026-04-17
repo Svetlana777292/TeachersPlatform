@@ -9,11 +9,6 @@ import "react-datepicker/dist/react-datepicker.css"
 import "./CreateLessonWindow.css"
 
 const CreateLessonWindow = (props) => {
-    const timeOptions = [
-        { value: "1", label: "1 hour" },
-        { value: "1.5", label: "1.5 hours" },
-        { value: "2", label: "2 hours" },
-    ]
 
     const students = [
         {value: 1, label: "Ivanov Ivan"},
@@ -22,12 +17,11 @@ const CreateLessonWindow = (props) => {
     ]
 
     const [selectedTime, setSelectedTime] = useState(null)
-    const [selectedStudent, setSelectedStudent] = useState(students[0])
     const [selectedDate, setSelectedDate] = useState(null)
 
 
     const [lessonData, setLessonData] = useState({
-        student_id: selectedStudent.value,
+        student_id: 0,
         description: "",
         date: "",
         duration: "",
@@ -40,40 +34,27 @@ const CreateLessonWindow = (props) => {
         })
     }
 
-    const handleDateChange = (e) => {
-        const newDate = e.target.value
-        setDate(newDate)
-        if (newDate && selectedTime) {
-            setLessonData(prev => ({
-                ...prev,
-                date: new Date(`${newDate}T${selectedTime.value}:00`).toISOString()
-            }))
-        }
-    }
-
-    const handleTimeChange = (selectedOption) => {
-        setSelectedTime(selectedOption)
-        if (date && selectedOption) {
-            setLessonData(prev => ({
-                ...prev,
-                date: new Date(`${date}T${selectedOption.value}:00`).toISOString()
-            }))
-        }
-    }
-
     const handleStudentChange = (selectedOption) => {
-        setSelectedStudent(selectedOption)
+        if(!selectedOption){
+            selectedOption = students[0];
+        }
         setLessonData(prev => ({
             ...prev,
             student_id: selectedOption.value
         }))
     }
 
-    const handleDurationChange = (selectedOption) => {
-        setLessonData(prev => ({
-            ...prev,
-            duration: selectedOption.value
-        }))
+    const getDateTime = () => {
+        if (selectedDate && selectedTime) {
+            const date = selectedDate.toISOString().split("T")[0]
+            const hours = selectedTime.getHours().toString().padStart(2, "0")
+            const minutes = selectedTime.getMinutes().toString().padStart(2, "0")
+
+            setLessonData(prev => ({
+                ...prev,
+                date: new Date(`${date}T${hours}:${minutes}:00`).toISOString()
+            }))
+        }
     }
 
     function handleClose(e) {
@@ -90,7 +71,7 @@ const CreateLessonWindow = (props) => {
             border: "1px solid #EAEAEA",
             borderRadius: "0.5rem",
             padding: "0 1rem",
-            color: "#000000",
+            color: "#6B7280",
             fontSize: "0.9rem",
             cursor: "pointer",
         }),
@@ -113,7 +94,12 @@ const CreateLessonWindow = (props) => {
 
     return (
         <Modal className="modalWindow createLessonWindow" onRequestClose={props.onClose} isOpen={props.isOpen} style={{ content: {} }}>
-            <form id="form" onChange={handleChange} onSubmit={(e) => handleSubmit(lessonData, 'lessons', e, () => console.log(lessonData))}>
+            <form id="form" onChange={handleChange}
+                  onSubmit={(e) => {
+                      e.preventDefault()
+                      getDateTime()
+                      handleSubmit(lessonData, 'lessons', e, () => console.log(lessonData))
+                  }}>
                 <h2 className="newLessonTitle">Create New Lesson</h2>
                 <label className="selectLabel">
                     Select student
@@ -122,13 +108,13 @@ const CreateLessonWindow = (props) => {
                         isSearchable={false}
                         unstyled
                         options={students}
-                        defaultValue={students[0]}
                         onChange={handleStudentChange}
                         menuPortalTarget={document.body}
                         styles={selectStyles}
                     />
                 </label>
-                <InputField name="description" type="text" label="Description" value={lessonData.description} placeholder="Enter short description" onChange={handleChange}/>
+                <InputField name="title" type="text" label="Lesson topic" value={lessonData.description} placeholder="Enter lesson topic" onChange={handleChange}/>
+                <InputField name="link" type="text" label="Link to lesson" value={lessonData.link} placeholder="Link to your conferance" onChange={handleChange}/>
                 <div className="dateTimeGroup">
                     <label className="dateLabel">
                         Date
@@ -155,11 +141,12 @@ const CreateLessonWindow = (props) => {
                             />
                     </label>
                 </div>
-                <InputField name="price" type="number" label="Price" placeholder="Enter price"/>
+                <InputField name="price" type="number" label="Price" placeholder="Enter price" onChange={handleChange} />
                 <InputField name="duration" type="number" label="Duration" placeholder="Enter duration (min)"/>
+
+                <Button className="cancel" onClick={(e) => handleClose(e)}>Cancel</Button>
+                <Button type="submit" className="confirmBtn" >Create lesson</Button>
             </form>
-            <Button className="cancel" onClick={(e) => handleClose(e)}>Cancel</Button>
-            <Button type="submit" className="confirmBtn" >Create lesson</Button>
         </Modal>
     )
 }

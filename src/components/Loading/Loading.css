@@ -6,12 +6,14 @@
     left: 0;
     z-index: 9999;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 400;
     background-color: #FFFFFF;
 }
 
 .gear-wrapper{
     animation: pulse 1.5s ease-in-out infinite;
+    margin-bottom: 1rem;
 }
 
 @keyframes pulse{

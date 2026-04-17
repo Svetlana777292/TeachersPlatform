@@ -3,8 +3,7 @@ import useUser from "../../hooks/useUser.js";
 import Loading from "../../components/Loading/Loading.jsx";
 import Modal from "react-modal";
 import "./StudentsList.css"
-import CreateLessonWindow from "../../components/CreateLessonWindow/CreateLessonWindow.jsx";
-
+import Search from "../../components/Search/Search.jsx";
 Modal.setAppElement('#root');
 
 const StudentsList = () => {
@@ -15,10 +14,12 @@ const StudentsList = () => {
     if(isLoading) return <Loading />
 
     return(
-        <div className="page-container">
+        <>
             <Header user={user}/>
-
-        </div>
+            <div className="container">
+                <Search />
+            </div>
+        </>
     )
 }
 

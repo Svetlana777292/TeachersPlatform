@@ -15,12 +15,14 @@ const SchedulePage = () => {
     if(isLoading) return <Loading />
 
     return(
-        <div className="page-container">
+        <>
             <Header user={user}/>
-            <div className="schedule-container">
-                <ScheduleList />
+            <div className="page-container">
+                <div className="schedule-container">
+                    <ScheduleList />
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

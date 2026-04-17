@@ -1,0 +1,26 @@
+.lessonCardWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 0.8rem;
+    border-radius: 1rem;
+}
+
+.lessonTitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+.studentName {
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.93);
+}
+
+.timeData {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.91);
+}
