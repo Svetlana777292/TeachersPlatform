@@ -1,0 +1,21 @@
+.addStudentModal {
+    top: 35%;
+}
+
+.addStudentPrompt {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 1rem 1rem;
+}
+
+.addButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.agreeButton {
+    background: #000000;
+    color: #FFFFFF;
+}

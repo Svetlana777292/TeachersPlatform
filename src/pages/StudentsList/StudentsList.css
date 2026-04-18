@@ -1,3 +1,48 @@
+.studentsCount {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #EAEAEA;
+    border-radius: 1rem;
+    box-shadow: 0 0 1px #d5d5d5;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #72757b;
+}
+
+.searchContainer {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #EAEAEA;
+    border-radius: 1rem;
+    box-shadow: 0 0 1px #d5d5d5;
+}
+
+.studentsListContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 50vh;
+    border: 1px solid #EAEAEA;
+    border-radius: 1rem;
+    box-shadow: 0 0 1px #d5d5d5;
+    color: #72757b;
+}
+
+.studentsListTitle {
+    align-self: flex-start;
+    padding: 1rem;
+    color: #000000;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.studentsList {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (min-width: 1024px){
     .main-container {
         width: 100%;

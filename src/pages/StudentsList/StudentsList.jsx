@@ -13,11 +13,26 @@ const StudentsList = () => {
 
     if(isLoading) return <Loading />
 
+    const students = null
+
     return(
         <>
             <Header user={user}/>
             <div className="container">
-                <Search />
+                <aside className="aside">
+                    <h1 className="studentsCount">
+                        Total students: 0
+                    </h1>
+                </aside>
+
+                <div className="searchContainer">
+                    <Search />
+                </div>
+
+                <main className="studentsListContainer">
+                    <h2 className="studentsListTitle">Your students:</h2>
+                    <div className="studentsList">{students ? "Students List" : "You don't have any students yet :("}</div>
+                </main>
             </div>
         </>
     )

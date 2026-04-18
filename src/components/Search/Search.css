@@ -1,0 +1,28 @@
+.searchWrapper {
+    position: relative;
+}
+
+.searchDropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #EAEAEA;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    z-index: 10;
+    overflow: hidden;
+}
+
+.searchItem {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+}
+
+.searchItem:hover {
+    background: #f5f5f5;
+}
+
