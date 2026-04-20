@@ -60,10 +60,7 @@ const Search = () => {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (
-                searchWrapperRef.current &&
-                !searchWrapperRef.current.contains(event.target)
-            ) {
+            if ( searchWrapperRef.current && !searchWrapperRef.current.contains(event.target)) {
                 setDropdownOpened(false)
             }
         }

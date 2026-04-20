@@ -7,14 +7,12 @@ import handleSubmit from "../../utils/responses.js";
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import "./CreateLessonWindow.css"
+import useMyStudents from "../../hooks/useMyStudents.js";
+import Loading from "../Loading/Loading.jsx";
 
 const CreateLessonWindow = (props) => {
 
-    const students = [
-        {value: 1, label: "Ivanov Ivan"},
-        {value: 2, label: "Petrov Petr"},
-        {value: 3, label: "Vasiliev Vasiliy"},
-    ]
+    const {myStudents, studentsIsLoading} = useMyStudents()
 
     const [selectedTime, setSelectedTime] = useState(null)
     const [selectedDate, setSelectedDate] = useState(null)
@@ -26,6 +24,8 @@ const CreateLessonWindow = (props) => {
         date: "",
         duration: "",
     })
+
+    if (studentsIsLoading) return <Loading />
 
     const handleChange = (e) => {
         setLessonData({
@@ -62,6 +62,11 @@ const CreateLessonWindow = (props) => {
         props.onClose()
         document.getElementById("form")?.reset()
     }
+
+    const students = myStudents.map((student) => ({
+        value: student.id,
+        label: `${student.name} ${student.surname} (${student.username})`,
+    }))
 
     const selectStyles = {
         menuPortal: base => ({ ...base, zIndex: 9999 }),

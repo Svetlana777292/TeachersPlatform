@@ -4,46 +4,13 @@ import Loading from "../../components/Loading/Loading.jsx";
 import Modal from "react-modal";
 import "./StudentsList.css"
 import Search from "../../components/Search/Search.jsx";
-import {useEffect, useState} from "react";
 import StudentCard from "../../components/StudentCard/StudentCard.jsx";
+import useMyStudents from "../../hooks/useMyStudents.js";
 Modal.setAppElement('#root');
 
 const StudentsList = () => {
     const {user, isLoading} = useUser()
-    const [studentsIsLoading, setStudentsIsLoading] = useState(true);
-    const [myStudents, setMyStudents] = useState([]);
-
-    useEffect( () => {
-        async function getStudents() {
-            try {
-                const response = await fetch("/api/teachers/my_students", {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    credentials: "include",
-                })
-
-                if(response.ok) {
-                    const data = await response.json()
-                    console.log(data.students)
-                    setMyStudents(data.students || [])
-                }
-                else {
-                    setMyStudents([])
-                }
-            }
-            catch (error) {
-                console.log(error)
-                setMyStudents([])
-            }
-            finally {
-                setStudentsIsLoading(false)
-            }
-        }
-
-        getStudents()
-    }, [])
+    const {myStudents, studentsIsLoading} = useMyStudents()
 
     if (!user) return null
 
