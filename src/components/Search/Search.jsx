@@ -1,20 +1,22 @@
-import {useState} from "react";
+import {useState, useRef, useEffect} from "react";
 import "./Search.css"
 import AddStudentModal from "../AddStudentModal/AddStudentModal.jsx";
 
 const Search = () => {
-    const [searchedStudent, setSearchedStudent] = useState(null)
+    const [searchedStudent, setSearchedStudent] = useState("")
     const [result, setResult] = useState([])
     const [addStudent, setAddStudent] = useState(null)
-    const [dropdown, setDropdown] = useState("flex")
+    const [dropdownOpened, setDropdownOpened] = useState(false)
+    const lastRequestId = useRef(0)
+    const searchWrapperRef = useRef(null)
 
     async function searchStudent(target) {
         if(!target.trim()) {
-            return
+            return []
         }
 
         try{
-            const response = await fetch(`/api/students/search?search=${encodeURIComponent(target)}`, {
+            const response = await fetch(`/api/students/search?q=${encodeURIComponent(target)}`, {
                 method: 'GET',
                 headers: {
                     "Content-Type": "application/json",
@@ -23,14 +25,16 @@ const Search = () => {
             })
 
             if(response.ok){
-                return await response.json()
+                const data = await response.json();
+                return data.students || [];
             }
             else {
-                return null
+                return []
             }
         }
         catch (error) {
             console.log(error)
+            return []
         }
     }
 
@@ -38,33 +42,59 @@ const Search = () => {
         const value = e.target.value
         setSearchedStudent(value)
 
-        const data = await searchStudent(value)
-
-        if(data?.students) {
-            setResult(data.students)
+        if (!value.trim()) {
+            setResult([]);
+            return;
         }
-        else {
-            setResult([])
+
+        const requestId = ++lastRequestId.current
+        const students = await searchStudent(value)
+
+        if(requestId === lastRequestId.current) {
+            console.log("search:", value);
+            console.log("students from API:", students);
+
+            setResult(students)
         }
     }
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                searchWrapperRef.current &&
+                !searchWrapperRef.current.contains(event.target)
+            ) {
+                setDropdownOpened(false)
+            }
+        }
+
+        document.addEventListener("click", handleClickOutside)
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside)
+        }
+    }, [])
+
     return (
-        <div className="searchWrapper">
+        <div className="searchWrapper" ref={searchWrapperRef}>
             <input
                 type="search"
                 className="searchField"
                 value={searchedStudent}
                 placeholder="Search student to add..."
-                onChange={(e) => handleChange(e)}/>
-            {result.length > 0 && (
-                <div className="searchDropdown" style={{ display: `${dropdown}` }}>
+                onChange={(e) => {
+                    setDropdownOpened(true)
+                    handleChange(e)
+                }}/>
+            {searchedStudent.trim() && result.length > 0 && dropdownOpened &&(
+                <div className="searchDropdown">
                     {result.map((student) => (
                         <div key={student.id} className="searchItem" onClick={() => {
                             setAddStudent(student.id)
-                            setDropdown("none")
                             setSearchedStudent("")
                         }}>
-                            {student.name + " " + student.surname + `(${student.username})`}
+                            {student.name} {student.surname}{" "}
+                            <span className="studentUsername">{`(@${student.username})`}</span>
                         </div>
                     ))}
                 </div>
