@@ -1,30 +1,42 @@
 import Button from "../Button/Button.jsx";
 import {useState} from "react";
 import "./ScheduleList.css"
-import Select from "react-select"
-import InputField from "../Inputs/InputField.jsx";
 import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
-import LessonCard from "../LessonCard/LessonCard.tsx";
+import ScheduleDayCard from "../ScheduleDayCard/ScheduleDayCard.jsx";
+import useMyLessons from "../../hooks/useMyLessons.js";
+import Loading from "../Loading/Loading.jsx";
 
-const ScheduleList = (props) => {
+const ScheduleList = () => {
     const [weekOffset, setWeekOffset] = useState(0)
     const [creatingLesson, setCreatingLesson] = useState(false)
+    const {lessonsIsLoading, myLessons} = useMyLessons()
 
-    function getMonday(weekOffset){
-        const today = new Date()
-        const day = today.getDay()
-        const monday = new Date(today)
-        monday.setDate(today.getDate() - day + 1 + weekOffset * 7)
-        return monday
+    if (lessonsIsLoading) return <Loading message="Loading your shedule.."/>
+
+    function getMonday(weekOffset) {
+        const todayDate = new Date()
+        const weekDay = todayDate.getDay()
+        const mondayDate = new Date(todayDate)
+        mondayDate.setDate(todayDate.getDate() - weekDay + 1 + 7 * weekOffset)
+        return mondayDate
     }
 
-    function getWeekDays(weekOffset){
-        const monday = getMonday(weekOffset)
+    function getWeekDays(weekOffset) {
+        const mondayDate = getMonday(weekOffset)
         return Array.from({length: 7}, (_, i) => {
-            const day = new Date(monday)
-            day.setDate(monday.getDate()  + i)
+            const day = new Date(mondayDate)
+            day.setDate(mondayDate.getDate() + i)
             return day
         })
+
+    }
+
+    function formatDateLocal(date) {
+        const year = date.getFullYear()
+        const month = String(date.getMonth() + 1).padStart(2, "0")
+        const day = String(date.getDate()).padStart(2, "0")
+
+        return `${year}-${month}-${day}`
     }
 
     const days = getWeekDays(weekOffset)
@@ -32,20 +44,31 @@ const ScheduleList = (props) => {
     const lastDay = days[6]
     const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
-    const lesson = false
-    function renderScheduleCards(){
-        return Array.from({length: 7}, (_, i) =>
-            (<div key={weekDays[i]} className="scheduleCard">
-                <h3 style={{fontWeight: 500}}>
-                    {`${weekDays[i]}, ${days[i].toLocaleDateString()}`}
-                </h3>
-                {lesson ? <LessonCard color="#398E39" title="Math" studentName="Ivanov Ivan" beginTime="2:00 AM"
-                             duration="1 hour"/> : <div style={{color: "#515151"}}>No lessons scheduled</div>}
-            </div>)
-        )
-    }
+    const lessonsByDate = myLessons.reduce((acc, lesson) => {
+            const dateKey = new Date(lesson.date).toLocaleDateString("sv-SE")
 
-    const scheduleCards = renderScheduleCards()
+        if(!acc[dateKey]) {
+            acc[dateKey] = []
+        }
+
+        acc[dateKey].push(lesson)
+        return acc
+    }, {})
+
+    function renderScheduleCards() {
+        return Array.from({length: 7}, (_, i) => {
+            const dayKey = formatDateLocal(days[i])
+            const dayLessons = lessonsByDate[dayKey] || []
+
+            return (
+                <ScheduleDayCard
+                    lessons={dayLessons}
+                    dayLabel={`${weekDays[i]},  ${days[i].toLocaleDateString()}`}
+                    key={dayKey}
+                />
+            )
+        })
+    }
 
     return (
         <>
@@ -56,10 +79,7 @@ const ScheduleList = (props) => {
                 <Button className="week-switch-button" onClick={() => setWeekOffset(weekOffset + 1)}>Next week</Button>
                 <Button className="add-lesson-btn" onClick={() => setCreatingLesson(true)}>+</Button>
             </div>
-                <div>
-                    {scheduleCards}
-                </div>
-
+            {renderScheduleCards()}
             <CreateLessonWindow isOpen={creatingLesson} onClose={() => setCreatingLesson(false)} />
         </>
     )

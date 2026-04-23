@@ -104,6 +104,7 @@ const CreateLessonWindow = (props) => {
                       e.preventDefault()
                       getDateTime()
                       handleSubmit(lessonData, 'lessons', e, () => console.log(lessonData))
+                      handleClose()
                   }}>
                 <h2 className="newLessonTitle">Create New Lesson</h2>
                 <label className="selectLabel">
@@ -124,8 +125,8 @@ const CreateLessonWindow = (props) => {
                     <label className="dateLabel">
                         Date
                         <DatePicker
-                            selected={selectedDate}
                             onChange={(date) => setSelectedDate(date)}
+                            selected={selectedDate}
                             dateFormat="dd.MM.yyyy"
                             placeholderText="DD.MM.YYYY"
                             className="customDateInput"
@@ -134,8 +135,8 @@ const CreateLessonWindow = (props) => {
                     <label className="dateLabel">
                         Time
                         <DatePicker
-                            selected={selectedTime}
                             onChange={(time) => setSelectedTime(time)}
+                            selected={selectedTime}
                             showTimeSelect
                             showTimeSelectOnly
                             timeIntervals={15}

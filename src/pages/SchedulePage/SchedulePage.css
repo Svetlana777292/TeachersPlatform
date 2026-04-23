@@ -20,6 +20,7 @@ body {
     flex-direction: column;
     gap: 1em;
     padding: 0;
+    flex: 1;
 }
 
 .schedule-container {

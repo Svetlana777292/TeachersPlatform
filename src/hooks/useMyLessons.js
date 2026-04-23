@@ -1,13 +1,13 @@
 import {useEffect, useState} from "react"
 
-function useMyStudents() {
-    const [studentsIsLoading, setStudentsIsLoading] = useState(true);
-    const [myStudents, setMyStudents] = useState([]);
+function UseMyLessons() {
+    const [lessonsIsLoading, setLessonsIsLoading] = useState(true);
+    const [myLessons, setMyLessons] = useState([]);
 
     useEffect( () => {
-        async function getStudents() {
+        async function getLessons() {
             try {
-                const response = await fetch("/api/teachers/my_students", {
+                const response = await fetch("/api/lessons", {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -17,26 +17,26 @@ function useMyStudents() {
 
                 if(response.ok) {
                     const data = await response.json()
-                    console.log(data.students)
-                    setMyStudents(data.students || [])
+                    console.log(data.lessons)
+                    setMyLessons(data.lessons || [])
                 }
                 else {
-                    setMyStudents([])
+                    setMyLessons([])
                 }
             }
             catch (error) {
                 console.log(error)
-                setMyStudents([])
+                setMyLessons([])
             }
             finally {
-                setStudentsIsLoading(false)
+                setLessonsIsLoading(false)
             }
         }
 
-        getStudents()
+        getLessons()
     }, [])
 
-    return {studentsIsLoading, myStudents}
+    return {lessonsIsLoading, myLessons}
 }
 
-export default useMyStudents
+export default UseMyLessons
