@@ -16,6 +16,8 @@ const CreateLessonWindow = (props) => {
 
     const [selectedTime, setSelectedTime] = useState(null)
     const [selectedDate, setSelectedDate] = useState(null)
+    const [selectedColor, setSelectedColor] = useState(null)
+    const [nextStep, setNextStep] = useState(false)
 
 
     const [lessonData, setLessonData] = useState({
@@ -23,6 +25,7 @@ const CreateLessonWindow = (props) => {
         description: "",
         date: "",
         duration: "",
+        card_color: ""
     })
 
     if (studentsIsLoading) return <Loading />
@@ -44,6 +47,16 @@ const CreateLessonWindow = (props) => {
         }))
     }
 
+    const handleColorChange = selectedOption => {
+        if(!selectedOption) {
+            selectedOption = colors[0]
+        }
+        setLessonData (prev => ({
+            ...prev,
+            card_color: selectedOption.value
+        }))
+    }
+
     const getDateTime = () => {
         if (selectedDate && selectedTime) {
             const date = selectedDate.toISOString().split("T")[0]
@@ -52,7 +65,7 @@ const CreateLessonWindow = (props) => {
 
             setLessonData(prev => ({
                 ...prev,
-                date: new Date(`${date}T${hours}:${minutes}:00`).toISOString()
+                date: new Date(`${date}T${hours}:${minutes}:00`)
             }))
         }
     }
@@ -67,6 +80,13 @@ const CreateLessonWindow = (props) => {
         value: student.id,
         label: `${student.name} ${student.surname} (${student.username})`,
     }))
+
+    const colors = [
+        {value: "", label: "yellow"},
+        {value: "", label: "green"},
+        {value: "", label: "blue"},
+        {value: "", label: "purple"},
+    ]
 
     const selectStyles = {
         menuPortal: base => ({ ...base, zIndex: 9999 }),
@@ -98,29 +118,29 @@ const CreateLessonWindow = (props) => {
     }
 
     return (
-        <Modal className="modalWindow createLessonWindow" onRequestClose={props.onClose} isOpen={props.isOpen} style={{ content: {} }}>
+        <Modal className="modalWindow createLessonWindow" onRequestClose={props.onClose} isOpen={props.isOpen}
+               style={{content: {}}}>
             <form id="form" onChange={handleChange}
-                  onSubmit={(e) => {
+                  onSubmit={async (e) => {
                       e.preventDefault()
-                      getDateTime()
-                      handleSubmit(lessonData, 'lessons', e, () => console.log(lessonData))
-                      handleClose()
+                      await getDateTime()
+                      handleSubmit(lessonData, 'lessons', e, () => handleClose(e))
                   }}>
                 <h2 className="newLessonTitle">Create New Lesson</h2>
-                <label className="selectLabel">
-                    Select student
-                    <Select
-                        classNamePrefix="selectStudent"
-                        isSearchable={false}
-                        unstyled
-                        options={students}
-                        onChange={handleStudentChange}
-                        menuPortalTarget={document.body}
-                        styles={selectStyles}
-                    />
-                </label>
-                <InputField name="title" type="text" label="Lesson topic" value={lessonData.description} placeholder="Enter lesson topic" onChange={handleChange}/>
-                <InputField name="link" type="text" label="Link to lesson" value={lessonData.link} placeholder="Link to your conferance" onChange={handleChange}/>
+                {!nextStep ? (
+                    <div className="stepContainer">
+                        <label className="selectLabel">
+                        Select student
+                        <Select
+                            classNamePrefix="selectStudent"
+                            isSearchable={false}
+                            unstyled
+                            options={students}
+                            onChange={handleStudentChange}
+                            menuPortalTarget={document.body}
+                            styles={selectStyles}
+                        />
+                    </label>
                 <div className="dateTimeGroup">
                     <label className="dateLabel">
                         Date
@@ -144,14 +164,85 @@ const CreateLessonWindow = (props) => {
                             dateFormat="HH:mm"
                             timeFormat="HH:mm"
                             placeholderText="HH:MM"
-                            />
+                        />
                     </label>
                 </div>
-                <InputField name="price" type="number" label="Price" placeholder="Enter price" onChange={handleChange} />
-                <InputField name="duration" type="number" label="Duration" placeholder="Enter duration (min)"/>
+                        <InputField
+                            name="duration"
+                            type="number"
+                            label="Duration"
+                            placeholder="Enter duration (min)"
+                        />
+                        <InputField
+                            name="price"
+                            type="number"
+                            label="Price"
+                            placeholder="Enter price"
+                            onChange={handleChange}
+                        />
+                <Button
+                    className="cancel"
+                    onClick={(e) => handleClose(e)}
+                >
+                    Cancel
+                </Button>
+                <Button
+                    onClick={() => {setNextStep(true)}}
+                    type="button"
+                    className="nextStepButton"
+                >
+                    Next
+                </Button>
+            </div>
+            ) : (
+                <div className="stepContainer">
+                    <InputField
+                        name="title"
+                        type="text"
+                        label="Lesson topic"
+                        value={lessonData.description}
+                        placeholder="Enter lesson topic"
+                        onChange={handleChange}
+                    />
+                    <InputField
+                        name="link"
+                        type="text"
+                        label="Link to lesson"
+                        value={lessonData.link}
+                        placeholder="Link to your conferance"
+                        onChange={handleChange}
+                    />
+                    <label className="selectLabel">
+                        Select lesson card color
+                        <Select
+                            classNamePrefix="selectStudent"
+                            isSearchable={false}
+                            unstyled
+                            options={colors}
+                            onChange={handleColorChange}
+                            menuPortalTarget={document.body}
+                            styles={selectStyles}
+                        />
+                    </label>
 
-                <Button className="cancel" onClick={(e) => handleClose(e)}>Cancel</Button>
-                <Button type="submit" className="confirmBtn" >Create lesson</Button>
+                    {/*TODO: lesson card preview*/}
+
+                    <div className="buttonsGroup">
+                        <Button
+                            onClick={() => {setNextStep(false)}}
+                            type="button"
+                        >
+                            Back
+                        </Button>
+                        <Button
+                            type="submit"
+                            className="confirmBtn"
+                        >
+                            Create lesson
+                        </Button>
+                    </div>
+                </div>
+            )}
             </form>
         </Modal>
     )

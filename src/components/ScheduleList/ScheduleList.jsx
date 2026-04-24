@@ -31,13 +31,14 @@ const ScheduleList = () => {
 
     }
 
-    function formatDateLocal(date) {
-        const year = date.getFullYear()
-        const month = String(date.getMonth() + 1).padStart(2, "0")
-        const day = String(date.getDate()).padStart(2, "0")
+    function formatDateUTC(date) {
+        const year = date.getUTCFullYear()
+        const month = String(date.getUTCMonth() + 1).padStart(2, "0")
+        const day = String(date.getUTCDate()).padStart(2, "0")
 
         return `${year}-${month}-${day}`
     }
+
 
     const days = getWeekDays(weekOffset)
     const firstDay = days[0]
@@ -45,7 +46,7 @@ const ScheduleList = () => {
     const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
     const lessonsByDate = myLessons.reduce((acc, lesson) => {
-            const dateKey = new Date(lesson.date).toLocaleDateString("sv-SE")
+            const dateKey = formatDateUTC(new Date(lesson.date))
 
         if(!acc[dateKey]) {
             acc[dateKey] = []
@@ -55,9 +56,11 @@ const ScheduleList = () => {
         return acc
     }, {})
 
+
+
     function renderScheduleCards() {
         return Array.from({length: 7}, (_, i) => {
-            const dayKey = formatDateLocal(days[i])
+            const dayKey = formatDateUTC(days[i])
             const dayLessons = lessonsByDate[dayKey] || []
 
             return (

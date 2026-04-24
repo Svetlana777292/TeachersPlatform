@@ -1,5 +1,5 @@
 .createLessonWindow {
-    top: 13% !important;
+    top: 20% !important;
     padding: 1rem !important;
 }
 
@@ -17,8 +17,21 @@
     margin-bottom: 1rem;
 }
 
+.nextStepButton {
+    color: #FFFFFF;
+    background: #000000;
+    margin-bottom: 0.5rem;
+}
+
+.buttonsGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
 .cancel {
-    margin-top: 0.8rem;
+    margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
 
