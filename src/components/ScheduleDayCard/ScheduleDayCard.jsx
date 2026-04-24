@@ -8,10 +8,11 @@ const ScheduleDayCard = ({lessons, dayLabel}) => {
 
     return (
         <div className="dayCardWrapper" >
-            <h2 className="dateLabel">{dayLabel}</h2>
+            <h2 className="dayLabel">{dayLabel}</h2>
             {lessons.length > 0 ? (
                 lessons.map((lesson) => (
                     <LessonCard
+                        color={lesson.card_color}
                         title={lesson.title}
                         studentName={getNameById(lesson.student_id, myStudents)}
                         key={lesson.id}

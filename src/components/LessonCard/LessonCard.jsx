@@ -3,10 +3,11 @@ import "./LessonCard.css"
 const LessonCard = (props) => {
 
     return (
-        <div className="lessonCardWrapper" >
+        <div className={`lessonCardWrapper ${props.className}`} style={{background: props.color}}>
             <h1 className="lessonTitle">{props.title}</h1>
             <h2 className="studentName">{props.studentName}</h2>
-            <div className="timeData">{props.beginTime + " - " + props.duration}</div>
+            <div className="lessonData">{"at " + props.beginTime}</div>
+            <div className="lessonData">{props.duration + " • " + props.price}</div>
         </div>
     )
 }
