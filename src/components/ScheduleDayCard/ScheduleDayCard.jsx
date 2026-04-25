@@ -13,11 +13,12 @@ const ScheduleDayCard = ({lessons, dayLabel}) => {
                 lessons.map((lesson) => (
                     <LessonCard
                         color={lesson.card_color}
-                        title={lesson.title}
+                        title={lesson.topic}
                         studentName={getNameById(lesson.student_id, myStudents)}
                         key={lesson.id}
                         beginTime={lesson.date.slice(11, 16)}
                         duration={`${lesson.duration} min`}
+                        price={lesson.price}
                     />
                 ))
             ) : <div className="emptyDayMessage">You haven't any lessons :(</div>}
