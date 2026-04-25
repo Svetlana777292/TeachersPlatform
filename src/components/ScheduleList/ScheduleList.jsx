@@ -46,7 +46,7 @@ const ScheduleList = () => {
     const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
     const lessonsByDate = myLessons.reduce((acc, lesson) => {
-            const dateKey = formatDateUTC(new Date(lesson.date))
+        const dateKey = formatDateUTC(new Date(lesson.date))
 
         if(!acc[dateKey]) {
             acc[dateKey] = []
@@ -62,6 +62,7 @@ const ScheduleList = () => {
         return Array.from({length: 7}, (_, i) => {
             const dayKey = formatDateUTC(days[i])
             const dayLessons = lessonsByDate[dayKey] || []
+            dayLessons.sort((a, b) => new Date(a.date) - new Date(b.date))
 
             return (
                 <ScheduleDayCard
@@ -83,7 +84,14 @@ const ScheduleList = () => {
                 <Button className="add-lesson-btn" onClick={() => setCreatingLesson(true)}>+</Button>
             </div>
             {renderScheduleCards()}
-            <CreateLessonWindow isOpen={creatingLesson} onClose={() => setCreatingLesson(false)} />
+            <CreateLessonWindow
+                method="POST"
+                apiPath="lessons"
+                isOpen={creatingLesson}
+                onClose={() => setCreatingLesson(false)}
+                title="Create Lesson"
+                onSubmitText="Create Lesson"
+            />
         </>
     )
 }

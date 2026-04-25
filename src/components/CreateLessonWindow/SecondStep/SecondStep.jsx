@@ -50,6 +50,7 @@ const SecondStep = (props) => {
                     isSearchable={false}
                     unstyled
                     options={colors}
+                    value={colors.find(color => color.value === props.lessonData.card_color) || null}
                     onChange={handleColorChange}
                     menuPortalTarget={document.body}
                     styles={selectStyles}
@@ -82,7 +83,7 @@ const SecondStep = (props) => {
                     type="submit"
                     className="confirmBtn"
                 >
-                    Create lesson
+                    {props.submitButtonText}
                 </Button>
             </div>
         </div>
