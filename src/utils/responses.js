@@ -1,10 +1,10 @@
 
-async function handleSubmit(formData, path, e, func) {
+async function handleSubmit(method, formData, path, e, func) {
     e.preventDefault()
 
     try{
         const response = await fetch(`/api/${path}`, {
-            method: 'POST',
+            method: method,
             headers: {
                 'Content-Type': 'application/json',
             },
