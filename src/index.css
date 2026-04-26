@@ -1,0 +1,79 @@
+:root {
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #FFFFFF;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 1em;
+  padding: 1rem;
+  top: 0;
+}
+
+.modalWindow{
+  display: flex;
+  opacity: 1;
+  transition: display 0.4s allow-discrete,
+  opacity 0.4s ease;
+
+  z-index: 9999;
+  position: fixed;
+  inset: 0;
+  margin: 0 1rem;
+  width: fit-content;
+  height: fit-content;
+  gap: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  max-width: 400px;
+  background-color: #FFFFFF;
+  padding: 0.5rem 1rem;
+  border: 1px solid #EAEAEA;
+  border-radius: 1rem;
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 1024px)  {
+  .modalWindow {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+#root {
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 0;
+}

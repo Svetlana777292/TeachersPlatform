@@ -1,0 +1,39 @@
+.searchWrapper {
+    position: relative;
+}
+
+.searchContainer {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #EAEAEA;
+    border-radius: 1rem;
+    box-shadow: 0 0 1px #d5d5d5;
+}
+
+.searchDropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #EAEAEA;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    z-index: 10;
+    overflow: hidden;
+}
+
+.searchItem {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+}
+
+.searchItem:hover {
+    background: #f5f5f5;
+}
+
+.studentUsername {
+    color: #72757b;
+}

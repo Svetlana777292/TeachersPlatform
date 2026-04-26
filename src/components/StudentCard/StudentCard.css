@@ -1,0 +1,30 @@
+.studentCard {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    border: 1px solid #EAEAEA;
+    border-radius: 1rem;
+    width: 100%;
+    background: rgba(160, 160, 161, 0.26);
+}
+
+.studentInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.studentAvatar {
+    width: 4rem;
+    padding: 0.5rem;
+}
+
+.studentName {
+    margin-top: 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000000;
+}
+
+.studentEmail {
+    font-size: 0.8rem;
+}

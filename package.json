@@ -1,22 +1,35 @@
 {
   "name": "front",
-  "version": "1.0.0",
-  "description": "",
-  "main": "auth/login.html",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server --port=3000 --open=auth/login.html"
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Svetlana777292/SwebFrontend.git"
+  "dependencies": {
+    "add": "^2.0.6",
+    "react": "^19.2.4",
+    "react-datepicker": "^9.1.0",
+    "react-dom": "^19.2.4",
+    "react-modal": "^3.16.3",
+    "react-router-dom": "^7.13.2",
+    "react-scripts": "^5.0.1",
+    "react-select": "^5.10.2",
+    "time-picker": "^1.0.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/Svetlana777292/SwebFrontend/issues"
-  },
-  "homepage": "https://github.com/Svetlana777292/SwebFrontend#readme"
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "cross-env": "^10.1.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "vite": "^8.0.1"
+  }
 }
