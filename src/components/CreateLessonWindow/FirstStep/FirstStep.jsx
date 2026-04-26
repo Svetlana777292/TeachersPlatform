@@ -4,8 +4,16 @@ import {selectStyles} from "../selectStyles.js";
 import InputField from "../../Inputs/InputField.jsx";
 import Button from "../../Button/Button.jsx";
 import fixTimezone from "../../../utils/fixTimezone.js";
+import {useEffect} from "react";
 
 const FirstStep = (props) => {
+
+    useEffect(() => {
+        if(props.isEditing) {
+            props.setSelectedDate(fixTimezone(props.lessonData.date))
+            props.setSelectedTime(fixTimezone(props.lessonData.date))
+        }
+    }, [props.isEditing])
 
     const handleStudentChange = (selectedOption) => {
         if(!selectedOption){
@@ -75,7 +83,7 @@ const FirstStep = (props) => {
                     Date
                     <DatePicker
                         onChange={(date) => props.setSelectedDate(date)}
-                        selected={props.lessonData.date ? fixTimezone(props.lessonData.date) : props.selectedDate}
+                        selected={props.selectedDate}
                         dateFormat="dd.MM.yyyy"
                         placeholderText="DD.MM.YYYY"
                         className="customDateInput"
@@ -86,7 +94,7 @@ const FirstStep = (props) => {
                     Time
                     <DatePicker
                         onChange={(time) => props.setSelectedTime(time)}
-                        selected={props.lessonData.date ? fixTimezone(props.lessonData.date) : props.selectedTime}
+                        selected={props.selectedTime}
                         showTimeSelect
                         showTimeSelectOnly
                         timeIntervals={15}
