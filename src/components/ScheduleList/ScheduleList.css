@@ -10,7 +10,8 @@
     display: flex;
     flex-direction: column;
     height: calc(100vh - 180px);
-    overflow-x: auto;
+    overflow: auto;
+    padding: 0 1rem 1rem 1rem;
 }
 
 .scheduleCard {
@@ -68,6 +69,8 @@
     top: 0;
     background-color: #FFFFFF;
     border-bottom: 1px solid #EAEAEA;
+    opacity: 1;
+    z-index: 2;
 }
 
 .timeCorner {
@@ -82,6 +85,8 @@
     padding: 0.75rem 0.5rem;
     border-left: 1px solid #EAEAEA;
     font-weight: 500;
+    width: 100%;
+    height: 100px;
 }
 
 .dayName {
@@ -98,7 +103,6 @@
     display: grid;
     grid-template-columns: 60px repeat(7, 1fr);
     flex: 1;
-    overflow-y: auto;
 }
 
 .timeColumn {
@@ -174,10 +178,6 @@
 
     .scheduleTitle {
         font-size: 1.5rem;
-    }
-
-    .scheduleMain {
-        padding: 1rem;
     }
 
     .week-switch-button {
