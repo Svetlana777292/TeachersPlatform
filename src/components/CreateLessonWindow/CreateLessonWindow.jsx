@@ -75,7 +75,12 @@ const CreateLessonWindow = (props) => {
     }
 
     return (
-        <Modal className="modalWindow createLessonWindow" onRequestClose={props.onClose} isOpen={props.isOpen}>
+        <Modal
+            className="modalWindow createLessonWindow"
+            onRequestClose={props.onClose}
+            isOpen={props.isOpen}
+            parentSelector={() => document.body}
+        >
             <form id="form" onChange={handleChange}
                   onSubmit={async (e) => {
                       e.preventDefault()
