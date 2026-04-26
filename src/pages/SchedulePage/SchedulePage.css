@@ -34,14 +34,8 @@ body {
 }
 
 @media (min-width: 1024px){
-    .main-container {
-        width: 100%;
-        min-width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        grid-template-rows: auto 1fr;
-        row-gap: 0;
-        padding: 0.5rem 10rem;
-        align-items: start;
+    .page-container {
+        padding: 0.5rem 5rem;
+        align-items: stretch;
     }
 }

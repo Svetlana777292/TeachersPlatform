@@ -1,3 +1,18 @@
+.scheduleMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.scheduleDesktop {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 180px);
+    overflow-x: auto;
+}
+
 .scheduleCard {
     display: flex;
     flex-direction: column;
@@ -9,7 +24,7 @@
     border-radius: 1rem;
 }
 
-.schedule-title {
+.scheduleTitle {
     align-self: start;
     font-size: 1.1rem;
     font-weight: 600;
@@ -44,5 +59,129 @@
     color: #FFFFFF;
     font-weight: 500;
     background: #000000;
+}
+
+.calendarHeader {
+    display: grid;
+    grid-template-columns: 60px repeat(7, 1fr);
+    position: sticky;
+    top: 0;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.timeCorner {
+    width: 60px;
+}
+
+.dayHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 0.5rem;
+    border-left: 1px solid #EAEAEA;
+    font-weight: 500;
+}
+
+.dayName {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.dayNumber {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.calendarBody {
+    display: grid;
+    grid-template-columns: 60px repeat(7, 1fr);
+    flex: 1;
+    overflow-y: auto;
+}
+
+.timeColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.timeSlot {
+    font-size: 0.75rem;
+    color: #999;
+    padding: 0.5rem 0.25rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    height: 100px;
+}
+
+.dayColumn {
+    position: relative;
+    border-left: 1px solid #eee;
+    overflow: visible;
+    display: grid;
+    grid-template-rows: repeat(24, 100px);
+    grid-auto-rows: auto;
+    height: fit-content;
+}
+
+.hourCell {
+    border-bottom: 1px solid #eee;
+    position: relative;
+    flex-shrink: 0;
+    height: 100px;
+}
+
+.gridLessonCard {
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+}
+
+.lessonCardWrapper.gridLessonCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.4rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.gridLessonCard .lessonTitle {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.gridLessonCard .studentName {
+    margin: 0;
+    font-size: 0.75rem;
+}
+
+.gridLessonCard .lessonData {
+    margin: 0;
+    font-size: 0.7rem;
+    opacity: 0.9;
+}
+
+@media (min-width: 1024px) {
+    .scheduleNavigation {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem;
+    }
+
+    .scheduleTitle {
+        font-size: 1.5rem;
+    }
+
+    .scheduleMain {
+        padding: 1rem;
+    }
+
+    .week-switch-button {
+        padding: 0.3rem;
+    }
 }
 
