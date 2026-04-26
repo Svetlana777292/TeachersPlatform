@@ -5,6 +5,7 @@ import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
 import ScheduleDayCard from "../ScheduleDayCard/ScheduleDayCard.jsx";
 import useMyLessons from "../../hooks/useMyLessons.js";
 import Loading from "../Loading/Loading.jsx";
+import fixTimezone from "../../utils/fixTimezone.js";
 
 const ScheduleList = () => {
     const [weekOffset, setWeekOffset] = useState(0)
@@ -15,7 +16,11 @@ const ScheduleList = () => {
 
     function getMonday(weekOffset) {
         const todayDate = new Date()
-        const weekDay = todayDate.getDay()
+        let weekDay = todayDate.getDay()
+        if(weekDay === 0) {
+            weekDay = 7
+        }
+
         const mondayDate = new Date(todayDate)
         mondayDate.setDate(todayDate.getDate() - weekDay + 1 + 7 * weekOffset)
         return mondayDate
