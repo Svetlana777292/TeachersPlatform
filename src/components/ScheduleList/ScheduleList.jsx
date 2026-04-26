@@ -5,7 +5,6 @@ import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
 import ScheduleDayCard from "../ScheduleDayCard/ScheduleDayCard.jsx";
 import useMyLessons from "../../hooks/useMyLessons.js";
 import Loading from "../Loading/Loading.jsx";
-import fixTimezone from "../../utils/fixTimezone.js";
 
 const ScheduleList = () => {
     const [weekOffset, setWeekOffset] = useState(0)
