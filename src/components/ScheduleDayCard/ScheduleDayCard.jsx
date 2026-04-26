@@ -13,23 +13,26 @@ const ScheduleDayCard = ({lessons, dayLabel}) => {
         <>
             <div className="dayCardWrapper" >
                 <h2 className="dayLabel">{dayLabel}</h2>
-                {lessons.length > 0 ? (
-                    lessons.map((lesson) => (
-                        <LessonCard
-                            color={lesson.card_color}
-                            title={lesson.topic}
-                            studentName={getNameById(lesson.student_id, myStudents)}
-                            key={lesson.id}
-                            beginTime={lesson.date.slice(11, 16)}
-                            duration={`${lesson.duration} min`}
-                            price={lesson.price}
-                            onClick={() => {
-                                setEditingLesson(lesson)
-                                console.log(lesson)
-                            }}
-                        />
-                    ))
-                ) : <div className="emptyDayMessage">You haven't any lessons :(</div>}
+                <div className="lessonsWrapper">
+                    {lessons.length > 0 ? (
+                        lessons.map((lesson) => (
+                            <LessonCard
+                                color={lesson.card_color}
+                                title={lesson.topic}
+                                studentName={getNameById(lesson.student_id, myStudents)}
+                                key={lesson.id}
+                                beginTime={lesson.date.slice(11, 16)}
+                                duration={`${lesson.duration} min`}
+                                price={lesson.price}
+                                onClick={() => {
+                                    setEditingLesson(lesson)
+                                    console.log(lesson)
+                                }}
+                            />
+                        ))
+                    ) : <div className="emptyDayMessage">You haven't any lessons :(</div>}
+                </div>
+
             </div>
             <CreateLessonWindow
                 method="PATCH"
