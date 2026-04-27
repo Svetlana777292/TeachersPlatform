@@ -5,6 +5,7 @@ import {selectStyles} from "../selectStyles.js";
 import LessonCard from "../../LessonCard/LessonCard.jsx";
 import getNameById from "../../../utils/getName.js";
 import "./SecondStep.css"
+import {getScheduleTime} from "../../../utils/getScheduleTime.js";
 
 const SecondStep = (props) => {
 
@@ -24,6 +25,11 @@ const SecondStep = (props) => {
             card_color: selectedOption.value
         }))
     }
+
+    const endTime = new Date(props.selectedTime)
+    endTime.setHours(endTime.getHours() + props.lessonData.duration / 60)
+    endTime.setMinutes(endTime.getMinutes() + props.lessonData.duration % 60)
+
 
     return (
         <div className="stepContainer">
@@ -66,6 +72,7 @@ const SecondStep = (props) => {
                     beginTime={props.selectedTime
                         ? `${props.selectedTime.getHours().toString().padStart(2,"0")}:${props.selectedTime.getMinutes().toString().padStart(2,"0")}`
                         : "10:00"}
+                    endTime={getScheduleTime(new Date(props.selectedTime), props.lessonData.duration)}
                     duration={props.lessonData.duration ? `${props.lessonData.duration} min` : "60 min"}
                     price={props.lessonData.price ? props.lessonData.price : "Price"}
                     color={props.lessonData.card_color ? props.lessonData.card_color : "#4682B4"}
