@@ -8,14 +8,25 @@
     background: rgba(160, 160, 161, 0.26);
 }
 
+.viewProfileButton {
+    background: #000000;
+    color: #FFFFFF;
+    align-self: center;
+    justify-self: flex-end;
+    padding: 0.5rem 1rem;
+    width: auto;
+}
+
 .studentInfo {
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .studentAvatar {
     width: 4rem;
     padding: 0.5rem;
+    border-radius: 50%;
 }
 
 .studentName {
