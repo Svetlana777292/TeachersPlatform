@@ -25,14 +25,14 @@ const StudentsList = () => {
                     <h1 className="studentsCount">
                         Total students <span className="studentsDigit">{myStudents.length}</span>
                     </h1>
+
+                    <div className="searchContainer">
+                        <Search />
+                    </div>
                 </aside>
 
-                <div className="searchContainer">
-                    <Search />
-                </div>
-
                 <main className="studentsListContainer">
-                    <h2 className="studentsListTitle">Your students:</h2>
+                    <h2 className="studentsListTitle">My students:</h2>
                     <div className="studentsList">{myStudents.length > 0 ?
                         myStudents.map((student) => (
                         <StudentCard student={student} />)) :
