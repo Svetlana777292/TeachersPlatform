@@ -4,7 +4,7 @@ import getNameById from "../../utils/getName.js"
 import UseMyStudents from "../../hooks/useMyStudents.js";
 import {useState} from "react";
 import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
-import {getBeginTime, getScheduleTime} from "../../utils/getScheduleTime.js";
+import {getBeginTimeString, getEndTimeString} from "../../utils/getEndTimeString.js";
 
 const ScheduleDayCard = ({lessons, dayLabel}) => {
     const {myStudents} = UseMyStudents()
@@ -22,9 +22,10 @@ const ScheduleDayCard = ({lessons, dayLabel}) => {
                                 title={lesson.topic}
                                 studentName={getNameById(lesson.student_id, myStudents)}
                                 key={lesson.id}
-                                beginTime={getBeginTime(lesson.date)}
-                                endTime={getScheduleTime(lesson.date, lesson.duration)}
-                                duration={`${lesson.duration} min`}
+                                date={lesson.date}
+                                beginTime={getBeginTimeString(lesson.date)}
+                                endTime={getEndTimeString(lesson.date, lesson.duration)}
+                                duration={lesson.duration}
                                 price={lesson.price}
                                 onClick={() => {
                                     setEditingLesson(lesson)

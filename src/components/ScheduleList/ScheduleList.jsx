@@ -8,8 +8,8 @@ import Loading from "../Loading/Loading.jsx";
 import LessonCard from "../LessonCard/LessonCard.jsx";
 import getNameById from "../../utils/getName.js";
 import useMyStudents from "../../hooks/useMyStudents.js";
-import {getScheduleTime} from "../../utils/getScheduleTime.js";
-import {getBeginTime} from "../../utils/getScheduleTime.js";
+import {getBeginTime, getEndTime, getEndTimeString} from "../../utils/getEndTimeString.js";
+import {getBeginTimeString} from "../../utils/getEndTimeString.js";
 
 const HOURS = Array.from({length: 24}, (_, i) => i)
 const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -123,9 +123,10 @@ const ScheduleList = () => {
                         title={lesson.topic}
                         studentName={getNameById(lesson.student_id, myStudents)}
                         key={lesson.id}
-                        beginTime={getBeginTime(lesson.date)}
-                        endTime={getScheduleTime(lesson.date, lesson.duration)}
-                        duration={`${lesson.duration} min`}
+                        beginTime={getBeginTimeString(lesson.date)}
+                        date={lesson.date}
+                        endTime={getEndTimeString(lesson.date, lesson.duration)}
+                        duration={lesson.duration}
                         paddingTop={isDurationShort ?  "5px" : null}
                         price={lesson.price}
                         onClick={() => {
