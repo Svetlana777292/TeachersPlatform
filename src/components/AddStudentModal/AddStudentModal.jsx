@@ -10,7 +10,7 @@ const AddStudentModal = (props) => {
             <div className="addButtons">
                 <Button type="button" onClick={() => props.onClose()}>No</Button>
                 <Button type="submit" className="agreeButton" onClick={(e) => {
-                    handleSubmit(props.student, "me/add_student", e)
+                    handleSubmit("POST", props.student, "me/add_student", e)
                     props.onClose()
                 }}>Yes</Button>
             </div>

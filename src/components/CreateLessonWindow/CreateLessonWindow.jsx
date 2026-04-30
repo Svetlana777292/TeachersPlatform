@@ -31,6 +31,10 @@ const CreateLessonWindow = (props) => {
     useEffect(() => {
         if (props.isOpen) {
             setLessonData(props.fieldsValues || initialLessonData)
+            if(props.isEditing) {
+                setSelectedTime(props.fieldsValues.date ? props.fieldsValues.date : initialLessonData.date)
+                setSelectedDate(props.fieldsValues.date ? props.fieldsValues.date : initialLessonData.date)
+            }
         }
     }, [props.isOpen])
 
@@ -49,16 +53,18 @@ const CreateLessonWindow = (props) => {
 
     const getDateTime = () => {
         if (selectedDate && selectedTime) {
-            const year = selectedDate.getFullYear()
-            const month = String(selectedDate.getMonth() + 1).padStart(2, "0")
-            const day = String(selectedDate.getDate()).padStart(2, "0")
-
-            const hours = String(selectedTime.getHours()).padStart(2, "0")
-            const minutes = String(selectedTime.getMinutes()).padStart(2, "0")
+            const date = new Date(
+                selectedDate.getFullYear(),
+                selectedDate.getMonth(),
+                selectedDate.getDate(),
+                selectedTime.getHours(),
+                selectedTime.getMinutes(),
+                0
+            )
 
             return {
                 ...lessonData,
-                date: new Date(`${year}-${month}-${day}T${hours}:${minutes}:00`)
+                date: date
             }
         }
 
@@ -75,7 +81,12 @@ const CreateLessonWindow = (props) => {
     }
 
     return (
-        <Modal className="modalWindow createLessonWindow" onRequestClose={props.onClose} isOpen={props.isOpen}>
+        <Modal
+            className="modalWindow createLessonWindow"
+            onRequestClose={props.onClose}
+            isOpen={props.isOpen}
+            parentSelector={() => document.body}
+        >
             <form id="form" onChange={handleChange}
                   onSubmit={async (e) => {
                       e.preventDefault()

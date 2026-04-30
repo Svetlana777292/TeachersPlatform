@@ -5,7 +5,7 @@ const teacherItems = [
     {href: "/", text: "Finance"},
     {href: "/schedule", text: "Schedule"},
     {href: "/studentsList", text: "My students"},
-    {href: "/", text: "Profile"},
+    {href: "/Profile", text: "Profile"},
 ]
 
 const studentItems = [

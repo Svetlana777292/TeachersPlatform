@@ -1,8 +1,10 @@
 import "./UserInfo.css"
 import useUserPhoto from "../../hooks/useUserPhoto.js";
+import useMyStudents from "../../hooks/useMyStudents.js";
 
 const UserInfo = ({user}) => {
     const { photo, setPhoto } = useUserPhoto(user.id)
+    const {myStudents} = useMyStudents()
 
     function formatDate(isoString){
         const date = new Date(isoString)
@@ -25,7 +27,7 @@ const UserInfo = ({user}) => {
         <aside className="user-info">
             <div className="avatar-wrapper">
                 <input id="avatarInput" type="file" className="avatar-input" accept="image/*" onChange={handleAvatarChange}/>
-                <img src={photo} alt="" className="avatar-img"/>
+                <img src={photo || "avatar.png"} alt="" className="avatar-img"/>
             </div>
 
             <h1 className="main-title">{user.name + " " + user.surname}</h1>
@@ -37,7 +39,7 @@ const UserInfo = ({user}) => {
                 <dt>Registration date</dt>
                 <dd>{formatDate(user.createdAt)}</dd>
                 <dt>{user.role === "teacher" ? "Total students" : "Active teachers"}</dt>
-                <dd>0</dd>
+                <dd>{myStudents.length}</dd>
             </dl>
         </aside>
     )

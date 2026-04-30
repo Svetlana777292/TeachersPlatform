@@ -3,17 +3,17 @@ import DatePicker from "react-datepicker";
 import {selectStyles} from "../selectStyles.js";
 import InputField from "../../Inputs/InputField.jsx";
 import Button from "../../Button/Button.jsx";
-import fixTimezone from "../../../utils/fixTimezone.js";
 import {useEffect} from "react";
 
 const FirstStep = (props) => {
 
     useEffect(() => {
         if(props.isEditing) {
-            props.setSelectedDate(fixTimezone(props.lessonData.date))
-            props.setSelectedTime(fixTimezone(props.lessonData.date))
+            props.setSelectedDate(new Date(props.lessonData.date))
+            props.setSelectedTime(new Date(props.lessonData.date))
         }
     }, [props.isEditing])
+
 
     const handleStudentChange = (selectedOption) => {
         if(!selectedOption){
@@ -30,41 +30,8 @@ const FirstStep = (props) => {
         label: `${student.name} ${student.surname} (${student.username})`,
     }))
 
-    const statuses = [
-        {value: "SCHEDULED", label: "Scheduled"},
-        {value: "COMPLETED", label: "Completed"},
-        {value: "IN_PROGRESS", label: "In propgress"}
-    ]
-
-    const handleStatusChange = (selectedOption) => {
-        if(!selectedOption){
-            selectedOption = props.statuses[0];
-        }
-        props.setLessonData(prev => ({
-            ...prev,
-            status: selectedOption.value
-        }))
-    }
-
-    console.log("isEditing:", props.isEditing)
-    console.log("isOpen:", props.isOpen)
-    console.log("lessonData:", props.lessonData)
-
     return(
         <div className="stepContainer">
-            {props.isEditing && (<label className="selectLabel">
-                Lesson status
-                <Select
-                    classNamePrefix="selectStudent"
-                    isSearchable={false}
-                    unstyled
-                    options={statuses}
-                    value={statuses.find(status => status.value === props.lessonData.status) || null}
-                    onChange={handleStatusChange}
-                    menuPortalTarget={document.body}
-                    styles={selectStyles}
-                />
-            </label>)}
             <label className="selectLabel">
                 Select student
                 <Select

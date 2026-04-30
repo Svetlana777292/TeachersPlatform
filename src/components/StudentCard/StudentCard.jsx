@@ -1,5 +1,6 @@
 import "./StudentCard.css"
 import useUserPhoto from "../../hooks/useUserPhoto.js";
+import Button from "../Button/Button.jsx";
 
 const StudentCard = (props) => {
     const {photo} = useUserPhoto(props.student.id)
@@ -11,6 +12,7 @@ const StudentCard = (props) => {
                 <h3 className="studentName">{props.student.name + " " + props.student.surname}</h3>
                 <div className="studentEmail">{props.student.email}</div>
             </div>
+            <Button type="button" className="viewProfileButton">View Profile</Button>
         </div>
     )
 }

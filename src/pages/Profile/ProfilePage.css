@@ -7,6 +7,8 @@
 
 body {
     background-color: #FFFFFF;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 button:active, button:focus, button:hover {
@@ -242,8 +244,8 @@ input::placeholder{
 
 @media (min-width: 1024px){
     header, .main-container{
-        width: 100%;
-        min-width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
     }
 
     .menu-list{
@@ -280,7 +282,7 @@ input::placeholder{
         grid-template-columns: 1fr 2fr;
         grid-template-rows: auto 1fr;
         row-gap: 0;
-        padding: 0.5rem 10rem;
+        padding: 0.5rem 15rem;
         align-items: start;
     }
 

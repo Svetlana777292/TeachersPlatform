@@ -11,6 +11,13 @@
     margin-bottom: 0.5rem;
 }
 
+.lessonsWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
 .dayLabel {
     font-size: 1.2rem;
     font-weight: 500;
@@ -18,4 +25,23 @@
 
 .emptyDayMessage {
     color: #72757b;
+}
+
+@media (min-width: 1024px) {
+    .dayCardWrapper {
+        justify-content: start;
+        padding: 0.8rem;
+        min-width: 100px;
+    }
+
+    .lessonsWrapper {
+        width: 100%;
+        display: grid;
+        gap: 0.7rem;
+        grid-template-columns: 1fr;
+    }
+
+    .dayLabel {
+        font-size: 1.1rem;
+    }
 }
