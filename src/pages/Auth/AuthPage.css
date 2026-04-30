@@ -14,13 +14,18 @@
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #F8FAFC;
     margin: 0;
     overflow: hidden;
+}
+
+.html {
+    height: -webkit-fill-available;
 }
 
 .auth-container {
