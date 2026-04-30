@@ -7,7 +7,7 @@
 
 #root {
     display: flex;
-    min-height: 100vh;
+    min-height: 100dvh;
     min-height: -webkit-fill-available;
     width: 100%;
     align-items: center;
@@ -15,7 +15,7 @@
 }
 
 body {
-    min-height: 100vh;
+    min-height: 100dvh;
     min-height: -webkit-fill-available;
     display: flex;
     align-items: center;
