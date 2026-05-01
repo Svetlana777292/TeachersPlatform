@@ -10,13 +10,14 @@ import useUser from "../../hooks/useUser.js";
 import useUserPhoto from "../../hooks/useUserPhoto.js";
 import Button from "../../components/Button/Button.jsx";
 import {useState} from "react";
+import ProfileSummary from "../../components/ProfileSummary/ProfileSummary.jsx";
 
 Modal.setAppElement('#root');
 
 const ProfilePage = () => {
     const {user, setUser, isLoading} = useUser()
     const {photo, setPhoto, isPhotoLoading} = useUserPhoto(user?.id)
-    const [tab, setTab] = useState("info")
+    const [tab, setTab] = useState("summary")
 
     if(isLoading || isPhotoLoading) {
         return <Loading />
@@ -41,13 +42,12 @@ const ProfilePage = () => {
 
             <div className="main-container">
                 <UserInfo user={user} photo={photo} setPhoto={setPhoto}/>
-                <div className="leftColumn">
-                    <div className="tabSwitchButtons">
-                        <Button className="switchTabButton" onClick={() => setTab("summary")} style={tab === "summary" ? switchTabButtonStyle : null}>Summary</Button>
-                        <Button className="switchTabButton" onClick={() => setTab("info")} style={tab === "info" ? switchTabButtonStyle : null}>Account information</Button>
-                    </div>
-                    <UserInfoForm user={user} onSave={handleSaveUserInfo}/>
+                <div className="tabSwitchButtons">
+                    <Button className="switchTabButton" onClick={() => setTab("summary")} style={tab === "summary" ? switchTabButtonStyle : null}>Summary</Button>
+                    <Button className="switchTabButton" onClick={() => setTab("info")} style={tab === "info" ? switchTabButtonStyle : null}>Account information</Button>
                 </div>
+                {tab === "summary" && (<ProfileSummary  style={{ width: '100%' }}/>)}
+                {tab === "info" && (<UserInfoForm user={user} onSave={handleSaveUserInfo}/>)}
                 <AccountManagement />
             </div>
             <ChangePasswordWindow />

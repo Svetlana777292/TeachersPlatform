@@ -102,7 +102,6 @@ body {
     flex-direction: row;
     gap: 0.7rem;
     width: 100%;
-    margin-bottom: 1rem;
 }
 
 .switchTabButton {
@@ -309,6 +308,7 @@ input::placeholder{
         grid-row: 1;
         grid-column: 1;
         align-self: start;
+        margin-bottom: 1rem;
     }
 
     .tabSwitchButtons {
@@ -321,6 +321,7 @@ input::placeholder{
     }
 
     .leftColumn {
+        width: 100%;
         grid-row: 1 / 3;
     }
 
