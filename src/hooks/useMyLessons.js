@@ -1,4 +1,5 @@
-import {useEffect, useState} from "react"
+import {useEffect, useMemo, useState} from "react"
+import {formatDateLocal} from "../utils/getEndTimeString.js";
 
 function UseMyLessons() {
     const [lessonsIsLoading, setLessonsIsLoading] = useState(true);
@@ -36,7 +37,16 @@ function UseMyLessons() {
         getLessons()
     }, [])
 
-    return {lessonsIsLoading, myLessons}
+    const lessonsByDate = useMemo(() => {
+        return myLessons.reduce((acc, lesson) => {
+            const dateKey = formatDateLocal(new Date(lesson.date))
+            if(!acc[dateKey]) acc[dateKey] = []
+            acc[dateKey].push(lesson)
+            return acc
+        }, {})
+    }, [myLessons])
+
+    return {lessonsIsLoading, myLessons, lessonsByDate}
 }
 
 export default UseMyLessons
