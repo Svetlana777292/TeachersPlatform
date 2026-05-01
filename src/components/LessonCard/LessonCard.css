@@ -16,7 +16,7 @@
 
 .studentName {
     font-size: 1rem;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 
 .lessonData {

@@ -67,15 +67,14 @@ const SecondStep = (props) => {
                 Lesson card preview
                 <LessonCard
                     className="lessonCardPreview"
-                    title={props.lessonData.topic ? props.lessonData.topic : "Theme"}
-                    studentName={props.lessonData.student_id ? getNameById(props.lessonData.student_id, props.myStudents) : "Student name"}
-                    beginTime={props.selectedTime
-                        ? `${props.selectedTime.getHours().toString().padStart(2,"0")}:${props.selectedTime.getMinutes().toString().padStart(2,"0")}`
-                        : "10:00"}
-                    endTime={getEndTimeString(new Date(props.selectedTime), props.lessonData.duration)}
-                    duration={props.lessonData.duration ? `${props.lessonData.duration} min` : "60 min"}
-                    price={props.lessonData.price ? props.lessonData.price : "Price"}
-                    color={props.lessonData.card_color ? props.lessonData.card_color : "#4682B4"}
+                    lesson={{
+                        topic: props.lessonData.topic || "Theme",
+                        student_id: props.lessonData.student_id || null,
+                        card_color: props.lessonData.card_color || "#4682B4",
+                        date: props.selectedTime || new Date(),
+                        duration: props.lessonData.duration || 60,
+                        price: props.lessonData.price ? props.lessonData.price : "Price"
+                    }}
                 />
             </label>
 
