@@ -7,19 +7,25 @@
 
 #root {
     display: flex;
-    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
     width: 100%;
     align-items: center;
     justify-content: center;
 }
 
 body {
-    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #F8FAFC;
     margin: 0;
+}
+
+.html {
+    height: -webkit-fill-available;
 }
 
 .auth-container {
