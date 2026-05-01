@@ -128,8 +128,7 @@ body {
     width: 100%;
     border: none;
     border-radius: 0.5rem;
-    padding-left: 1.5rem;
-    justify-content: center;
+    justify-content: start;
     line-height: 2.5rem;
     font-weight: 500;
 }
@@ -285,10 +284,6 @@ input::placeholder{
 
     .target-link{
         color: #000000 !important;
-    }
-
-    .link:hover{
-        color: #878787;
     }
 
     .target-link:hover{
