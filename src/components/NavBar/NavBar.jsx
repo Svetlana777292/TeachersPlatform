@@ -2,10 +2,10 @@ import {Link} from "react-router-dom";
 import "./NavBar.css"
 
 const teacherItems = [
-    {href: "/", text: "Finance"},
-    {href: "/schedule", text: "Schedule"},
-    {href: "/studentsList", text: "My students"},
-    {href: "/Profile", text: "Profile"},
+    {href: "/", text: "Finance", src: "../../../public/"},
+    {href: "/schedule", text: "Schedule", src: "../../../public/calendarBlack.svg"},
+    {href: "/studentsList", text: "My students", src: "../../../public/blackPeople.svg"},
+    {href: "/Profile", text: "Profile", src: "../../../public/human.svg"},
 ]
 
 const studentItems = [
@@ -28,9 +28,12 @@ const NavBar = (props) => {
         <nav className="menu">
             <ul className={props.className}>
                 {navItems.map((item) => (
-                    <li className="link" key={item.text}>
-                        <Link to={item.href}>{item.text}</Link>
-                    </li>
+                    <div className="linkWrapper">
+                        <img className="linkIcon" src={item.src}/>
+                        <li className="link" key={item.text}>
+                            <Link to={item.href}>{item.text}</Link>
+                        </li>
+                    </div>
                 ))}
             </ul>
         </nav>
