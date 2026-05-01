@@ -8,8 +8,8 @@ import Loading from "../Loading/Loading.jsx";
 import LessonCard from "../LessonCard/LessonCard.jsx";
 import getNameById from "../../utils/getName.js";
 import useMyStudents from "../../hooks/useMyStudents.js";
-import {getBeginTime, getEndTime, getEndTimeString} from "../../utils/getEndTimeString.js";
-import {getBeginTimeString} from "../../utils/getEndTimeString.js";
+import {formatDateLocal, getEndTimeString, getWeekDays} from "../../utils/getEndTimeString.js";
+import {getTimeString} from "../../utils/getEndTimeString.js";
 
 const HOURS = Array.from({length: 24}, (_, i) => i)
 const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -19,7 +19,7 @@ const ScheduleList = () => {
     const [weekOffset, setWeekOffset] = useState(0)
     const [creatingLesson, setCreatingLesson] = useState(false)
     const [editingLesson, setEditingLesson] = useState(null)
-    const {lessonsIsLoading, myLessons} = useMyLessons()
+    const {lessonsIsLoading, lessonsByDate} = useMyLessons()
     const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024)
     const {myStudents} = useMyStudents()
 
@@ -32,50 +32,9 @@ const ScheduleList = () => {
 
     if (lessonsIsLoading) return <Loading message="Loading your shedule.."/>
 
-    function getMonday(weekOffset) {
-        const todayDate = new Date()
-        let weekDay = todayDate.getDay()
-        if(weekDay === 0) {
-            weekDay = 7
-        }
-
-        const mondayDate = new Date(todayDate)
-        mondayDate.setDate(todayDate.getDate() - weekDay + 1 + 7 * weekOffset)
-        return mondayDate
-    }
-
-    function getWeekDays(weekOffset) {
-        const mondayDate = getMonday(weekOffset)
-        return Array.from({length: 7}, (_, i) => {
-            const day = new Date(mondayDate)
-            day.setDate(mondayDate.getDate() + i)
-            return day
-        })
-
-    }
-
-    function formatDateLocal(date) {
-        const year = date.getFullYear()
-        const month = String(date.getMonth() + 1).padStart(2, "0")
-        const day = String(date.getDate()).padStart(2, "0")
-
-        return `${year}-${month}-${day}`
-    }
-
     const days = getWeekDays(weekOffset)
     const firstDay = days[0]
     const lastDay = days[6]
-
-    const lessonsByDate = myLessons.reduce((acc, lesson) => {
-        const dateKey = formatDateLocal(new Date(lesson.date))
-
-        if(!acc[dateKey]) {
-            acc[dateKey] = []
-        }
-
-        acc[dateKey].push(lesson)
-        return acc
-    }, {})
 
     function renderScheduleCards() {
         return Array.from({length: 7}, (_, i) => {
@@ -119,16 +78,12 @@ const ScheduleList = () => {
                     }}
                 >
                     <LessonCard
-                        color={lesson.card_color}
-                        title={lesson.topic}
+                        lesson={lesson}
                         studentName={getNameById(lesson.student_id, myStudents)}
                         key={lesson.id}
-                        beginTime={getBeginTimeString(lesson.date)}
-                        date={lesson.date}
+                        beginTime={getTimeString(lesson.date)}
                         endTime={getEndTimeString(lesson.date, lesson.duration)}
-                        duration={lesson.duration}
-                        paddingTop={isDurationShort ?  "5px" : null}
-                        price={lesson.price}
+                        paddingTop={isDurationShort ? "5px" : null}
                         onClick={() => {
                             setEditingLesson(lesson)
                             console.log(lesson)

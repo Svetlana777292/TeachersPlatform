@@ -4,7 +4,7 @@ import getNameById from "../../utils/getName.js"
 import UseMyStudents from "../../hooks/useMyStudents.js";
 import {useState} from "react";
 import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
-import {getBeginTimeString, getEndTimeString} from "../../utils/getEndTimeString.js";
+import {getTimeString, getEndTimeString} from "../../utils/getEndTimeString.js";
 
 const ScheduleDayCard = ({lessons, dayLabel}) => {
     const {myStudents} = UseMyStudents()
@@ -18,12 +18,13 @@ const ScheduleDayCard = ({lessons, dayLabel}) => {
                     {lessons.length > 0 ? (
                         lessons.map((lesson) => (
                             <LessonCard
+                                lesson={lesson}
                                 color={lesson.card_color}
                                 title={lesson.topic}
                                 studentName={getNameById(lesson.student_id, myStudents)}
                                 key={lesson.id}
                                 date={lesson.date}
-                                beginTime={getBeginTimeString(lesson.date)}
+                                beginTime={getTimeString(lesson.date)}
                                 endTime={getEndTimeString(lesson.date, lesson.duration)}
                                 duration={lesson.duration}
                                 price={lesson.price}
