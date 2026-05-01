@@ -83,6 +83,11 @@
     background: #e7e9ed;
 }
 
+.emptyDayScheduleMessage {
+    align-self: center;
+    color: #72757b;
+}
+
 .iconWrapper {
     height: 3.5rem;
     width: 3.5rem;

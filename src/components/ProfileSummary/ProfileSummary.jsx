@@ -61,7 +61,7 @@ const ProfileSummary = () => {
             <div className="statsCard">
                 <h3 className="statsTitle">
                     <div className="statsIconWrapper" style={{background: "#f1e6fd"}}>
-                    <img src="../../../public/peoples.svg"/>
+                    <img src="../../../public/purplePeople.svg"/>
                     </div>
                     This week
                 </h3>
@@ -74,7 +74,7 @@ const ProfileSummary = () => {
                     <img className="todaysScheduleIcon" src="../../../public/calendarBlack.svg"/>
                     Today's schedule - {`${getWeekdayString(new Date)}, ${getDateString(new Date)}`}
                 </h2>
-                {todayLessons ? todayLessons.map(lesson => (
+                {todayLessons.length !== 0 ? todayLessons.map(lesson => (
                         <div className="todayLessonCard">
                             <div className="iconWrapper" style={{background: lesson.card_color}}>
                                 <img src="../../../public/bookIcon.svg"/>
@@ -85,7 +85,7 @@ const ProfileSummary = () => {
                             <div className="lessonDurationAndPrice">{`${lesson.duration} min • ${lesson.price}`}</div>
                         </div>))
                 : (
-                    "dnvfj"
+                    <div className="emptyDayScheduleMessage">You don't have lessons today</div>
                     )}
             </div>
         </main>
