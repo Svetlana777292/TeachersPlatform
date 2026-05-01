@@ -62,4 +62,8 @@
         font-size: 1.2rem;
         justify-self: start;
     }
+
+    .edit-profile-btn {
+        margin-top: 0.8rem;
+    }
 }
