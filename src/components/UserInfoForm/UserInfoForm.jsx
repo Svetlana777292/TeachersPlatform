@@ -50,16 +50,6 @@ const UserInfoForm = ({user, onSave}) => {
         <main className="edit-account-info">
             <form className="edit-profile" onSubmit={saveChanges}>
 
-                <div className="edit-info-title">
-                    <h2 className="account-info-title">Account information</h2>
-                    <Button type={isEditing ? "button" : "submit"}
-                            className="btn edit-profile-btn"
-                            onClick={() => setIsEditing(!isEditing)}
-                    >
-                        {isEditing ? "Save" : "Change account"}
-                    </Button>
-                </div>
-
                 <div className="fullname-container">
                     <InputField label="Name" className="info-areas" disabled={!isEditing} name="name" placeholder={user.name} value={changedData.name} type="text" onChange={handleChange} ></InputField>
                     <InputField label="Surname" className="info-areas" disabled={!isEditing} name="surname" placeholder={user.surname} value={changedData.surname} type="text" onChange={handleChange}></InputField>
@@ -83,6 +73,13 @@ const UserInfoForm = ({user, onSave}) => {
                     <textarea name="description" placeholder="" maxLength="200"
                               value={changedData.description ? changedData.description : undefined} className="info-areas"
                               disabled={!isEditing} onChange={handleChange}></textarea>
+
+                    <Button type={isEditing ? "button" : "submit"}
+                            className="btn edit-profile-btn"
+                            onClick={() => setIsEditing(!isEditing)}
+                    >
+                        {isEditing ? "Save" : "Change account"}
+                    </Button>
                 </div>}
             </form>
         </main>

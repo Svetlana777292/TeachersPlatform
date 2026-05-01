@@ -8,12 +8,15 @@ import UserInfo from "../../components/UserInfo/UserInfo.jsx";
 import Header from "../../components/Header/Header.jsx";
 import useUser from "../../hooks/useUser.js";
 import useUserPhoto from "../../hooks/useUserPhoto.js";
+import Button from "../../components/Button/Button.jsx";
+import {useState} from "react";
 
 Modal.setAppElement('#root');
 
 const ProfilePage = () => {
     const {user, setUser, isLoading} = useUser()
     const {photo, setPhoto, isPhotoLoading} = useUserPhoto(user?.id)
+    const [tab, setTab] = useState("info")
 
     if(isLoading || isPhotoLoading) {
         return <Loading />
@@ -27,16 +30,27 @@ const ProfilePage = () => {
         setUser(updatedUser)
     }
 
+    const switchTabButtonStyle = {
+        color: "#FFFFFF",
+        backgroundColor: "#000000",
+    }
+
     return (
         <>
             <Header user={user} />
 
             <div className="main-container">
                 <UserInfo user={user} photo={photo} setPhoto={setPhoto}/>
-                <UserInfoForm user={user} onSave={handleSaveUserInfo}/>
+                <div className="leftColumn">
+                    <div className="tabSwitchButtons">
+                        <Button className="switchTabButton" onClick={() => setTab("summary")} style={tab === "summary" ? switchTabButtonStyle : null}>Summary</Button>
+                        <Button className="switchTabButton" onClick={() => setTab("info")} style={tab === "info" ? switchTabButtonStyle : null}>Account information</Button>
+                    </div>
+                    <UserInfoForm user={user} onSave={handleSaveUserInfo}/>
+                </div>
                 <AccountManagement />
-                <ChangePasswordWindow />
             </div>
+            <ChangePasswordWindow />
         </>
     )
 }
