@@ -15,7 +15,17 @@
     margin-bottom: 1rem;
 }
 
+.disagreeButton:hover {
+    background: #d3d4d6;
+}
+
 .agreeButton {
     background: #000000;
     color: #FFFFFF;
+    border: 1px solid #000000;
+}
+
+.agreeButton:hover {
+    background: #111111;
+    border: 1px solid #000000;
 }
