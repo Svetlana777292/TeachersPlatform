@@ -42,3 +42,9 @@
 .activeLink.icon {
     color: #FFFFFF;
 }
+
+@media (min-width: 1024px) {
+    .linkWrapper {
+        width: auto;
+    }
+}
