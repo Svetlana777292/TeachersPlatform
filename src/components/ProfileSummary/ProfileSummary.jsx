@@ -49,27 +49,29 @@ const ProfileSummary = () => {
 
     return (
         <main className="profileSummaryContainer">
-            <div className="statsCard">
-                <h3 className="statsTitle">
-                    <div className="statsIconWrapper" style={{background: "#D9E8FCFF"}}>
-                        <CalendarIcon className="calendarStatsIcon"/>
-                    </div>
-                    Today's Lessons
-                </h3>
-                <p className="statsValue">{todayLessons.length}</p>
-                <p className="statsInfo">{totalDayLessonsDuration()} hours total</p>
-            </div>
+            <section className="statistics">
+                <div className="statsCard">
+                    <h3 className="statsTitle">
+                        <div className="statsIconWrapper" style={{background: "#D9E8FCFF"}}>
+                            <CalendarIcon className="calendarStatsIcon"/>
+                        </div>
+                        Today's Lessons
+                    </h3>
+                    <p className="statsValue">{todayLessons.length}</p>
+                    <p className="statsInfo">{totalDayLessonsDuration()} hours total</p>
+                </div>
 
-            <div className="statsCard">
-                <h3 className="statsTitle">
-                    <div className="statsIconWrapper" style={{background: "#f1e6fd"}}>
-                    <PeopleIcon className="weekLessonsStatsIcon"/>
-                    </div>
-                    This week
-                </h3>
-                <p className="statsValue">{weekLessonsCount()}</p>
-                <p className="statsInfo">lessons scheduled</p>
-            </div>
+                <div className="statsCard">
+                    <h3 className="statsTitle">
+                        <div className="statsIconWrapper" style={{background: "#f1e6fd"}}>
+                        <PeopleIcon className="weekLessonsStatsIcon"/>
+                        </div>
+                        This week
+                    </h3>
+                    <p className="statsValue">{weekLessonsCount()}</p>
+                    <p className="statsInfo">lessons scheduled</p>
+                </div>
+            </section>
 
             <div className="todaysSchedule">
                 <h2 className="todaysScheduleTitle">

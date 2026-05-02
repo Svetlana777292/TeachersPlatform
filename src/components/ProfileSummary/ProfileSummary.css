@@ -7,6 +7,13 @@
     gap: 1rem;
 }
 
+.statistics {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
 .currentDate {
     font-size: 1.3rem;
     font-weight: 600;
@@ -19,6 +26,7 @@
     border-radius: 1rem;
     box-shadow: 0 0 5px #EAEAEA;
     padding: 1rem;
+    width: 100%;
 }
 
 .statsIconWrapper {
@@ -57,6 +65,7 @@
     border: 1px solid #EAEAEA;
     border-radius: 1rem;
     box-shadow: 0 0 5px #EAEAEA;
+    height: auto;
 }
 
 .todaysScheduleTitle {
@@ -67,6 +76,14 @@
     font-weight: 500;
     margin-bottom: 0.5rem;
     align-items: center;
+}
+
+.emptyDayScheduleMessage {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
 }
 
 .todaysScheduleIcon {
@@ -113,4 +130,20 @@
     font-size: 0.9rem;
     color: #72757b;
 }
+
+@media (min-width: 1025px) {
+    .statistics {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: stretch;
+        gap: 1rem;
+    }
+
+    .todaysSchedule {
+        min-height: 200px;
+    }
+
+}
+
 

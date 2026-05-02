@@ -42,12 +42,14 @@ const ProfilePage = () => {
 
             <div className="main-container">
                 <UserInfo user={user} photo={photo} setPhoto={setPhoto}/>
-                <div className="tabSwitchButtons">
-                    <Button className="switchTabButton" onClick={() => setTab("summary")} style={tab === "summary" ? switchTabButtonStyle : null}>Summary</Button>
-                    <Button className="switchTabButton" onClick={() => setTab("info")} style={tab === "info" ? switchTabButtonStyle : null}>Account information</Button>
+                <div className="infoTab">
+                    <div className="tabSwitchButtons">
+                        <Button className="switchTabButton" onClick={() => setTab("summary")} style={tab === "summary" ? switchTabButtonStyle : null}>Summary</Button>
+                        <Button className="switchTabButton" onClick={() => setTab("info")} style={tab === "info" ? switchTabButtonStyle : null}>Account information</Button>
+                    </div>
+                    {tab === "summary" && (<ProfileSummary  style={{ width: '100%' }}/>)}
+                    {tab === "info" && (<UserInfoForm user={user} onSave={handleSaveUserInfo}/>)}
                 </div>
-                {tab === "summary" && (<ProfileSummary  style={{ width: '100%' }}/>)}
-                {tab === "info" && (<UserInfoForm user={user} onSave={handleSaveUserInfo}/>)}
                 <AccountManagement />
             </div>
             <ChangePasswordWindow />

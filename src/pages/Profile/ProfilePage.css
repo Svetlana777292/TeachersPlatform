@@ -259,6 +259,12 @@ input::placeholder{
     50%{transform: scale(1.2);}
 }
 
+.infoTab {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 @media (min-width: 1024px){
     header, .main-container{
         max-width: 100%;
@@ -312,11 +318,9 @@ input::placeholder{
         grid-row: 1;
         grid-column: 2;
         align-self: start;
-        margin-bottom: 1rem;
     }
 
-    .leftColumn {
-        width: 100%;
+    .infoTab {
         grid-row: 1 / 3;
     }
 
