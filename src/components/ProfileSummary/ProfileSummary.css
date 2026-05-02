@@ -96,6 +96,14 @@
     margin-bottom: 0.8rem;
 }
 
+.calendarStatsIcon {
+    color: #1E62FA;
+}
+
+.weekLessonsStatsIcon {
+    color: #a127f9;
+}
+
 .lessonTopic, .beginTime {
     font-size: 1.1rem;
     font-weight: 400;

@@ -19,7 +19,7 @@ const StudentsList = () => {
 
     return(
         <>
-            <Header user={user}/>
+            <Header currentPage="My students" user={user}/>
             <div className="container">
                 <aside className="aside">
                     <h1 className="studentsCount">

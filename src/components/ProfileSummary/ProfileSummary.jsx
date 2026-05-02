@@ -9,6 +9,8 @@ import LessonCard from "../LessonCard/LessonCard.jsx";
 import "./ProfileSummary.css"
 import getNameById from "../../utils/getName.js";
 import useMyStudents from "../../hooks/useMyStudents.js";
+import CalendarIcon from "../../../public/CalendarIcon.jsx";
+import PeopleIcon from "../../../public/PeopleIcon.jsx";
 
 const ProfileSummary = () => {
 
@@ -50,7 +52,7 @@ const ProfileSummary = () => {
             <div className="statsCard">
                 <h3 className="statsTitle">
                     <div className="statsIconWrapper" style={{background: "#D9E8FCFF"}}>
-                        <img src="../../../public/calendarBlue.svg"/>
+                        <CalendarIcon className="calendarStatsIcon"/>
                     </div>
                     Today's Lessons
                 </h3>
@@ -61,7 +63,7 @@ const ProfileSummary = () => {
             <div className="statsCard">
                 <h3 className="statsTitle">
                     <div className="statsIconWrapper" style={{background: "#f1e6fd"}}>
-                    <img src="../../../public/purplePeople.svg"/>
+                    <PeopleIcon className="weekLessonsStatsIcon"/>
                     </div>
                     This week
                 </h3>
@@ -71,7 +73,7 @@ const ProfileSummary = () => {
 
             <div className="todaysSchedule">
                 <h2 className="todaysScheduleTitle">
-                    <img className="todaysScheduleIcon" src="../../../public/calendarBlack.svg"/>
+                    <CalendarIcon className="todaysScheduleIcon"/>
                     Today's schedule - {`${getWeekdayString(new Date)}, ${getDateString(new Date)}`}
                 </h2>
                 {todayLessons.length !== 0 ? todayLessons.map(lesson => (

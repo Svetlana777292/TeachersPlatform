@@ -16,7 +16,7 @@ const SchedulePage = () => {
 
     return(
         <>
-            <Header user={user}/>
+            <Header currentPage="Schedule" user={user}/>
             <div className="page-container">
                 <div className="schedule-container">
                     <ScheduleList />

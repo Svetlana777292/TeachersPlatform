@@ -33,3 +33,12 @@
     height: 1.2rem;
     margin-right: 0.5rem;
 }
+
+.activeLink {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.activeLink.icon {
+    color: #FFFFFF;
+}

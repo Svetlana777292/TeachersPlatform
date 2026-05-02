@@ -38,7 +38,7 @@ const ProfilePage = () => {
 
     return (
         <>
-            <Header user={user} />
+            <Header currentPage="Profile" user={user} />
 
             <div className="main-container">
                 <UserInfo user={user} photo={photo} setPhoto={setPhoto}/>

@@ -17,7 +17,7 @@ const Header = (props) => {
                 </svg>
             </Button>
 
-            <NavBar role={props.user.role} className={`menu-list ${menuOpened ? "is-open" : ""}`}/>
+            <NavBar currentPage={props.currentPage} role={props.user.role} className={`menu-list ${menuOpened ? "is-open" : ""}`}/>
         </header>
     )
 }
