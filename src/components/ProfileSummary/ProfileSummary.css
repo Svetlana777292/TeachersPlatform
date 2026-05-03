@@ -78,12 +78,14 @@
     align-items: center;
 }
 
-.emptyDayScheduleMessage {
+.emptyScheduleMessage {
     display: flex;
     flex: 1;
     align-items: center;
     justify-content: center;
     justify-self: center;
+    align-self: center;
+    color: #72757b;
 }
 
 .todaysScheduleIcon {
@@ -98,11 +100,6 @@
     border: 1px solid #dcdcdc;
     border-radius: 1rem;
     background: #e7e9ed;
-}
-
-.emptyDayScheduleMessage {
-    align-self: center;
-    color: #72757b;
 }
 
 .iconWrapper {

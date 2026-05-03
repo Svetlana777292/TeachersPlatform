@@ -1,51 +1,18 @@
-import useMyLessons from "../../hooks/useMyLessons.js";
 import {
-    formatDateLocal,
-    getDateString, getTime, getTimeString,
-    getWeekDays,
+    getDateString, getTimeString,
     getWeekdayString
 } from "../../utils/getEndTimeString.js";
-import LessonCard from "../LessonCard/LessonCard.jsx";
 import "./ProfileSummary.css"
 import getNameById from "../../utils/getName.js";
 import useMyStudents from "../../hooks/useMyStudents.js";
 import CalendarIcon from "../../../public/CalendarIcon.jsx";
 import PeopleIcon from "../../../public/PeopleIcon.jsx";
+import {useSummary} from "../../hooks/useSummary.js";
 
 const ProfileSummary = () => {
 
-    const {myStudents} = useMyStudents();
-    const { lessonsByDate} = useMyLessons()
-    const currentDay = formatDateLocal(new Date())
-    const todayLessons = lessonsByDate[currentDay] || []
-
-    const weekdays = getWeekDays(0)
-
-    const weekLessonsCount = () => {
-        let count = 0
-
-        for (let weekday of weekdays) {
-            weekday = formatDateLocal(weekday)
-            const dayLessons = lessonsByDate[weekday]
-            if (dayLessons) {
-                count += dayLessons.length
-            }
-        }
-
-        return count
-    }
-
-    const totalDayLessonsDuration = () => {
-        let totalhours = 0
-
-        if(lessonsByDate[currentDay]){
-            for (const lesson of lessonsByDate[currentDay]) {
-                totalhours += lesson.duration
-            }
-        }
-
-        return Math.round(totalhours / 60 * 10) / 10
-    }
+    const {myStudents} = useMyStudents()
+    const {upcomingLesson,todayLessons, weekLessonsCount, totalDayLessonsDuration,} = useSummary()
 
     return (
         <main className="profileSummaryContainer">
@@ -57,8 +24,15 @@ const ProfileSummary = () => {
                         </div>
                         Today's Lessons
                     </h3>
-                    <p className="statsValue">{todayLessons.length}</p>
-                    <p className="statsInfo">{totalDayLessonsDuration()} hours total</p>
+                    {todayLessons.length !== 0
+                        ? (<>
+                            <p className="statsValue">{todayLessons.length}</p>
+                            <p className="statsInfo">{totalDayLessonsDuration} hours total</p>
+                        </>)
+                        : (
+                            <p className="emptyScheduleMessage">You don't have lessons today</p>
+                        )
+                }
                 </div>
 
                 <div className="statsCard">
@@ -68,20 +42,46 @@ const ProfileSummary = () => {
                         </div>
                         This week
                     </h3>
-                    <p className="statsValue">{weekLessonsCount()}</p>
-                    <p className="statsInfo">lessons scheduled</p>
+                    {weekLessonsCount !== 0
+                        ? (<>
+                            <p className="statsValue">{weekLessonsCount}</p>
+                            <p className="statsInfo">lesson scheduled</p>
+                        </>)
+                        : (
+                            <p className="emptyScheduleMessage">You don't have lessons this week</p>
+                        )
+                    }
+                </div>
+
+                <div className="statsCard">
+                    <h3 className="statsTitle">
+                        <div className="statsIconWrapper" style={{background: "#f1e6fd"}}>
+                            <PeopleIcon className="weekLessonsStatsIcon"/>
+                        </div>
+                        Next lesson
+                    </h3>
+                    {upcomingLesson
+                        ? (<>
+                            <p className="statsValue">{getTimeString(upcomingLesson.date)}</p>
+                            <p className="statsInfo">{`${getWeekdayString(new Date(upcomingLesson.date))}, ${getDateString(new Date(upcomingLesson.date))}`}</p>
+                            <p className="statsInfo">{getNameById(upcomingLesson.student_id, myStudents)}</p>
+                        </>)
+                        : (
+                            <p className="emptyScheduleMessage">You don't have lessons today</p>
+                        )
+                    }
                 </div>
             </section>
 
             <div className="todaysSchedule">
                 <h2 className="todaysScheduleTitle">
                     <CalendarIcon className="todaysScheduleIcon"/>
-                    Today's schedule - {`${getWeekdayString(new Date)}, ${getDateString(new Date)}`}
+                    Today's schedule - {`${getWeekdayString(new Date())}, ${getDateString(new Date)}`}
                 </h2>
                 {todayLessons.length !== 0 ? todayLessons.map(lesson => (
                         <div className="todayLessonCard">
                             <div className="iconWrapper" style={{background: lesson.card_color}}>
-                                <img src="../../../public/bookIcon.svg"/>
+                                <img src="bookIcon.svg"/>
                             </div>
                             <div className="lessonTopic">{lesson.topic}</div>
                             <div className="name">{getNameById(lesson.student_id, myStudents)}</div>
@@ -89,7 +89,7 @@ const ProfileSummary = () => {
                             <div className="lessonDurationAndPrice">{`${lesson.duration} min • ${lesson.price}`}</div>
                         </div>))
                 : (
-                    <div className="emptyDayScheduleMessage">You don't have lessons today</div>
+                    <p className="emptyScheduleMessage">You don't have lessons today</p>
                     )}
             </div>
         </main>
