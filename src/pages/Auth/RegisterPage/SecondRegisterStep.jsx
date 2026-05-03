@@ -5,6 +5,8 @@ import RadioField from "../../../components/Inputs/RadioField.jsx";
 const SecondRegisterStep = ({formData, handleChange, setNextStep}) => {
     return (
         <>
+
+
             <div className="stepProgressWrapper">
                 <div className="stepProgressMessage">Step 2 of 2</div>
                 <div className="stepIndicator"></div>

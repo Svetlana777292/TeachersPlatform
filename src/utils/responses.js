@@ -16,11 +16,13 @@ async function handleSubmit(method, formData, path, e, func) {
             func()
         }
         else{
-            alert('Ошибка сервера: ' + response.status)
+            console.log(response.status)
+            return response.status
         }
     }
     catch(error){
         console.log('Ошибка сети: ', error)
+        return error
     }
 }
 

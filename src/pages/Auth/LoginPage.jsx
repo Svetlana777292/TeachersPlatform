@@ -6,8 +6,11 @@ import "./AuthPage.css"
 import {useState} from "react";
 import handleSubmit from "../../utils/responses.js";
 import {useNavigate} from "react-router-dom";
+import {getFetchErrorMessage} from "../../utils/errorsHandling.jsx";
+import ErrorField from "../../components/ErrorField/ErrorField.jsx";
 
 const LoginPage = () => {
+    const [error, setError] = useState(null)
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -27,10 +30,22 @@ const LoginPage = () => {
     }
 
     return(
-        <form id="login-form" className="auth-container" onSubmit={(e) => handleSubmit("POST", formData, 'login', e, () => navigate("/profile/"))}>
+        <form
+            className="auth-container"
+            onSubmit={async (e) => {
+                const responseStatus = await handleSubmit("POST", formData, 'login', e,
+                    () => navigate("/profile/"))
+                setError(responseStatus)
+                console.log(responseStatus)
+            }}>
             <h1>
                 Welcome back!
             </h1>
+
+            {
+                error ? <ErrorField errorMessage={getFetchErrorMessage(error)} />
+                    : null
+            }
 
             <div className="roles-group">
                 <RadioField name="role" className="role" label="I'm a teacher" value="teacher" checked={formData.role === 'teacher'} onChange={handleChange} />
