@@ -39,6 +39,7 @@ body {
     border-radius: 1rem;
     background-color: white;
     box-shadow: 2px 2px 8px #EAEAEA;
+    margin: 0 2rem;
 }
 
 .auth-container h1 {
@@ -83,6 +84,16 @@ body {
     box-shadow: 2px 2px 8px #EAEAEA;
 }
 
+.registerButton {
+    margin-top: 0;
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.nextStepButton {
+    margin-bottom: 0 !important;
+}
+
 .error-message {
     max-width: 100%;
     font-size: 0.9rem;
@@ -90,12 +101,46 @@ body {
     word-break: break-word;
 }
 
+.stepProgressWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 0.5rem;
+}
+
+.stepProgressMessage {
+    grid-column: 1/-1;
+    margin-bottom: 0.5rem;
+    color: #72757b;
+}
+
+.stepIndicator {
+    width: 100%;
+    height: 0.4rem;
+    background-color: #000000;
+    corner: round;
+    border-radius: 0.2rem;
+}
+
+.secondStepIndicator {
+    background-color: #EAEAEA;
+}
+
+.prevStepButton {
+    background: none;
+    border: none !important;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 500;
+    color: #72757b;
+}
+
 @media (max-width: 768px) {
     .auth-container {
         min-width: 0;
         width: auto;
         height: auto;
-        margin: 1rem;
         padding: 1rem;
         gap: 0.6rem;
     }
