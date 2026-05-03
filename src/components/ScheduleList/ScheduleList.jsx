@@ -28,7 +28,7 @@ const ScheduleList = () => {
         window.addEventListener("resize", handleResize)
 
         return () => window.removeEventListener("resize", handleResize)
-    })
+    }, [])
 
     if (lessonsIsLoading) return <Loading message="Loading your shedule.."/>
 
