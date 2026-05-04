@@ -18,7 +18,7 @@ const ScheduleDayCard = ({lessons, dayLabel}) => {
                     {lessons.length > 0 ? (
                         lessons.map((lesson) => (
                             <LessonCard
-                                lesson={lesson}
+                                lesson={lesson.originalLesson ?? lesson}
                                 color={lesson.card_color}
                                 title={lesson.topic}
                                 studentName={getNameById(lesson.student_id, myStudents)}
@@ -29,8 +29,7 @@ const ScheduleDayCard = ({lessons, dayLabel}) => {
                                 duration={lesson.duration}
                                 price={lesson.price}
                                 onClick={() => {
-                                    setEditingLesson(lesson)
-                                    console.log(lesson)
+                                    setEditingLesson(lesson.originalLesson ?? lesson)
                                 }}
                             />
                         ))
