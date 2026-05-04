@@ -15,6 +15,11 @@ export const calcWeekLessonsCount = (lessonsByDate) => {
         weekday = formatDateLocal(weekday)
         const dayLessons = lessonsByDate[weekday]
         if (dayLessons) {
+            dayLessons.map(lesson => {
+                if(lesson.splitPart && lesson.splitPart === 1) {
+                    count -= 1
+                }
+            })
             count += dayLessons.length
         }
     }
@@ -41,7 +46,40 @@ export function getUpcomingLesson(lessons) {
         .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
         .at(0)
 
-    if(!closestScheduledDay) return []
+    if(!closestScheduledDay) return null
 
     return lessons[closestScheduledDay].find(lesson => new Date(lesson.date).getTime() >= new Date().getTime())
+}
+
+export function splitLessonByDay(lesson, beginTime, endTime) {
+    const start = new Date(beginTime)
+    const end = new Date(endTime)
+
+    if(start.toDateString() === end.toDateString()) {
+        return lesson
+    }
+
+    const endOfFirstDay = new Date(start)
+    endOfFirstDay.setHours(23, 59, 59, 999)
+
+    const startOfNextDay = new Date(end)
+    startOfNextDay.setHours(0, 0, 0, 0)
+
+    return [
+        {
+            ...lesson,
+            duration: (endOfFirstDay.getTime() - start.getTime()) / 1000 / 60,
+            isSplit: true,
+            splitPart: 1,
+            originalLesson: lesson
+        },
+        {
+            ...lesson,
+            date: startOfNextDay,
+            duration: (end.getTime() - startOfNextDay.getTime()) / 1000 / 60,
+            isSplit: true,
+            splitPart: 2,
+            originalLesson: lesson
+        }
+    ]
 }
