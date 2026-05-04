@@ -10,6 +10,7 @@ import getNameById from "../../utils/getName.js";
 import useMyStudents from "../../hooks/useMyStudents.js";
 import {formatDateLocal, getEndTimeString, getWeekDays} from "../../utils/getEndTimeString.js";
 import {getTimeString} from "../../utils/getEndTimeString.js";
+import {splitLessonByDay} from "../../utils/lessonsUtils.js";
 
 const HOURS = Array.from({length: 24}, (_, i) => i)
 const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -78,16 +79,13 @@ const ScheduleList = () => {
                     }}
                 >
                     <LessonCard
-                        lesson={lesson}
+                        lesson={lesson.originalLesson ? lesson.originalLesson : lesson}
                         studentName={getNameById(lesson.student_id, myStudents)}
-                        key={lesson.id}
+                        key={lesson.isSplit ? `${lesson.id}-${lesson.splitPart}` : lesson.id}
                         beginTime={getTimeString(lesson.date)}
                         endTime={getEndTimeString(lesson.date, lesson.duration)}
                         paddingTop={isDurationShort ? "5px" : null}
-                        onClick={() => {
-                            setEditingLesson(lesson)
-                            console.log(lesson)
-                        }}
+                        onClick ={() => setEditingLesson(lesson.originalLesson ?? lesson)}
                         className="gridLessonCard"
                         isDurationShort={isDurationShort}
                         isDurationShortest={isDurationShortest}

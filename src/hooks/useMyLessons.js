@@ -1,5 +1,6 @@
 import {useEffect, useMemo, useState} from "react"
-import {formatDateLocal} from "../utils/getEndTimeString.js";
+import {formatDateLocal, getEndTime, getTime} from "../utils/getEndTimeString.js";
+import {splitLessonByDay} from "../utils/lessonsUtils.js";
 
 function useMyLessons() {
     const [lessonsIsLoading, setLessonsIsLoading] = useState(true);
@@ -38,7 +39,15 @@ function useMyLessons() {
     }, [])
 
     const lessonsByDate = useMemo(() => {
-        return myLessons.reduce((acc, lesson) => {
+
+        const processedLessons = myLessons.flatMap(lesson => {
+            const beginTime = getTime((lesson?.date))
+            const endTime = getEndTime((lesson?.date), lesson?.duration)
+
+            return splitLessonByDay(lesson, beginTime, endTime)
+        })
+
+        return processedLessons.reduce((acc, lesson) => {
             const dateKey = formatDateLocal(new Date(lesson.date))
             if(!acc[dateKey]) acc[dateKey] = []
             acc[dateKey].push(lesson)

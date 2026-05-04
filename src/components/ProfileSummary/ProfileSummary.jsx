@@ -67,7 +67,7 @@ const ProfileSummary = () => {
                             <p className="statsInfo">{getNameById(upcomingLesson.student_id, myStudents)}</p>
                         </>)
                         : (
-                            <p className="emptyScheduleMessage">You don't have lessons today</p>
+                            <p className="emptyScheduleMessage">You don't have upcoming lessons</p>
                         )
                     }
                 </div>
@@ -81,7 +81,7 @@ const ProfileSummary = () => {
                 {todayLessons.length !== 0 ? todayLessons.map(lesson => (
                         <div className="todayLessonCard">
                             <div className="iconWrapper" style={{background: lesson.card_color}}>
-                                <img src="bookIcon.svg"/>
+                                <img src="../../../public/bookIcon.svg"/>
                             </div>
                             <div className="lessonTopic">{lesson.topic}</div>
                             <div className="name">{getNameById(lesson.student_id, myStudents)}</div>
