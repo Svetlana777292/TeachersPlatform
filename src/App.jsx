@@ -1,5 +1,5 @@
 import {Route, Routes} from "react-router-dom";
-import RegisterPage from "./pages/Auth/RegisterPage.jsx";
+import RegisterPage from "./pages/Auth/RegisterPage/RegisterPage.jsx";
 import LoginPage from "./pages/Auth/LoginPage.jsx";
 import ProfilePage from "./pages/Profile/ProfilePage.jsx";
 import {useEffect, useRef, useState} from "react";
