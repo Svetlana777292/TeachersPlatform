@@ -2,8 +2,11 @@ import InputField from "../Inputs/InputField.jsx";
 import {useState} from "react";
 import Button from "../Button/Button.jsx";
 import "./UserInfoForm.css"
+import {useEditUserMutation} from "../../store/api/userApi.js";
+import ErrorField from "../ErrorField/ErrorField.jsx";
+import {getFetchErrorMessage} from "../../utils/errorsHandling.jsx";
 
-const UserInfoForm = ({user, onSave}) => {
+const UserInfoForm = ({user}) => {
     const [isEditing, setIsEditing] = useState(false)
     const [changedData, setChangedData] = useState({
         name: user.name,
@@ -13,6 +16,7 @@ const UserInfoForm = ({user, onSave}) => {
         discipline: user.discipline || "",
         description: user.description || ""
     })
+    const [editUser, {error}] = useEditUserMutation()
 
     const handleChange = (e) => {
         setChangedData({
@@ -21,34 +25,13 @@ const UserInfoForm = ({user, onSave}) => {
         })
     }
 
-    async function saveChanges(e){
-        e.preventDefault()
-
-        try{
-            const response = await fetch(`/api/me`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include',
-                body: JSON.stringify(changedData)
-            })
-
-            if(response.ok){
-                const updatedUser = await response.json()
-                console.log('Данные успешно обновлены!', user)
-
-                onSave(updatedUser)
-            }
-        }
-        catch(error){
-            console.error(error)
-        }
-    }
-
     return (
         <main className="edit-account-info">
-            <form className="edit-profile" onSubmit={saveChanges}>
+            <form className="edit-profile" onSubmit={async (e) => {
+                e.preventDefault()
+                await editUser(changedData)
+            }}>
+                {error ? <ErrorField errorMessage={getFetchErrorMessage(error.status)} /> : null}
 
                 <div className="fullname-container">
                     <InputField label="Name" className="info-areas" disabled={!isEditing} name="name" placeholder={user.name} value={changedData.name} type="text" onChange={handleChange} ></InputField>

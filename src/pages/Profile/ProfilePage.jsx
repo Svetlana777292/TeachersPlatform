@@ -27,10 +27,6 @@ const ProfilePage = () => {
         return null
     }
 
-    async function handleSaveUserInfo(updatedUser) {
-        setUser(updatedUser)
-    }
-
     const switchTabButtonStyle = {
         color: "#FFFFFF",
         backgroundColor: "#000000",
@@ -48,7 +44,7 @@ const ProfilePage = () => {
                         <Button className="switchTabButton" onClick={() => setTab("info")} style={tab === "info" ? switchTabButtonStyle : null}>Account information</Button>
                     </div>
                     {tab === "summary" && (<ProfileSummary  style={{ width: '100%' }}/>)}
-                    {tab === "info" && (<UserInfoForm user={user} onSave={handleSaveUserInfo}/>)}
+                    {tab === "info" && (<UserInfoForm user={user} />)}
                 </div>
                 <AccountManagement />
             </div>
