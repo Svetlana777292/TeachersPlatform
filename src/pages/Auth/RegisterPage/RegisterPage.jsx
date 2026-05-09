@@ -2,14 +2,13 @@ import AuthRedirection from "../../../components/AuthRedirection/AuthRedirection
 import "../AuthPage.css"
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import handleSubmit from "../../../utils/responses.js";
 import FirstRegisterStep from "./FirstRegisterStep.jsx";
 import SecondRegisterStep from "./SecondRegisterStep.jsx";
 import {getFetchErrorMessage} from "../../../utils/errorsHandling.jsx";
 import ErrorField from "../../../components/ErrorField/ErrorField.jsx";
+import {useRegisterUserMutation} from "../../../store/api/userApi.js";
 
 const RegisterPage = () => {
-    const [error, setError] = useState(null)
     const [nextStep, setNextStep] = useState(false)
     const [formData, setFormData] = useState({
         name: "",
@@ -18,6 +17,7 @@ const RegisterPage = () => {
         password: "",
         role: "teacher"
     })
+    const [registerUser, {error}] = useRegisterUserMutation()
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -35,11 +35,11 @@ const RegisterPage = () => {
             <form
                 className="auth-container"
                 onSubmit={
-                (e) => {
-                    const responseStatus = handleSubmit(
-                        "POST", formData, 'register',
-                        e, () => navigate("/profile/"))
-                    setError(responseStatus)
+                async (e) => {
+                    e.preventDefault()
+                    const result = await registerUser(formData)
+                    if (result.error) return
+                    navigate('/profile')
                 }}>
                 <h1>
                     Create an account
@@ -47,7 +47,7 @@ const RegisterPage = () => {
 
                 {
                     error ?
-                        <ErrorField errorMessage={getFetchErrorMessage(error)} />
+                        <ErrorField errorMessage={getFetchErrorMessage(error.status)} />
                         : null
                 }
 
