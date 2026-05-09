@@ -2,42 +2,19 @@ import {Route, Routes} from "react-router-dom";
 import RegisterPage from "./pages/Auth/RegisterPage/RegisterPage.jsx";
 import LoginPage from "./pages/Auth/LoginPage.jsx";
 import ProfilePage from "./pages/Profile/ProfilePage.jsx";
-import {useEffect, useRef, useState} from "react";
-import checkToken from "./utils/checkToken.js";
 import Loading from "./components/Loading/Loading.jsx";
 import StudentsList from "./pages/StudentsList/StudentsList.jsx";
 import SchedulePage from "./pages/SchedulePage/SchedulePage.jsx";
+import {useGetUserQuery} from "./store/api/userApi.js";
 
 function App() {
-  const [token, setToken] = useState(false)
-    const [loading, setLoading] = useState(true)
-    const hasChecked = useRef(false)
+  const {data, isLoading, isError} = useGetUserQuery()
 
-  useEffect(() => {
-    if(hasChecked.current) return
-
-    hasChecked.current = true
-
-    async function verifyToken() {
-        try{
-            const result = await checkToken()
-            setToken(result)
-        }
-        catch(error){
-            console.log(error)
-            setToken(false)
-        }
-        finally{
-            setLoading(false)
-        }
-    }
-
-    verifyToken()
-  }, [])
-
-  if(loading){
+  if(isLoading){
       return <Loading />
   }
+
+    const token = !isError && !!data
 
   return (
     <>

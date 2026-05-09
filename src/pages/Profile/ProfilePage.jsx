@@ -15,7 +15,7 @@ import ProfileSummary from "../../components/ProfileSummary/ProfileSummary.jsx";
 Modal.setAppElement('#root');
 
 const ProfilePage = () => {
-    const {user, setUser, isLoading} = useUser()
+    const {user, isLoading} = useUser()
     const {photo, setPhoto, isPhotoLoading} = useUserPhoto(user?.id)
     const [tab, setTab] = useState("summary")
 

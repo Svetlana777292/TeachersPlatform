@@ -4,19 +4,18 @@ import AuthRedirection from "../../components/AuthRedirection/AuthRedirection.js
 import RadioField from "../../components/Inputs/RadioField.jsx";
 import "./AuthPage.css"
 import {useState} from "react";
-import handleSubmit from "../../utils/responses.js";
-import {useNavigate} from "react-router-dom";
 import {getFetchErrorMessage} from "../../utils/errorsHandling.jsx";
 import ErrorField from "../../components/ErrorField/ErrorField.jsx";
+import {useLoginUserMutation} from "../../store/api/userApi.js";
+import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
-    const [error, setError] = useState(null)
-    const [formData, setFormData] = useState({
+    const [formData, setFormData, error] = useState({
         email: "",
         password: "",
         role: "teacher"
     })
-
+    const [login] = useLoginUserMutation()
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -33,10 +32,9 @@ const LoginPage = () => {
         <form
             className="auth-container"
             onSubmit={async (e) => {
-                const responseStatus = await handleSubmit("POST", formData, 'login', e,
-                    () => navigate("/profile/"))
-                setError(responseStatus)
-                console.log(responseStatus)
+                e.preventDefault()
+                await login(formData)
+                navigate('/profile')
             }}>
             <h1>
                 Welcome back!
