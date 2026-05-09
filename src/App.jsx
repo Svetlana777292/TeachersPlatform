@@ -5,16 +5,14 @@ import ProfilePage from "./pages/Profile/ProfilePage.jsx";
 import Loading from "./components/Loading/Loading.jsx";
 import StudentsList from "./pages/StudentsList/StudentsList.jsx";
 import SchedulePage from "./pages/SchedulePage/SchedulePage.jsx";
-import {useGetUserQuery} from "./store/api/userApi.js";
+import {useVerifyUserQuery} from "./store/api/userApi.js";
 
 function App() {
-  const {data, isLoading, isError} = useGetUserQuery()
+  const {data: token, isLoading} = useVerifyUserQuery()
 
   if(isLoading){
       return <Loading />
   }
-
-    const token = !isError && !!data
 
   return (
     <>

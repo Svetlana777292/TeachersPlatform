@@ -10,12 +10,12 @@ import {useLoginUserMutation} from "../../store/api/userApi.js";
 import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
-    const [formData, setFormData, error] = useState({
+    const [formData, setFormData] = useState({
         email: "",
         password: "",
         role: "teacher"
     })
-    const [login] = useLoginUserMutation()
+    const [login, {error}] = useLoginUserMutation()
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -33,7 +33,8 @@ const LoginPage = () => {
             className="auth-container"
             onSubmit={async (e) => {
                 e.preventDefault()
-                await login(formData)
+                const result = await login(formData)
+                if (result.error) return
                 navigate('/profile')
             }}>
             <h1>

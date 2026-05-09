@@ -19,6 +19,12 @@ export const userApi = createApi({
                 body: userData,
             })
         }),
+        verifyUser: builder.query({
+            query: () => ({
+                url: '/token/verify',
+                method: 'POST',
+            })
+        }),
         logoutUser: builder.mutation({
             query: (user) => ({
                 url: '/logout',
@@ -42,6 +48,7 @@ export const userApi = createApi({
 export const {
     useRegisterUserMutation,
     useLoginUserMutation,
+    useVerifyUserQuery,
     useLogoutUserMutation,
     useGetUserQuery,
     useEditUserMutation
