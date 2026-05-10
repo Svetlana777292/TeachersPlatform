@@ -13,38 +13,29 @@ const ChangePasswordWindow = (props) => {
         newPassword: "",
         confirmPassword: "",
     })
-    const [editUser] = useEditUserMutation()
+    const [editUser, {error: serverError}] = useEditUserMutation()
 
     const handleChange = (e) => {
-
-        console.log(e.target.name, e.target.value)
-
-        setNewPassword({
+            setNewPassword({
             ...newPassword,
             [e.target.name]: e.target.value
         })
     }
 
     function validatePassword() {
-        if(newPassword.newPassword !== newPassword.confirmPassword) {
-            setError('Passwords do not match')
-            return error
+        if (newPassword.newPassword === '') {
+            return 'Password is required'
         }
-        else if(newPassword.newPassword === '') {
-            setError('Password are required')
-            return error
+        else if (newPassword.newPassword !== newPassword.confirmPassword) {
+            return 'Passwords do not match'
         }
-        else if(newPassword.newPassword.length < 8){
-            setError('Password must be at least 8 characters long')
-            return error
+        else if (newPassword.newPassword.length < 8) {
+            return 'Password must be at least 8 characters long'
         }
-        else if(!(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test(newPassword.newPassword))){
-            setError('Password must have capitalized, lowercase letters and digits')
-            return error
+        else if (!(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test(newPassword.newPassword))) {
+            return 'Password must have capitalized, lowercase letters and digits'
         }
-        else {
-            return null
-        }
+        return null
     }
 
     function handleClose() {
@@ -62,13 +53,17 @@ const ChangePasswordWindow = (props) => {
                     <h2 className="change-password-title">Change password</h2>
                     <InputField name="newPassword" label="New password" value={newPassword.newPassword} type="password" className="info-areas" onChange={handleChange} />
                     <InputField name="confirmPassword" label="Confirm new password" value={newPassword.confirmPassword} type="password" className="info-areas" onChange={handleChange} />
-                    <ErrorField errorMessage={error}/>
+                    <ErrorField errorMessage={error || serverError?.status}/>
                     <div className="password-btns">
                         <Button type="button" className="btn cancelBtn" onClick={handleClose}>Cancel</Button>
                         <Button type="submit" className="confirmBtn btn" onClick={() => {
-                            validatePassword()
+                            const validationError = validatePassword()
+                            if(validationError) {
+                                setError(validationError)
+                                return
+                            }
                             editUser({password: newPassword.newPassword})
-                            props.onClose()
+                            handleClose()
                         }}>Change password</Button>
                     </div>
             </Modal>
