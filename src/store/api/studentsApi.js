@@ -12,7 +12,7 @@ export const studentsApi = createApi({
             query: (student) => ({
                 url: '/me/add_student',
                 method: 'POST',
-                body: JSON.stringify(student),
+                body: student,
             })
         }),
         searchStudent: builder.query({

@@ -8,7 +8,7 @@ import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
 Modal.setAppElement('#root');
 
 const StudentsList = () => {
-    const {data: myStudents, isLoading: studentsIsLoading} = useGetAllStudentsQuery()
+    const {data: { students: myStudents = [] } = {}, isLoading: studentsIsLoading} = useGetAllStudentsQuery()
 
     if(studentsIsLoading) return <Loading />
 
