@@ -5,6 +5,7 @@ import Modal from "react-modal";
 import '../../pages/Profile/ProfilePage.css';
 import {useState} from "react";
 import "./ChangePasswordWindow.css"
+import {useEditUserMutation} from "../../store/api/userApi.js";
 
 const ChangePasswordWindow = (props) => {
     const [error, setError] = useState(null)
@@ -12,6 +13,7 @@ const ChangePasswordWindow = (props) => {
         newPassword: "",
         confirmPassword: "",
     })
+    const [editUser] = useEditUserMutation()
 
     const handleChange = (e) => {
 
@@ -54,34 +56,6 @@ const ChangePasswordWindow = (props) => {
         })
     }
 
-    async function changePassword(){
-        if(error) return
-
-        const password = {
-            password: newPassword.newPassword
-        }
-
-        try{
-            const response = await fetch(`/api/me`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include',
-                body: JSON.stringify(password)
-            })
-
-            if(response.ok){
-                const data = await response.json()
-                console.log(data)
-                handleClose()
-            }
-        }
-        catch(error){
-            console.error(error)
-        }
-    }
-
     return(
         <>
             <Modal className="modalWindow" onRequestClose={props.onClose} isOpen={props.isOpen} >
@@ -93,7 +67,8 @@ const ChangePasswordWindow = (props) => {
                         <Button type="button" className="btn cancelBtn" onClick={handleClose}>Cancel</Button>
                         <Button type="submit" className="confirmBtn btn" onClick={() => {
                             validatePassword()
-                            changePassword()
+                            editUser({password: newPassword.newPassword})
+                            props.onClose()
                         }}>Change password</Button>
                     </div>
             </Modal>

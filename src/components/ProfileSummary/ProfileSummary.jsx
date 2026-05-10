@@ -10,7 +10,7 @@ import {useSummary} from "../../hooks/useSummary.js";
 import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
 
 const ProfileSummary = () => {
-    const {data: myStudents} = useGetAllStudentsQuery()
+    const {data: {students: myStudents}} = useGetAllStudentsQuery()
     const {upcomingLesson,todayLessons, weekLessonsCount, totalDayLessonsDuration,} = useSummary()
 
     return (
