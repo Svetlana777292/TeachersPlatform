@@ -1,9 +1,9 @@
 import "./StudentCard.css"
-import useUserPhoto from "../../hooks/useUserPhoto.js";
 import Button from "../Button/Button.jsx";
+import {useGetAvatarQuery} from "../../store/api/storageApi.js";
 
 const StudentCard = (props) => {
-    const {photo} = useUserPhoto(props.student.id)
+    const {data: photo} = useGetAvatarQuery(props.student.id)
 
     return (
         <div key={props.student.id} className="studentCard" onClick={() => {}}>

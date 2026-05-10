@@ -6,20 +6,19 @@ import UserInfoForm from "../../components/UserInfoForm/UserInfoForm.jsx";
 import Modal from "react-modal";
 import UserInfo from "../../components/UserInfo/UserInfo.jsx";
 import Header from "../../components/Header/Header.jsx";
-import useUserPhoto from "../../hooks/useUserPhoto.js";
 import Button from "../../components/Button/Button.jsx";
 import {useState} from "react";
 import ProfileSummary from "../../components/ProfileSummary/ProfileSummary.jsx";
 import {useGetUserQuery} from "../../store/api/userApi.js";
+import {useGetAvatarQuery} from "../../store/api/storageApi.js";
 
 Modal.setAppElement('#root');
 
 const ProfilePage = () => {
     const {data: user, isLoading} = useGetUserQuery()
-    const {photo, setPhoto, isPhotoLoading} = useUserPhoto(user?.id)
     const [tab, setTab] = useState("summary")
 
-    if(isLoading || isPhotoLoading) {
+    if(isLoading) {
         return <Loading />
     }
 
@@ -37,7 +36,7 @@ const ProfilePage = () => {
             <Header currentPage="Profile" user={user} />
 
             <div className="main-container">
-                <UserInfo photo={photo} setPhoto={setPhoto}/>
+                <UserInfo/>
                 <div className="infoTab">
                     <div className="tabSwitchButtons">
                         <Button className="switchTabButton" onClick={() => setTab("summary")} style={tab === "summary" ? switchTabButtonStyle : null}>Summary</Button>

@@ -1,12 +1,13 @@
 import "./UserInfo.css"
-import useUserPhoto from "../../hooks/useUserPhoto.js";
 import {useGetUserQuery} from "../../store/api/userApi.js";
 import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
+import {useGetAvatarQuery, useSetAvatarMutation} from "../../store/api/storageApi.js";
 
 const UserInfo = () => {
     const {data: user} = useGetUserQuery()
-    const { photo, setPhoto } = useUserPhoto(user.id)
-    const {data: myStudents} = useGetAllStudentsQuery()
+    const [setAvatar] = useSetAvatarMutation()
+    const {data: {lessons: myStudents = []} = {}} = useGetAllStudentsQuery()
+    const {data: photo} = useGetAvatarQuery(user.id)
 
     function formatDate(isoString){
         const date = new Date(isoString)
@@ -22,7 +23,7 @@ const UserInfo = () => {
         const selectedPhoto = e.target.files[0]
         if(!selectedPhoto) return
 
-        await setPhoto(selectedPhoto)
+        await setAvatar(selectedPhoto)
     }
 
     return (
