@@ -1,16 +1,20 @@
 import Modal from "react-modal";
 import "./AddStudentModal.css"
 import Button from "../Button/Button.jsx";
-import handleSubmit from "../../utils/responses.js";
+import {useAddStudentMutation} from "../../store/api/studentsApi.js";
 
 const AddStudentModal = (props) => {
+    const [addStudent, {error}] = useAddStudentMutation()
+
     return (
         <Modal className="modalWindow addStudentModal" onRequestClose={props.onClose} isOpen={props.isOpen} >
             <h1 className="addStudentPrompt">Do you want to add this student?</h1>
             <div className="addButtons">
                 <Button type="button" className="disagreeButton" onClick={() => props.onClose()}>No</Button>
                 <Button type="submit" className="agreeButton" onClick={(e) => {
-                    handleSubmit("POST", props.student, "me/add_student", e)
+                    e.preventDefault()
+                    addStudent(props.student)
+                    console.log('student:', props.student)
                     props.onClose()
                 }}>Yes</Button>
             </div>

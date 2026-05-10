@@ -22,7 +22,10 @@ export const studentsApi = createApi({
             query: (student) => ({
                 url: '/me/students/remove_student',
                 method: 'POST',
-                body: JSON.stringify(student),
+                body: student,
+                headers: {
+                    'Content-Type': 'application/json',
+                }
             })
         }),
     })
