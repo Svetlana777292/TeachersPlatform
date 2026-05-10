@@ -1,61 +1,18 @@
 import {useState, useRef, useEffect} from "react";
 import "./Search.css"
 import AddStudentModal from "../AddStudentModal/AddStudentModal.jsx";
+import {useSearchStudentQuery} from "../../store/api/studentsApi.js";
 
 const Search = () => {
     const [searchedStudent, setSearchedStudent] = useState("")
-    const [result, setResult] = useState([])
     const [addStudent, setAddStudent] = useState(null)
     const [dropdownOpened, setDropdownOpened] = useState(false)
-    const lastRequestId = useRef(0)
     const searchWrapperRef = useRef(null)
-
-    async function searchStudent(target) {
-        if(!target.trim()) {
-            return []
-        }
-
-        try{
-            const response = await fetch(`/api/students/search?q=${encodeURIComponent(target)}`, {
-                method: 'GET',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                credentials: 'include',
-            })
-
-            if(response.ok){
-                const data = await response.json();
-                return data.students || [];
-            }
-            else {
-                return []
-            }
-        }
-        catch (error) {
-            console.log(error)
-            return []
-        }
-    }
+    const {data: {students: result = []} = {} } = useSearchStudentQuery(searchedStudent, { skip: !searchedStudent.trim() })
 
     async function handleChange(e) {
         const value = e.target.value
         setSearchedStudent(value)
-
-        if (!value.trim()) {
-            setResult([]);
-            return;
-        }
-
-        const requestId = ++lastRequestId.current
-        const students = await searchStudent(value)
-
-        if(requestId === lastRequestId.current) {
-            console.log("search:", value);
-            console.log("students from API:", students);
-
-            setResult(students)
-        }
     }
 
     useEffect(() => {

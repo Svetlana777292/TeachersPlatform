@@ -16,7 +16,7 @@ export const studentsApi = createApi({
             })
         }),
         searchStudent: builder.query({
-            query: (value) => `/students/search/q?=${value}`,
+            query: (value) => `/students/search?q=${value}`,
         }),
         removeStudent: builder.mutation({
             query: (student) => ({
