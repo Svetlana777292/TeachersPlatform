@@ -1,10 +1,12 @@
 import "./UserInfo.css"
 import useUserPhoto from "../../hooks/useUserPhoto.js";
-import useMyStudents from "../../hooks/useMyStudents.js";
+import {useGetUserQuery} from "../../store/api/userApi.js";
+import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
 
-const UserInfo = ({user}) => {
+const UserInfo = () => {
+    const {data: user} = useGetUserQuery()
     const { photo, setPhoto } = useUserPhoto(user.id)
-    const {myStudents} = useMyStudents()
+    const {data: myStudents} = useGetAllStudentsQuery()
 
     function formatDate(isoString){
         const date = new Date(isoString)

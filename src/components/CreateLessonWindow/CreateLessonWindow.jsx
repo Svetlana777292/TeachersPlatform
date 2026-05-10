@@ -3,10 +3,10 @@ import {useEffect, useState} from "react";
 import handleSubmit from "../../utils/responses.js";
 import "react-datepicker/dist/react-datepicker.css"
 import "./CreateLessonWindow.css"
-import useMyStudents from "../../hooks/useMyStudents.js";
 import Loading from "../Loading/Loading.jsx";
 import FirstStep from "./FirstStep/FirstStep.jsx";
 import SecondStep from "./SecondStep/SecondStep.jsx";
+import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
 
 const initialLessonData = {
     topic: "",
@@ -22,7 +22,7 @@ const initialLessonData = {
 
 const CreateLessonWindow = (props) => {
 
-    const {myStudents, studentsIsLoading} = useMyStudents()
+    const {data: myStudents, isLoading: studentsIsLoading} = useGetAllStudentsQuery()
     const [nextStep, setNextStep] = useState(false)
     const [selectedTime, setSelectedTime] = useState(null)
     const [selectedDate, setSelectedDate] = useState(null)

@@ -1,25 +1,20 @@
 import Header from "../../components/Header/Header.jsx";
-import useUser from "../../hooks/useUser.js";
 import Loading from "../../components/Loading/Loading.jsx";
 import Modal from "react-modal";
 import "./StudentsList.css"
 import Search from "../../components/Search/Search.jsx";
 import StudentCard from "../../components/StudentCard/StudentCard.jsx";
-import useMyStudents from "../../hooks/useMyStudents.js";
+import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
 Modal.setAppElement('#root');
 
 const StudentsList = () => {
-    const {user, isLoading} = useUser()
-    const {myStudents, studentsIsLoading} = useMyStudents()
+    const {data: myStudents, isLoading: studentsIsLoading} = useGetAllStudentsQuery()
 
-    if (!user) return null
-
-    if(isLoading) return <Loading />
     if(studentsIsLoading) return <Loading />
 
     return(
         <>
-            <Header currentPage="My students" user={user}/>
+            <Header currentPage="My students"/>
             <div className="container">
                 <aside className="aside">
                     <h1 className="studentsCount">

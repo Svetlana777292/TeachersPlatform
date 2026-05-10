@@ -2,11 +2,12 @@ import InputField from "../Inputs/InputField.jsx";
 import {useState} from "react";
 import Button from "../Button/Button.jsx";
 import "./UserInfoForm.css"
-import {useEditUserMutation} from "../../store/api/userApi.js";
+import {useEditUserMutation, useGetUserQuery} from "../../store/api/userApi.js";
 import ErrorField from "../ErrorField/ErrorField.jsx";
 import {getFetchErrorMessage} from "../../utils/errorsHandling.jsx";
 
-const UserInfoForm = ({user}) => {
+const UserInfoForm = () => {
+    const {data: user} = useGetUserQuery()
     const [isEditing, setIsEditing] = useState(false)
     const [changedData, setChangedData] = useState({
         name: user.name,

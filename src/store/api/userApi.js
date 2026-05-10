@@ -35,6 +35,9 @@ export const userApi = createApi({
         getUser: builder.query({
             query: () => "/me",
         }),
+        getUserById: builder.query({
+            query: (id) => `/user/${id}`,
+        }),
         editUser: builder.mutation({
             query: (user) => ({
                 url: "/me",

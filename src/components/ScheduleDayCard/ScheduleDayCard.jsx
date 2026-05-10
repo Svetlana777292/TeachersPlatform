@@ -1,13 +1,13 @@
 import "./ScheduleDayCard.css"
 import LessonCard from "../LessonCard/LessonCard.jsx"
 import getNameById from "../../utils/getName.js"
-import UseMyStudents from "../../hooks/useMyStudents.js";
 import {useState} from "react";
 import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
 import {getTimeString, getEndTimeString} from "../../utils/getEndTimeString.js";
+import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
 
 const ScheduleDayCard = ({lessons, dayLabel}) => {
-    const {myStudents} = UseMyStudents()
+    const {data: myStudents} = useGetAllStudentsQuery()
     const [editingLesson, setEditingLesson] = useState(null)
 
     return (

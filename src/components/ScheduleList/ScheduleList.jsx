@@ -7,10 +7,9 @@ import useMyLessons from "../../hooks/useMyLessons.js";
 import Loading from "../Loading/Loading.jsx";
 import LessonCard from "../LessonCard/LessonCard.jsx";
 import getNameById from "../../utils/getName.js";
-import useMyStudents from "../../hooks/useMyStudents.js";
 import {formatDateLocal, getEndTimeString, getWeekDays} from "../../utils/getEndTimeString.js";
 import {getTimeString} from "../../utils/getEndTimeString.js";
-import {splitLessonByDay} from "../../utils/lessonsUtils.js";
+import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
 
 const HOURS = Array.from({length: 24}, (_, i) => i)
 const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -22,7 +21,7 @@ const ScheduleList = () => {
     const [editingLesson, setEditingLesson] = useState(null)
     const {lessonsIsLoading, lessonsByDate} = useMyLessons()
     const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024)
-    const {myStudents} = useMyStudents()
+    const {data: myStudents} = useGetAllStudentsQuery
 
     useEffect(() => {
         const handleResize = () => setIsDesktop(window.innerWidth >= 1024)

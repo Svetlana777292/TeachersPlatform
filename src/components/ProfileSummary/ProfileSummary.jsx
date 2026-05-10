@@ -4,14 +4,13 @@ import {
 } from "../../utils/getEndTimeString.js";
 import "./ProfileSummary.css"
 import getNameById from "../../utils/getName.js";
-import useMyStudents from "../../hooks/useMyStudents.js";
 import CalendarIcon from "../../../public/CalendarIcon.jsx";
 import PeopleIcon from "../../../public/PeopleIcon.jsx";
 import {useSummary} from "../../hooks/useSummary.js";
+import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
 
 const ProfileSummary = () => {
-
-    const {myStudents} = useMyStudents()
+    const {data: myStudents} = useGetAllStudentsQuery()
     const {upcomingLesson,todayLessons, weekLessonsCount, totalDayLessonsDuration,} = useSummary()
 
     return (

@@ -1,12 +1,12 @@
 import "./LessonCard.css"
 import {getEndTimeString, getTime, getTimeString, getEndTime} from "../../utils/getEndTimeString.js";
 import {useEffect, useState} from "react";
-import useMyStudents from "../../hooks/useMyStudents.js";
 import getNameById from "../../utils/getName.js";
+import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
 
 const LessonCard = (props) => {
     const [timeProgress, setTimeProgress] = useState(0)
-    const {myStudents} = useMyStudents()
+    const {data: myStudents} = useGetAllStudentsQuery()
 
     useEffect(() => {
         const dateNow = new Date().getTime()

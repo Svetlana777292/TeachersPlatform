@@ -42,7 +42,7 @@ const LoginPage = () => {
             </h1>
 
             {
-                error ? <ErrorField errorMessage={getFetchErrorMessage(error)} />
+                error ? <ErrorField errorMessage={getFetchErrorMessage(error.status)} />
                     : null
             }
 
