@@ -7,7 +7,7 @@ const UserInfo = () => {
     const {data: user} = useGetUserQuery()
     const [setAvatar] = useSetAvatarMutation()
     const {data: {lessons: myStudents = []} = {}} = useGetAllStudentsQuery()
-    const {data: photo} = useGetAvatarQuery(user.id)
+    const {data: {url: photo = {}} = {}} = useGetAvatarQuery(user.id)
 
     function formatDate(isoString){
         const date = new Date(isoString)
@@ -23,7 +23,10 @@ const UserInfo = () => {
         const selectedPhoto = e.target.files[0]
         if(!selectedPhoto) return
 
-        await setAvatar(selectedPhoto)
+        const avatarData = new FormData()
+        avatarData.append('photo', selectedPhoto)
+
+        await setAvatar(avatarData)
     }
 
     return (
