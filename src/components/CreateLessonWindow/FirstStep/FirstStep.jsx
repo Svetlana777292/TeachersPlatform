@@ -4,8 +4,10 @@ import {selectStyles} from "../selectStyles.js";
 import InputField from "../../Inputs/InputField.jsx";
 import Button from "../../Button/Button.jsx";
 import {useEffect} from "react";
+import {useGetAllStudentsQuery} from "../../../store/api/studentsApi.js";
 
 const FirstStep = (props) => {
+    const {data: {students: myStudents = []} = {}} = useGetAllStudentsQuery()
 
     useEffect(() => {
         if(props.isEditing) {
@@ -25,7 +27,7 @@ const FirstStep = (props) => {
         }))
     }
 
-    const students = props.myStudents.map((student) => ({
+    const students = myStudents.map((student) => ({
         value: student.id,
         label: `${student.name} ${student.surname} (${student.username})`,
     }))

@@ -3,9 +3,7 @@ import Select from "react-select";
 import Button from "../../Button/Button.jsx";
 import {selectStyles} from "../selectStyles.js";
 import LessonCard from "../../LessonCard/LessonCard.jsx";
-import getNameById from "../../../utils/getName.js";
 import "./SecondStep.css"
-import {getEndTimeString} from "../../../utils/getEndTimeString.js";
 
 const SecondStep = (props) => {
 

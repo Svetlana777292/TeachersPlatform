@@ -6,7 +6,7 @@ import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
 
 const LessonCard = (props) => {
     const [timeProgress, setTimeProgress] = useState(0)
-    const {data: myStudents} = useGetAllStudentsQuery()
+    const {data: {students: myStudents = []} = {}} = useGetAllStudentsQuery()
 
     useEffect(() => {
         const dateNow = new Date().getTime()
