@@ -3,24 +3,12 @@ import DatePicker from "react-datepicker";
 import {selectStyles} from "../selectStyles.js";
 import InputField from "../../Inputs/InputField.jsx";
 import Button from "../../Button/Button.jsx";
-import {useEffect} from "react";
-import {useGetAllStudentsQuery} from "../../../store/api/studentsApi.js";
+import {useMyStudents} from "../../../hooks/useMyStudents.js";
 
 const FirstStep = (props) => {
-    const {data: {students: myStudents = []} = {}} = useGetAllStudentsQuery()
-
-    useEffect(() => {
-        if(props.isEditing) {
-            props.setSelectedDate(new Date(props.lessonData.date))
-            props.setSelectedTime(new Date(props.lessonData.date))
-        }
-    }, [props.isEditing])
-
+    const {myStudents} = useMyStudents()
 
     const handleStudentChange = (selectedOption) => {
-        if(!selectedOption){
-            selectedOption = props.students[0];
-        }
         props.setLessonData(prev => ({
             ...prev,
             student_id: selectedOption.value

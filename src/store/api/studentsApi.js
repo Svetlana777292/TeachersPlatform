@@ -4,6 +4,7 @@ import { baseQueryWithReauth } from "./baseQueryWithReauth.js"
 export const studentsApi = createApi({
     reducerPath: 'studentsApi',
     baseQuery: baseQueryWithReauth,
+    tagTypes: ['students', 'teachers'],
     endpoints: (builder) => ({
         getAllStudents: builder.query({
             query: () => '/teachers/my_students',
@@ -13,10 +14,12 @@ export const studentsApi = createApi({
                 url: '/me/add_student',
                 method: 'POST',
                 body: student,
-            })
+            }),
+            invalidatesTags: ['students', 'teachers'],
         }),
         searchStudent: builder.query({
             query: (value) => `/students/search?q=${value}`,
+            providesTags: ['students'],
         }),
         removeStudent: builder.mutation({
             query: (student) => ({
@@ -26,7 +29,8 @@ export const studentsApi = createApi({
                 headers: {
                     'Content-Type': 'application/json',
                 }
-            })
+            }),
+            invalidatesTags: ['students', 'teachers'],
         }),
     })
 })

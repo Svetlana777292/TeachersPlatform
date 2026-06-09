@@ -1,0 +1,92 @@
+import { useEffect, useState } from "react"
+import { useCreateLessonMutation, useEditLessonMutation } from "../../store/api/lessonsApi.js"
+
+const initialLessonData = {
+    topic: "",
+    description: "",
+    date: "",
+    price: 0,
+    duration: "",
+    card_color: "",
+    call_link: "",
+    student_id: 0,
+    status: "scheduled",
+}
+
+const NUMERIC_FIELDS = ["price", "duration", "student_id"]
+
+export function useCreateLesson({ isOpen, isEditing, fieldsValues, onClose }) {
+    const [createLesson] = useCreateLessonMutation()
+    const [editLesson] = useEditLessonMutation()
+
+    const [nextStep, setNextStep] = useState(false)
+    const [selectedTime, setSelectedTime] = useState(null)
+    const [selectedDate, setSelectedDate] = useState(null)
+    const [lessonData, setLessonData] = useState(fieldsValues || initialLessonData)
+
+    useEffect(() => {
+        if (!isOpen) return
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setLessonData(fieldsValues || initialLessonData)
+        if (isEditing && fieldsValues?.date) {
+            const date = new Date(fieldsValues.date)
+            if (!isNaN(date.getTime())) {
+                setSelectedTime(date)
+                setSelectedDate(date)
+            }
+        }
+    }, [isOpen])
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setLessonData(prev => ({
+            ...prev,
+            [name]: NUMERIC_FIELDS.includes(name) ? Number(value) : value
+        }))
+    }
+
+    const handleClose = () => {
+        onClose()
+        setNextStep(false)
+        setSelectedTime(null)
+        setSelectedDate(null)
+        setLessonData(initialLessonData)
+    }
+
+    const getDateTime = () => {
+        if (!selectedDate || !selectedTime) return lessonData
+        return {
+            ...lessonData,
+            date: new Date(
+                selectedDate.getFullYear(),
+                selectedDate.getMonth(),
+                selectedDate.getDate(),
+                selectedTime.getHours(),
+                selectedTime.getMinutes(),
+                0
+            )
+        }
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const { created_at, updated_at, teacher_id, id, ...cleanData } = getDateTime()
+
+        if (isEditing) {
+            await editLesson({ id: fieldsValues.id, ...cleanData })
+        } else {
+            await createLesson(cleanData)
+        }
+        handleClose()
+    }
+
+    return {
+        nextStep, setNextStep,
+        lessonData, setLessonData,
+        selectedTime, setSelectedTime,
+        selectedDate, setSelectedDate,
+        handleChange,
+        handleClose,
+        handleSubmit,
+    }
+}

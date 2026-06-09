@@ -6,10 +6,12 @@ import {
     getUpcomingLesson
 } from "../utils/lessonsUtils.js";
 import {useMemo} from "react";
+import {useMyStudents} from "./useMyStudents.js";
 
 export function useSummary() {
     const { lessonsByDate } = useMyLessons()
     const currentDay = formatDateLocal(new Date())
+    const {myStudents} = useMyStudents()
 
     const upcomingLesson = useMemo(
         () => getUpcomingLesson(lessonsByDate),
@@ -31,10 +33,16 @@ export function useSummary() {
         [lessonsByDate]
     )
 
+    const studentsCount = useMemo(
+        () => myStudents?.length,
+        [myStudents]
+    )
+
     return {
         upcomingLesson,
         todayLessons,
         weekLessonsCount,
         totalDayLessonsDuration,
+        studentsCount,
     }
 }

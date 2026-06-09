@@ -1,16 +1,17 @@
 import {
     getDateString, getTimeString,
     getWeekdayString
-} from "../../utils/getEndTimeString.js";
+} from "../../../utils/getEndTimeString.js";
 import "./ProfileSummary.css"
-import getNameById from "../../utils/getName.js";
-import CalendarIcon from "../../../public/CalendarIcon.jsx";
-import PeopleIcon from "../../../public/PeopleIcon.jsx";
-import {useSummary} from "../../hooks/useSummary.js";
-import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
+import getNameById from "../../../utils/getName.js";
+import CalendarIcon from "../../../../public/CalendarIcon.jsx";
+import PeopleIcon from "../../../../public/PeopleIcon.jsx";
+import {useSummary} from "../../../hooks/useSummary.js";
+import {useMyStudents} from "../../../hooks/useMyStudents.js";
+import SummaryLessonPreview from "../SummaryLessonPreview/SummaryLessonPreview.jsx";
 
 const ProfileSummary = () => {
-    const {data: {students: myStudents = []} = {}} = useGetAllStudentsQuery()
+    const {myStudents} = useMyStudents()
     const {upcomingLesson,todayLessons, weekLessonsCount, totalDayLessonsDuration,} = useSummary()
 
     return (
@@ -78,15 +79,7 @@ const ProfileSummary = () => {
                     Today's schedule - {`${getWeekdayString(new Date())}, ${getDateString(new Date)}`}
                 </h2>
                 {todayLessons.length !== 0 ? todayLessons.map(lesson => (
-                        <div className="todayLessonCard">
-                            <div className="iconWrapper" style={{background: lesson.card_color}}>
-                                <img src="../../../public/bookIcon.svg"/>
-                            </div>
-                            <div className="lessonTopic">{lesson.topic}</div>
-                            <div className="name">{getNameById(lesson.student_id, myStudents)}</div>
-                            <div className="beginTime">{getTimeString(lesson.date)}</div>
-                            <div className="lessonDurationAndPrice">{`${lesson.duration} min • ${lesson.price}`}</div>
-                        </div>))
+                        <SummaryLessonPreview lesson={lesson}/>))
                 : (
                     <p className="emptyScheduleMessage">You don't have lessons today</p>
                     )}

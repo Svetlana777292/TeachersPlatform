@@ -2,11 +2,12 @@ import "./LessonCard.css"
 import {getEndTimeString, getTime, getTimeString, getEndTime} from "../../utils/getEndTimeString.js";
 import {useEffect, useState} from "react";
 import getNameById from "../../utils/getName.js";
-import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
+import {useMyStudents} from "../../hooks/useMyStudents.js";
 
 const LessonCard = (props) => {
     const [timeProgress, setTimeProgress] = useState(0)
-    const {data: {students: myStudents = []} = {}} = useGetAllStudentsQuery()
+    const {myStudents} = useMyStudents()
+
 
     useEffect(() => {
         const dateNow = new Date().getTime()
@@ -57,7 +58,7 @@ const LessonCard = (props) => {
             onClick={props.onClick}
         >
             <h1
-                className="lessonTitle"
+                className="name"
                 style={props.isDurationShortest
                     ? shortestCardStyleTitle
                     : null}
@@ -65,7 +66,7 @@ const LessonCard = (props) => {
                 {getNameById(props.lesson.student_id, myStudents)}
             </h1>
             {!props.isDurationShort
-                ? <h2 className="studentName">{props.lesson.topic}</h2>
+                ? <h2 className="lessonTitle">{props.lesson.topic}</h2>
                 : null}
             {!props.isDurationShortest
                 ? <div className="lessonData">{`${getTimeString(props.lesson.date)} - ${getEndTimeString(props.lesson.date, props.lesson.duration)} • ${props.lesson.duration}min`}</div>

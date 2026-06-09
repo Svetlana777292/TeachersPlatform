@@ -3,6 +3,7 @@ import {userApi} from "./api/userApi.js"
 import {studentsApi} from "./api/studentsApi.js";
 import {lessonsApi} from "./api/lessonsApi.js";
 import {storageApi} from "./api/storageApi.js";
+import {teachersApi} from "./api/teachersApi.js";
 
 export const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
         [studentsApi.reducerPath]: studentsApi.reducer,
         [lessonsApi.reducerPath]: lessonsApi.reducer,
         [storageApi.reducerPath]: storageApi.reducer,
+        [teachersApi.reducerPath]: teachersApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware()
@@ -17,4 +19,5 @@ export const store = configureStore({
             .concat(studentsApi.middleware)
             .concat(lessonsApi.middleware)
             .concat(storageApi.middleware)
+            .concat(teachersApi.middleware)
 })

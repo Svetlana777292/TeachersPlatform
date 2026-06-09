@@ -4,30 +4,26 @@ import Button from "../../Button/Button.jsx";
 import {selectStyles} from "../selectStyles.js";
 import LessonCard from "../../LessonCard/LessonCard.jsx";
 import "./SecondStep.css"
+import {useCreateLesson} from "../useCreateLesson.js";
+
+const COLORS = [
+    {value: "#FFFF00", label: "yellow"},
+    {value: "#9ACD32", label: "green"},
+    {value: "#4682B4", label: "blue"},
+    {value: "#8A2BE2", label: "purple"},
+]
 
 const SecondStep = (props) => {
 
-    const colors = [
-        {value: "#FFFF00", label: "yellow"},
-        {value: "#9ACD32", label: "green"},
-        {value: "#4682B4", label: "blue"},
-        {value: "#8A2BE2", label: "purple"},
-    ]
-
     const handleColorChange = selectedOption => {
         if(!selectedOption) {
-            selectedOption = colors[0]
+            selectedOption = COLORS[0]
         }
         props.setLessonData (prev => ({
             ...prev,
             card_color: selectedOption.value
         }))
     }
-
-    const endTime = new Date(props.selectedTime)
-    endTime.setHours(endTime.getHours() + props.lessonData.duration / 60)
-    endTime.setMinutes(endTime.getMinutes() + props.lessonData.duration % 60)
-
 
     return (
         <div className="stepContainer">
@@ -53,8 +49,8 @@ const SecondStep = (props) => {
                     classNamePrefix="selectStudent"
                     isSearchable={false}
                     unstyled
-                    options={colors}
-                    value={colors.find(color => color.value === props.lessonData.card_color) || null}
+                    options={COLORS}
+                    value={COLORS.find(color => color.value === props.lessonData.card_color) || null}
                     onChange={handleColorChange}
                     menuPortalTarget={document.body}
                     styles={selectStyles}

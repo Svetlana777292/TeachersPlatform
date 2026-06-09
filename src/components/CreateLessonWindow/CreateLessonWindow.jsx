@@ -1,108 +1,41 @@
 import Modal from "react-modal";
-import {useEffect, useState} from "react";
-import handleSubmit from "../../utils/responses.js";
 import "react-datepicker/dist/react-datepicker.css"
 import "./CreateLessonWindow.css"
 import Loading from "../Loading/Loading.jsx";
 import FirstStep from "./FirstStep/FirstStep.jsx";
 import SecondStep from "./SecondStep/SecondStep.jsx";
-import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
+import {useMyStudents} from "../../hooks/useMyStudents.js";
+import {useCreateLesson} from "./useCreateLesson.js";
 
-const initialLessonData = {
-    topic: "",
-    description: "",
-    date: "",
-    price: 0,
-    duration: "",
-    card_color: "",
-    call_link: "",
-    student_id: 0,
-    status: "scheduled"
-}
+const CreateLessonWindow = ({ isOpen, isEditing, fieldsValues, onClose, title, onSubmitText }) => {
+    const { isStudentsLoading } = useMyStudents()
+    const {
+        nextStep, setNextStep,
+        lessonData, setLessonData,
+        selectedTime, setSelectedTime,
+        selectedDate, setSelectedDate,
+        handleChange,
+        handleClose,
+        handleSubmit,
+    } = useCreateLesson({ isOpen, isEditing, fieldsValues, onClose })
 
-const CreateLessonWindow = (props) => {
-
-    const {data: myStudents, isLoading: studentsIsLoading} = useGetAllStudentsQuery()
-    const [nextStep, setNextStep] = useState(false)
-    const [selectedTime, setSelectedTime] = useState(null)
-    const [selectedDate, setSelectedDate] = useState(null)
-    const [lessonData, setLessonData] = useState(props.fieldsValues || initialLessonData)
-
-    useEffect(() => {
-        if (props.isOpen) {
-            setLessonData(props.fieldsValues || initialLessonData)
-            if(props.isEditing) {
-                setSelectedTime(props.fieldsValues.date ? props.fieldsValues.date : initialLessonData.date)
-                setSelectedDate(props.fieldsValues.date ? props.fieldsValues.date : initialLessonData.date)
-            }
-        }
-    }, [props.isOpen])
-
-
-    const handleChange = (e) => {
-        const {name, value} = e.target
-        const numericFields = ["price", "duration", "student_id"]
-
-        setLessonData({
-            ...lessonData,
-            [name]: numericFields.includes(name) ? Number(value) : value
-        })
-    }
-
-    if (studentsIsLoading) return <Loading message="Loading your schedule.."/>
-
-    const getDateTime = () => {
-        if (selectedDate && selectedTime) {
-            const date = new Date(
-                selectedDate.getFullYear(),
-                selectedDate.getMonth(),
-                selectedDate.getDate(),
-                selectedTime.getHours(),
-                selectedTime.getMinutes(),
-                0
-            )
-
-            return {
-                ...lessonData,
-                date: date
-            }
-        }
-
-        return lessonData
-    }
-
-    async function handleClose(e) {
-        e.preventDefault()
-        props.onClose()
-        setNextStep(false)
-        setSelectedTime(null)
-        setSelectedDate(null)
-        setLessonData(initialLessonData)
-    }
+    if (isStudentsLoading) return <Loading message="Loading your schedule.."/>
 
     return (
         <Modal
             className="modalWindow createLessonWindow"
-            onRequestClose={props.onClose}
-            isOpen={props.isOpen}
+            onRequestClose={handleClose}
+            isOpen={isOpen}
             parentSelector={() => document.body}
         >
-            <form id="form" onChange={handleChange}
-                  onSubmit={async (e) => {
-                      e.preventDefault()
-                      const updatedLessonData = getDateTime()
-                      const {created_at, updated_ad, teacher_id, id, ...cleanData } = updatedLessonData
-                      await handleSubmit(props.method, cleanData, props.apiPath, e, () => handleClose(e))
-                  }}>
+            <form onChange={handleChange} onSubmit={handleSubmit}>
                 <h2 className="newLessonTitle">
-                    {props.title}
-                    <span className="stepsCounter">{!nextStep? "1/2" : "2/2"}</span>
+                    {title}
+                    <span className="stepsCounter">{!nextStep ? "1/2" : "2/2"}</span>
                 </h2>
                 {!nextStep ? (
                     <FirstStep
-                        myStudents={myStudents}
                         handleClose={handleClose}
-                        handleChange={handleChange}
                         lessonData={lessonData}
                         setLessonData={setLessonData}
                         setNextStep={setNextStep}
@@ -110,20 +43,19 @@ const CreateLessonWindow = (props) => {
                         setSelectedDate={setSelectedDate}
                         selectedTime={selectedTime}
                         setSelectedTime={setSelectedTime}
-                        isEditing={props.isEditing}
-                        isOpen={props.isOpen}
-                    />) : (
+                        isEditing={isEditing}
+                        isOpen={isOpen}
+                    />
+                ) : (
                     <SecondStep
-                        myStudents={myStudents}
                         handleClose={handleClose}
-                        handleChange={handleChange}
                         setLessonData={setLessonData}
                         setNextStep={setNextStep}
                         lessonData={lessonData}
                         selectedTime={selectedTime}
-                        submitButtonText={props.onSubmitText}
+                        submitButtonText={onSubmitText}
                     />
-                    )}
+                )}
             </form>
         </Modal>
     )

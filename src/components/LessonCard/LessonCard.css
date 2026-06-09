@@ -9,14 +9,15 @@
 }
 
 .lessonTitle {
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 400;
     color: #FFFFFF;
 }
 
-.studentName {
-    font-size: 1rem;
-    color: #FFFFFF !important;
+.name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #FFFFFF;
 }
 
 .lessonData {

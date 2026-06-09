@@ -1,5 +1,4 @@
 import './ProfilePage.css'
-import ChangePasswordWindow from "../../components/ChangePasswordWindow/ChangePasswordWindow.jsx";
 import AccountManagement from "../../components/AccountManagement/AccountManagement.jsx";
 import Loading from "../../components/Loading/Loading.jsx";
 import UserInfoForm from "../../components/UserInfoForm/UserInfoForm.jsx";
@@ -8,15 +7,15 @@ import UserInfo from "../../components/UserInfo/UserInfo.jsx";
 import Header from "../../components/Header/Header.jsx";
 import Button from "../../components/Button/Button.jsx";
 import {useState} from "react";
-import ProfileSummary from "../../components/ProfileSummary/ProfileSummary.jsx";
+import ProfileSummary from "../../components/ProfileSummary/ProfileSummary/ProfileSummary.jsx";
 import {useGetUserQuery} from "../../store/api/userApi.js";
-import {useGetAvatarQuery} from "../../store/api/storageApi.js";
 
 Modal.setAppElement('#root');
 
 const ProfilePage = () => {
     const {data: user, isLoading} = useGetUserQuery()
     const [tab, setTab] = useState("summary")
+
 
     if(isLoading) {
         return <Loading />
@@ -47,7 +46,6 @@ const ProfilePage = () => {
                 </div>
                 <AccountManagement />
             </div>
-            <ChangePasswordWindow />
         </>
     )
 }

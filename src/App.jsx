@@ -3,9 +3,9 @@ import RegisterPage from "./pages/Auth/RegisterPage/RegisterPage.jsx";
 import LoginPage from "./pages/Auth/LoginPage.jsx";
 import ProfilePage from "./pages/Profile/ProfilePage.jsx";
 import Loading from "./components/Loading/Loading.jsx";
-import StudentsList from "./pages/StudentsList/StudentsList.jsx";
 import SchedulePage from "./pages/SchedulePage/SchedulePage.jsx";
 import {useVerifyUserQuery} from "./store/api/userApi.js";
+import PeoplePage from "./pages/People/PeoplePage/PeoplePage.jsx";
 
 function App() {
   const {data: token, isLoading} = useVerifyUserQuery()
@@ -21,7 +21,7 @@ function App() {
         <Route path="/login/" element={<LoginPage/>}/>
         <Route path="/" element={token ? <ProfilePage /> : <LoginPage/>}/>
         <Route path="/Profile/" element={<ProfilePage/>}/>
-        <Route path="/studentsList/" element={<StudentsList/>}/>
+        <Route path="/people/" element={<PeoplePage />}/>
         <Route path="/schedule/" element={<SchedulePage/>}/>
       </Routes>
     </>

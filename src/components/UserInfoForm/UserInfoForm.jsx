@@ -1,73 +1,146 @@
+import { useState } from "react";
+
 import InputField from "../Inputs/InputField.jsx";
-import {useState} from "react";
 import Button from "../Button/Button.jsx";
-import "./UserInfoForm.css"
-import {useEditUserMutation, useGetUserQuery} from "../../store/api/userApi.js";
 import ErrorField from "../ErrorField/ErrorField.jsx";
-import {getFetchErrorMessage} from "../../utils/errorsHandling.jsx";
+import { useEditUserMutation, useGetUserQuery } from "../../store/api/userApi.js";
+import { getFetchErrorMessage } from "../../utils/errorsHandling.jsx";
+
+import "./UserInfoForm.css";
 
 const UserInfoForm = () => {
-    const {data: user} = useGetUserQuery()
-    const [isEditing, setIsEditing] = useState(false)
+    const { data: user } = useGetUserQuery();
+    const [editUser, { error }] = useEditUserMutation();
+    const [isEditing, setIsEditing]   = useState(false);
     const [changedData, setChangedData] = useState({
-        name: user.name,
-        surname: user.surname,
-        email: user.email,
-        phoneNumber: user.phoneNumber || "",
-        discipline: user.discipline || "",
-        description: user.description || ""
-    })
-    const [editUser, {error}] = useEditUserMutation()
+        name:        user.name,
+        surname:     user.surname,
+        email:       user.email,
+        phoneNumber: user.phoneNumber  || "",
+        discipline:  user.discipline   || "",
+        description: user.description  || "",
+    });
 
     const handleChange = (e) => {
-        setChangedData({
-            ...changedData,
-            [e.target.name]: e.target.value
-        })
-    }
+        setChangedData((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        editUser(changedData);
+    };
+
+    const isTeacher = user.role === "teacher";
+    const isStudent = user.role === "student";
 
     return (
         <main className="edit-account-info">
-            <form className="edit-profile" onSubmit={async (e) => {
-                e.preventDefault()
-                await editUser(changedData)
-            }}>
-                {error ? <ErrorField errorMessage={getFetchErrorMessage(error.status)} /> : null}
+            <form className="edit-profile" onSubmit={handleSubmit}>
+
+                {error && (
+                    <ErrorField errorMessage={getFetchErrorMessage(error.status)} />
+                )}
 
                 <div className="fullname-container">
-                    <InputField label="Name" className="info-areas" disabled={!isEditing} name="name" placeholder={user.name} value={changedData.name} type="text" onChange={handleChange} ></InputField>
-                    <InputField label="Surname" className="info-areas" disabled={!isEditing} name="surname" placeholder={user.surname} value={changedData.surname} type="text" onChange={handleChange}></InputField>
+                    <InputField
+                        label="Name"
+                        className="info-areas"
+                        name="name"
+                        type="text"
+                        placeholder={user.name}
+                        value={changedData.name}
+                        disabled={!isEditing}
+                        onChange={handleChange}
+                    />
+                    <InputField
+                        label="Surname"
+                        className="info-areas"
+                        name="surname"
+                        type="text"
+                        placeholder={user.surname}
+                        value={changedData.surname}
+                        disabled={!isEditing}
+                        onChange={handleChange}
+                    />
                 </div>
 
-                <InputField label="Email" className="info-areas" disabled={!isEditing} name="email" placeholder={user.email} value={user.email} type="text" onChange={handleChange}></InputField>
-                <InputField label="Phone number" className="info-areas" disabled={!isEditing} name="phone" placeholder="+1 (11) 111-11-11" value={changedData.phoneNumber ? changedData.phoneNumber : "+1 (11) 111-11-11"} type="text" onChange={handleChange}></InputField>
+                <InputField
+                    label="Email"
+                    className="info-areas"
+                    name="email"
+                    type="text"
+                    placeholder={user.email}
+                    value={user.email}
+                    disabled={!isEditing}
+                    onChange={handleChange}
+                />
 
-                {user.role === "teacher" && <InputField label="Subjects" className="info-areas" disabled={!isEditing} name="discipline"
-                             placeholder="Math, physics"
-                             value={changedData.discipline ? changedData.discipline : "Math, physics"} type="text"
-                             onChange={handleChange}></InputField>}
+                <InputField
+                    label="Phone number"
+                    className="info-areas"
+                    name="phone"
+                    type="text"
+                    placeholder="+1 (11) 111-11-11"
+                    value={changedData.phoneNumber || "+1 (11) 111-11-11"}
+                    disabled={!isEditing}
+                    onChange={handleChange}
+                />
 
-                {user.role === "student" && <InputField label="Grade" className="info-areas" disabled={!isEditing} name="description"
-                                                        placeholder=""
-                                                        value={changedData.discipline ? changedData.discipline : "10th Grade"} type="text"
-                                                        onChange={handleChange}></InputField>}
+                {isTeacher && (
+                    <InputField
+                        label="Subjects"
+                        className="info-areas"
+                        name="discipline"
+                        type="text"
+                        placeholder="Math, physics"
+                        value={changedData.discipline || "Math, physics"}
+                        disabled={!isEditing}
+                        onChange={handleChange}
+                    />
+                )}
 
-                { user.role === "teacher" && <div className="form-group">
-                    <label htmlFor="bio">Bio</label>
-                    <textarea name="description" placeholder="" maxLength="200"
-                              value={changedData.description ? changedData.description : undefined} className="info-areas"
-                              disabled={!isEditing} onChange={handleChange}></textarea>
+                {isStudent && (
+                    <InputField
+                        label="Grade"
+                        className="info-areas"
+                        name="description"
+                        type="text"
+                        placeholder=""
+                        value={changedData.discipline || "10th Grade"}
+                        disabled={!isEditing}
+                        onChange={handleChange}
+                    />
+                )}
 
-                    <Button type={isEditing ? "button" : "submit"}
+                {isTeacher && (
+                    <div className="form-group">
+                        <label htmlFor="bio">Bio</label>
+                        <textarea
+                            name="description"
+                            placeholder=""
+                            maxLength="200"
+                            className="info-areas"
+                            value={changedData.description || undefined}
+                            disabled={!isEditing}
+                            onChange={handleChange}
+                        />
+
+                        <Button
+                            type={isEditing ? "button" : "submit"}
                             className="btn edit-profile-btn"
-                            onClick={() => setIsEditing(!isEditing)}
-                    >
-                        {isEditing ? "Save" : "Change account"}
-                    </Button>
-                </div>}
+                            onClick={() => setIsEditing((prev) => !prev)}
+                        >
+                            {isEditing ? "Save" : "Change account"}
+                        </Button>
+                    </div>
+                )}
+
             </form>
         </main>
-    )
-}
+    );
+};
 
-export default UserInfoForm
+export default UserInfoForm;

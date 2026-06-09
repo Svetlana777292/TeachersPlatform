@@ -1,14 +1,11 @@
 import "./ScheduleDayCard.css"
 import LessonCard from "../LessonCard/LessonCard.jsx"
 import getNameById from "../../utils/getName.js"
-import {useState} from "react";
-import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
 import {getTimeString, getEndTimeString} from "../../utils/getEndTimeString.js";
-import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
+import {useMyStudents} from "../../hooks/useMyStudents.js";
 
-const ScheduleDayCard = ({lessons, dayLabel}) => {
-    const {data: myStudents} = useGetAllStudentsQuery()
-    const [editingLesson, setEditingLesson] = useState(null)
+const ScheduleDayCard = ({lessons, dayLabel, setEditingLesson, isTeacher}) => {
+    const {myStudents} = useMyStudents()
 
     return (
         <>
@@ -29,7 +26,7 @@ const ScheduleDayCard = ({lessons, dayLabel}) => {
                                 duration={lesson.duration}
                                 price={lesson.price}
                                 onClick={() => {
-                                    setEditingLesson(lesson.originalLesson ?? lesson)
+                                    isTeacher ? setEditingLesson(lesson.originalLesson ?? lesson) : null
                                 }}
                             />
                         ))
@@ -37,17 +34,6 @@ const ScheduleDayCard = ({lessons, dayLabel}) => {
                 </div>
 
             </div>
-            <CreateLessonWindow
-                method="PATCH"
-                apiPath={`lessons/${editingLesson?.id}`}
-                key={editingLesson?.key}
-                isOpen={editingLesson !== null}
-                onClose={() => setEditingLesson(null)}
-                title="Edit Lesson"
-                onSubmitText="Save changes"
-                fieldsValues={editingLesson}
-                isEditing={editingLesson !== null}
-            />
         </>
     )
 }

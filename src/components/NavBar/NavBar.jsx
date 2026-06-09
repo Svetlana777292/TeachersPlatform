@@ -8,14 +8,13 @@ import MoneyIcon from "../../../public/MoneyIcon.jsx";
 const teacherItems = [
     {href: "/", text: "Finance", icon: MoneyIcon},
     {href: "/schedule", text: "Schedule", icon: CalendarIcon},
-    {href: "/studentsList", text: "My students", icon: PeopleIcon},
+    {href: "/people", text: "My students", icon: PeopleIcon},
     {href: "/Profile", text: "Profile", icon: ProfileIcon},
 ]
 
 const studentItems = [
-    {href: "/", text: "My teachers"},
-    {href: "/", text: "Schedule"},
-    {href: "/", text: "Profile"},
+    {href: "/schedule", text: "Schedule", icon: CalendarIcon},
+    {href: "/Profile", text: "Profile", icon: ProfileIcon},
 ]
 
 const NavBar = (props) => {

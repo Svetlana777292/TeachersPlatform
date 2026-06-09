@@ -12,6 +12,7 @@
     border-bottom: 1px solid #EAEAEA;
     margin-bottom: 0.5rem;
     box-shadow: 2px 2px 5px #EAEAEA;
+    z-index: 20;
 }
 
 .page-title {

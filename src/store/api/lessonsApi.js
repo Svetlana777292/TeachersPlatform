@@ -4,23 +4,27 @@ import { baseQueryWithReauth } from "./baseQueryWithReauth.js"
 export const lessonsApi = createApi({
     reducerPath: 'lessonsApi',
     baseQuery: baseQueryWithReauth,
+    tagTypes: ['lessons'],
     endpoints: (builder) => ({
         getAllLessons: builder.query({
             query: () => '/lessons',
+            providesTags: ['lessons'],
         }),
         createLesson: builder.mutation({
             query: (lessonData) => ({
                 url: '/lessons',
                 method: 'POST',
-                body: JSON.stringify(lessonData),
-            })
+                body: lessonData,
+            }),
+            invalidatesTags: ['lessons'],
         }),
         editLesson: builder.mutation({
-            query: (lessonData, lessonId) => ({
-                url: `/lessons/${lessonId}`,
+            query: ({id, ...lessonData}) => ({
+                url: `/lessons/${id}`,
                 method: 'PATCH',
-                body: JSON.stringify(lessonData),
-            })
+                body: lessonData,
+            }),
+            invalidatesTags: ['lessons'],
         })
     })
 })

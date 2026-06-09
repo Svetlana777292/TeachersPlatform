@@ -66,6 +66,7 @@
     border-radius: 1rem;
     box-shadow: 0 0 5px #EAEAEA;
     height: auto;
+    gap: 1rem;
 }
 
 .todaysScheduleTitle {
@@ -116,16 +117,6 @@
 
 .weekLessonsStatsIcon {
     color: #a127f9;
-}
-
-.lessonTopic, .beginTime {
-    font-size: 1.1rem;
-    font-weight: 400;
-}
-
-.name, .lessonDurationAndPrice {
-    font-size: 0.9rem;
-    color: #72757b;
 }
 
 @media (min-width: 1025px) {

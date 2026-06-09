@@ -41,8 +41,8 @@
 }
 
 .weeks-switcher {
-    display: grid;
-    grid-template-columns: 1fr 1fr 0.4fr;
+    display: flex;
+    flex-direction: row;
     gap: 0.5rem;
     padding: 1rem;
 }
@@ -60,6 +60,7 @@
     color: #FFFFFF;
     font-weight: 500;
     background: #000000;
+    width: 35%;
 }
 
 .calendarHeader {
