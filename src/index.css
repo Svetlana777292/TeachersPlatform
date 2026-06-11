@@ -23,6 +23,19 @@ body {
   width: 100%;
 }
 
+main {
+  background: #f3f3f4;
+  flex: 1;
+  width: 100%;
+}
+
+.layout-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 .container {
   width: 100%;
   display: flex;

@@ -1,6 +1,7 @@
 .main-header {
     position: sticky;
     top: 0;
+    width: 100%;
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
@@ -10,7 +11,6 @@
     min-height: 4vh;
     height: auto;
     border-bottom: 1px solid #EAEAEA;
-    margin-bottom: 0.5rem;
     box-shadow: 2px 2px 5px #EAEAEA;
     z-index: 20;
 }
@@ -70,13 +70,17 @@
     display: flex;
 }
 
-@media (min-width: 1040px) {
+@media (min-width: 1024px) {
     .main-header {
+        padding: 0;
+    }
+
+    .header-inner {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        padding: 1rem 10rem;
+        padding: 1rem;
     }
 
     .menu-list {
@@ -84,13 +88,13 @@
         flex-direction: row;
         align-items: center;
         justify-content: end;
-        padding: 1rem 1rem;
+        padding: 0;
         font-size: 1.1rem;
     }
 
     .page-title {
         margin: 0;
-        padding: 1rem 1rem;
+        padding: 0;
         font-size: 1.5rem;
         font-weight: 700;
         text-align: start;
