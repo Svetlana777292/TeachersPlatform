@@ -29,13 +29,13 @@ input[type=search] {
     font-size: 16px;
     border: 1px solid #E5E7EB;
     border-radius: 0.4rem;
-    background-color: #F3F4F6;
+    background-color: #EFEFF1FF;
     color: #000000;
     text-indent: 0.5rem;
 }
 
 input::placeholder {
-    color: #9CA3AF;
+    color: #878787;
     font-weight: 300;
     font-size: 0.9rem;
 }
@@ -57,7 +57,3 @@ input[type=radio]:checked {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="black"/></svg>');
 }
 
-input::placeholder{
-    padding-left: 0.5rem;
-    color: #878787;
-}
