@@ -10,6 +10,7 @@
     box-shadow: 0 0 5px #d5d5d5;
     height: auto;
     gap: 0.5em;
+    background: #FFFFFF;
 }
 
 .avatar-wrapper {
@@ -57,7 +58,7 @@ dd { font-size: 1rem; }
     margin-top: 1rem;
 }
 
-@media (min-width: 1040px){
+@media (min-width: 1024px){
     .user-info{
         grid-row: 1;
         grid-column: 1;

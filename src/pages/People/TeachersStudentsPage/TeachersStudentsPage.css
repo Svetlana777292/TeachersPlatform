@@ -1,11 +1,33 @@
+.studentsListTitle {
+    align-self: flex-start;
+    color: #000000;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.studentsPageDescription{
+    align-self: flex-start;
+    color: #878787;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
 .studentsListPageContainer {
     display: flex;
     flex-direction: column;
     flex: 1;
     width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.aside {
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
-    min-height: 100vh;
-    padding: 1rem;
+    margin-bottom: 1rem;
 }
 
 .studentsCount {
@@ -19,7 +41,7 @@
     font-size: 1.2rem;
     font-weight: 400;
     color: #72757b;
-    margin-bottom: 1rem;
+    background: #FFFFFF;
 }
 
 .totalStudentsCount, .activeStudentsCount {
@@ -32,19 +54,7 @@
     flex-direction: column;
     min-height: 10vh;
     height: auto;
-    padding: 1rem;
-    border: 1px solid #EAEAEA;
-    border-radius: 1rem;
-    box-shadow: 0 0 1px #d5d5d5;
     color: #72757b;
-}
-
-.studentsListTitle {
-    align-self: flex-start;
-    color: #000000;
-    font-weight: 500;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
 }
 
 .studentsList {
@@ -59,13 +69,29 @@
 
 @media (min-width: 1024px){
     .studentsListPageContainer {
-        padding: 1rem 10rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .studentsList {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
     }
 
     .aside {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr auto;
+    }
+
+    .searchContainer {
+        grid-row: 2;
+        grid-column: 1 / -1;
+    }
+
+    .studentsPageDescription {
+        margin-bottom: 1.5rem;
     }
 }
 
