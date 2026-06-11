@@ -8,7 +8,7 @@ import {getWeekDays} from "../../utils/getEndTimeString.js";
 import ScheduleMobile from "./ScheduleMobile.jsx";
 import ScheduleDesktop from "./ScheduleDesktop.jsx";
 
-const ScheduleList = (isTeacher) => {
+const ScheduleList = ({isTeacher}) => {
     const [weekOffset, setWeekOffset] = useState(0)
     const [creatingLesson, setCreatingLesson] = useState(false)
     const [editingLesson, setEditingLesson] = useState(null)

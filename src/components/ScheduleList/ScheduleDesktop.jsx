@@ -13,6 +13,8 @@ const ScheduleDesktop = ({days, setEditingLesson, isTeacher}) => {
         const dayKey = formatDateLocal(days[dayIndex])
         const dayLessons = lessonsByDate[dayKey] || []
 
+        console.log(dayLessons)
+
         return dayLessons.map(lesson => {
             const day = new Date(lesson.date)
             const hours = day.getHours()
@@ -52,6 +54,9 @@ const ScheduleDesktop = ({days, setEditingLesson, isTeacher}) => {
         })
     }
 
+    const currentDay = new Date()
+    console.log(currentDay)
+
     return (
         <main className="scheduleMain scheduleDesktop">
             <div className="calendarHeader">
@@ -59,7 +64,7 @@ const ScheduleDesktop = ({days, setEditingLesson, isTeacher}) => {
                 {days.map((day, i) => (
                     <div className="dayHeader" key={i}>
                         <span className="dayName">{WEEK_DAYS[i]}</span>
-                        <span className="dayNumber">{days[i].getDate()}</span>
+                        <span className={days[i].toDateString() === currentDay.toDateString() ? "currentDay" : "dayNumber"}>{days[i].getDate()}</span>
                     </div>
                 ))}
             </div>
