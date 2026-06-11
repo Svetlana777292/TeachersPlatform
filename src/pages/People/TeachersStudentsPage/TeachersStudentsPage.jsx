@@ -6,6 +6,8 @@ import Search from "../../../components/Search/Search.jsx";
 import StudentCard from "../StudentCard/StudentCard.jsx";
 import {useMyStudents} from "../../../hooks/useMyStudents.js";
 import {useSummary} from "../../../hooks/useSummary.js";
+import PeopleIcon from "../../../../public/PeopleIcon.jsx";
+import ChartIcon from "../../../../public/ChartIcon.jsx";
 Modal.setAppElement('#root');
 
 const TeachersStudentsPage = () => {
@@ -20,10 +22,10 @@ const TeachersStudentsPage = () => {
                 <p className="studentsPageDescription">Overview of everyone you currently teach.</p>
                 <aside className="aside">
                     <section className="studentsCount">
-                        Total students <span className="totalStudentsCount">{myStudents.length}</span>
+                        <PeopleIcon className="teachersStudentsCountIcon"/><span className="totalStudentsCardTitle">Total students</span> <span className="totalStudentsCount">{myStudents.length}</span>
                     </section>
                     <section className="studentsCount">
-                        Active this month <span className="activeStudentsCount">{myStudents.length}</span>
+                        <ChartIcon className="teachersActiveStudentsCountIcon"/><span className="totalActiveStudentsCardTitle">Active this month</span> <span className="activeStudentsCount">{myStudents.length}</span>
                     </section>
 
                     <div className="searchContainer">
