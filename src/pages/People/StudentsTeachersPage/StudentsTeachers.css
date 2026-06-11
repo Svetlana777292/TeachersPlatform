@@ -4,7 +4,8 @@
     flex-direction: column;
     width: 100%;
     min-height: auto;
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .teachersCount {
