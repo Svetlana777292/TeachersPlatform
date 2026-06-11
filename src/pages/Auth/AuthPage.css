@@ -7,8 +7,6 @@
 
 #root:has(.auth-container) {
     display: flex;
-    min-height: 100dvh;
-    min-height: -webkit-fill-available;
     width: 100%;
     align-items: center;
     justify-content: center;

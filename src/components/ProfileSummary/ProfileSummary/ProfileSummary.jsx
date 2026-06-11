@@ -15,7 +15,7 @@ const ProfileSummary = () => {
     const {upcomingLesson,todayLessons, weekLessonsCount, totalDayLessonsDuration,} = useSummary()
 
     return (
-        <main className="profileSummaryContainer">
+        <div className="profileSummaryContainer">
             <section className="statistics">
                 <div className="statsCard">
                     <h3 className="statsTitle">
@@ -84,7 +84,7 @@ const ProfileSummary = () => {
                     <p className="emptyScheduleMessage">You don't have lessons today</p>
                     )}
             </div>
-        </main>
+        </div>
     )
 }
 

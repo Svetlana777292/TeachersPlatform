@@ -30,6 +30,16 @@
     background: #FFFFFF;
 }
 
+.statsCard, .todaysSchedule {
+    transition: transform 0.3s ease-in-out,
+                box-shadow 0.3s ease-in-out;
+}
+
+.statsCard:hover, .todaysSchedule:hover {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 2px 5px #d1d0d0;
+}
+
 .statsIconWrapper {
     height: 2.5rem;
     width: 2.5rem;

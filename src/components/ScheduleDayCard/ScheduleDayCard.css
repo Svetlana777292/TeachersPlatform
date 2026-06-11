@@ -10,6 +10,13 @@
     margin: 0 0.5rem;
     margin-bottom: 0.5rem;
     background: #FFFFFF;
+    transition: transform 0.3s ease-in-out,
+                box-shadow 0.3s ease-in-out;
+}
+
+.dayCardWrapper:hover {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 2px 5px #d1d0d0;
 }
 
 .lessonsWrapper {

@@ -38,8 +38,12 @@
 .messageButton {
     width: 100%;
     background: none;
-    border: 0.5px solid #878787;
+    border: 0.5px solid #EAEAEA;
     color: #000000;
+}
+
+.messageButton:hover {
+    background: #EAEAEA;
 }
 
 .studentInfo {
