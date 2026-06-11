@@ -1,5 +1,5 @@
 .exit-btn{
-    background-color: #e7e9ed;
+    background-color: #EFEFF1FF;
     font-weight: 500;
     border: 0.5px solid #e6e5e5;
 }
@@ -22,6 +22,5 @@
 
 .exit-btn, .delete-btn{
     height: 3em;
-    border-radius: 0.4rem;
     font-size: 0.9rem;
 }
