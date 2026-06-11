@@ -2,6 +2,7 @@ import {useState, useRef, useEffect} from "react";
 import "./Search.css"
 import AddStudentModal from "../AddStudentModal/AddStudentModal.jsx";
 import {useSearchStudentQuery} from "../../store/api/studentsApi.js";
+import SearchIcon from "../../../public/SearchIcon.jsx";
 
 const Search = () => {
     const [searchedStudent, setSearchedStudent] = useState("")
@@ -31,15 +32,18 @@ const Search = () => {
 
     return (
         <div className="searchWrapper" ref={searchWrapperRef}>
-            <input
-                type="search"
-                className="searchField"
-                value={searchedStudent}
-                placeholder="Search student to add..."
-                onChange={(e) => {
-                    setDropdownOpened(true)
-                    handleChange(e)
-                }}/>
+            <div className="searchWithIcon">
+                <SearchIcon className="searchIcon"/>
+                <input
+                    type="search"
+                    className="searchField"
+                    value={searchedStudent}
+                    placeholder="Search student to add..."
+                    onChange={(e) => {
+                        setDropdownOpened(true)
+                        handleChange(e)
+                    }}/>
+            </div>
             {searchedStudent.trim() && result.length > 0 && dropdownOpened &&(
                 <div className="searchDropdown">
                     {result.map((student) => (
