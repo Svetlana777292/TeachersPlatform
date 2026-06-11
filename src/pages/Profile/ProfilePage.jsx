@@ -34,7 +34,7 @@ const ProfilePage = () => {
         <>
             <Header currentPage="Profile" user={user} />
 
-            <div className="main-container">
+            <main><div className="main-container layout-container">
                 <UserInfo/>
                 <div className="infoTab">
                     <div className="tabSwitchButtons">
@@ -45,7 +45,7 @@ const ProfilePage = () => {
                     {tab === "info" && (<UserInfoForm />)}
                 </div>
                 <AccountManagement />
-            </div>
+            </div></main>
         </>
     )
 }

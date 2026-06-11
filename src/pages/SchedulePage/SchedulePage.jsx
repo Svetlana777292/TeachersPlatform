@@ -14,12 +14,14 @@ const SchedulePage = () => {
     return(
         <>
             <Header currentPage="Schedule"/>
-            {!isTeacher ? (<StudentsTeachers />) : null}
-            <div className="page-container">
-                <div className="schedule-container">
-                    <ScheduleList isTeacher={isTeacher}/>
+            <main>
+                {!isTeacher ? (<StudentsTeachers />) : null}
+                <div className="page-container layout-container">
+                    <div className="schedule-container">
+                        <ScheduleList isTeacher={isTeacher}/>
+                    </div>
                 </div>
-            </div>
+            </main>
         </>
     )
 }

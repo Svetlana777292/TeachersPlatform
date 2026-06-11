@@ -5,6 +5,7 @@ import "./TeachersStudentsPage.css"
 import Search from "../../../components/Search/Search.jsx";
 import StudentCard from "../StudentCard/StudentCard.jsx";
 import {useMyStudents} from "../../../hooks/useMyStudents.js";
+import {useSummary} from "../../../hooks/useSummary.js";
 Modal.setAppElement('#root');
 
 const TeachersStudentsPage = () => {
@@ -14,7 +15,9 @@ const TeachersStudentsPage = () => {
 
     return(
         <>
-            <div className="studentsListPageContainer">
+            <div className="studentsListPageContainer layout-container">
+                <h1 className="studentsListTitle">My students</h1>
+                <p className="studentsPageDescription">Overview of everyone you currently teach.</p>
                 <aside className="aside">
                     <section className="studentsCount">
                         Total students <span className="totalStudentsCount">{myStudents.length}</span>
@@ -29,7 +32,6 @@ const TeachersStudentsPage = () => {
                 </aside>
 
                 <main className="studentsListContainer">
-                    <h2 className="studentsListTitle">My students:</h2>
                     <div className="studentsList">{myStudents.length > 0 ?
                         myStudents.map((student) => (
                         <StudentCard key={student.id} student={student} />)) :

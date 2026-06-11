@@ -12,15 +12,9 @@ const PeoplePage = () => {
     return (
         <>
             <Header user={user} currentPage={currentPage}/>
-            {
-                isTeacher ? (
-                        <TeachersStudentsPage />
-                    )
-                    : (
-
-                        <StudentsTeachers />
-                    )
-            }
+            <main>
+                {isTeacher ? <TeachersStudentsPage /> : <StudentsTeachers />}
+            </main>
         </>
     )
 }

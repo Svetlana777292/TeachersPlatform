@@ -7,7 +7,7 @@ const StudentsTeachers = () => {
 
     return (
         <>
-            <div className="teachersListPageContainer">
+            <div className="teachersListPageContainer layout-container">
                 <aside className="aside">
                     <section className="teachersCount">
                         Total teachers <span className="totalTeachersCount">{teachersCount}</span>
