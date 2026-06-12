@@ -33,12 +33,12 @@ const TeachersStudentsPage = () => {
                     </div>
                 </aside>
 
-                <main className="studentsListContainer">
+                <section className="studentsListContainer">
                     <div className="studentsList">{myStudents.length > 0 ?
                         myStudents.map((student) => (
                         <StudentCard key={student.id} student={student} />)) :
                         "You don't have any students yet :("}</div>
-                </main>
+                </section>
             </div>
         </>
     )

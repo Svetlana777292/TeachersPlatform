@@ -17,10 +17,10 @@
 
 body {
   display: flex;
-  background-color: #FFFFFF;
   min-height: 100vh;
   flex-direction: column;
   width: 100%;
+  background: #f3f3f4;
 }
 
 main {

@@ -25,9 +25,9 @@ const ScheduleMobile = ({days, setEditingLesson, isTeacher}) => {
     }
 
     return (
-        <main className="scheduleMain sheduleMobile">
+        <section className="scheduleMain sheduleMobile">
             {renderScheduleCards()}
-        </main>
+        </section>
     )
 }
 

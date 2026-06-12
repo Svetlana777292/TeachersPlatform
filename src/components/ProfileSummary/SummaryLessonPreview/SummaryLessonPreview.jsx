@@ -4,6 +4,7 @@ import {useMyStudents} from "../../../hooks/useMyStudents.js";
 import {useMyTeachers} from "../../../hooks/useMyTeachers.js";
 import {useGetUserQuery} from "../../../store/api/userApi.js";
 import "./SummaryLessonPreview.css"
+import BookIcon from "../../../../public/BookIcon.jsx";
 
 const SummaryLessonPreview = ({lesson}) => {
     const {myStudents} = useMyStudents()
@@ -14,7 +15,7 @@ const SummaryLessonPreview = ({lesson}) => {
     return (
         <div className="todayLessonCard">
             <div className="iconWrapper" style={{background: lesson.card_color}}>
-                <img src="../../../public/bookIcon.svg"/>
+                <BookIcon className="bookIcon"/>
             </div>
             <div className="lessonTopic">{lesson.topic}</div>
             <div className="previewName">{getNameById(lesson.student_id, people)}</div>
