@@ -37,7 +37,7 @@ const SecondStep = (props) => {
             />
             <InputField
                 name="call_link"
-                type="text"
+                type="url"
                 label="Link to lesson"
                 value={props.lessonData.call_link}
                 placeholder="Link to your conferance"
