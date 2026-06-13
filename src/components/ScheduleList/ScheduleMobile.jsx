@@ -11,11 +11,15 @@ const ScheduleMobile = ({days, setEditingLesson, isTeacher}) => {
             const dayKey = formatDateLocal(days[i])
             const dayLessons = lessonsByDate[dayKey] || []
             dayLessons.sort((a, b) => new Date(a.date) - new Date(b.date))
+            const currentDay = new Date()
+            const dayLabel = days[i].toDateString() === currentDay.toDateString()
+                ? `Today, ${WEEK_DAYS[i]},  ${days[i].toLocaleDateString()}`
+                : `${WEEK_DAYS[i]},  ${days[i].toLocaleDateString()}`
 
             return (
                 <ScheduleDayCard
                     lessons={dayLessons}
-                    dayLabel={`${WEEK_DAYS[i]},  ${days[i].toLocaleDateString()}`}
+                    dayLabel={dayLabel}
                     key={dayKey}
                     setEditingLesson={setEditingLesson}
                     isTeacher={isTeacher}
