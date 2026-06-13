@@ -9,15 +9,6 @@
     color: #878787 !important;
     font-weight: 300 !important;
     font-size: 0.9rem !important;
-    transition: box-shadow 0.2s ease-in-out;
-}
-
-.searchField:hover {
-    box-shadow: 0 2px 5px #d1d0d0;
-}
-
-.searchField:focus {
-    outline: none;
 }
 
 .searchIcon {
