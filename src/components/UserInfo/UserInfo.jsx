@@ -58,10 +58,10 @@ const UserInfo = () => {
             </label>
 
             <dl className="account-info">
-                <dt>Registration date</dt>
+                <dt>Registration date:</dt>
                 <dd>{formatDate(user.createdAt)}</dd>
 
-                <dt>{isTeacher ? "Total students" : "Active teachers"}</dt>
+                <dt>{isTeacher ? "Total students:" : "Active teachers:"}</dt>
                 <dd>{isTeacher ? studentsCount : teachersCount}</dd>
             </dl>
 

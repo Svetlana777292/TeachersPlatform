@@ -35,12 +35,23 @@
 }
 
 dt{
+    font-weight: 400;
     color: #515151;
 }
 
-.main-title { font-size: 1.2rem; color: #000000}
-dt { font-size: 0.9rem; }
-dd { font-size: 1rem; }
+.main-title {
+    font-size: 1.2rem;
+    color: #000000
+}
+
+dt {
+    font-size: 0.8rem;
+}
+
+dd {
+    font-size: 1rem;
+    font-weight: 500;
+}
 
 .role{
     font-size: 1rem;
