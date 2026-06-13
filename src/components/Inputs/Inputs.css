@@ -20,7 +20,8 @@ input[type=password],
 input[type=email],
 input[type=number],
 input[type=date],
-input[type=search] {
+input[type=search],
+input[type=url]{
     width: 100%;
     height: 2.5em;
     display: inline-block;
@@ -32,12 +33,21 @@ input[type=search] {
     background-color: #EFEFF1FF;
     color: #000000;
     text-indent: 0.5rem;
+    transition: box-shadow 0.2s ease-in-out;
 }
 
 input::placeholder {
     color: #878787;
     font-weight: 300;
     font-size: 0.9rem;
+}
+
+input:hover {
+    box-shadow: 0 2px 5px #d1d0d0;
+}
+
+input:focus {
+    outline: none;
 }
 
 input[type=radio] {

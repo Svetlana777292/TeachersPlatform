@@ -44,6 +44,9 @@ const FirstStep = (props) => {
                         dateFormat="dd.MM.yyyy"
                         placeholderText="DD.MM.YYYY"
                         className="customDateInput"
+                        onKeyDown={(e) => e.preventDefault()}
+                        inputMode="none"
+                        onFocus={(e) => e.target.blur()}
                         showMonthYearDropdown
                     />
                 </label>
@@ -59,6 +62,9 @@ const FirstStep = (props) => {
                         dateFormat="HH:mm"
                         timeFormat="HH:mm"
                         placeholderText="HH:MM"
+                        onKeyDown={(e) => e.preventDefault()}
+                        inputMode="none"
+                        onFocus={(e) => e.target.blur()}
                     />
                 </label>
             </div>
