@@ -1,0 +1,14 @@
+.appToast {
+    box-shadow: 0 2px 5px #d1d0d0;
+    border-radius: 0.8rem !important; /* перебить 6px от библиотеки и border-radius:0 на мобиле */
+}
+
+@media only screen and (max-width: 768px) {
+    .appToastContainer {
+        width: auto !important;
+        top: 1rem !important;
+        left: 0.9rem !important;
+        right: 0.9rem !important;
+        transform: none !important;
+    }
+}

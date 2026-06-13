@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react"
 import { useCreateLessonMutation, useEditLessonMutation } from "../../store/api/lessonsApi.js"
+import {toast} from "react-toastify";
+import "../../utils/toastStyles.css"
+import {notify} from "../../utils/notify.jsx";
 
 const initialLessonData = {
     topic: "",
@@ -75,7 +78,27 @@ export function useCreateLesson({ isOpen, isEditing, fieldsValues, onClose }) {
         if (isEditing) {
             await editLesson({ id: fieldsValues.id, ...cleanData })
         } else {
-            await createLesson(cleanData)
+            try {
+                await createLesson(cleanData).unwrap()
+                toast.success("The lesson has been successfully scheduled!")
+            } catch (err) {
+                switch (err.status) {
+                    case 400:
+                        toast.error("Check that the fields are filled in correctly", )
+                        break
+                    case 401:
+                        toast.error("Session expired, please log in again")
+                        break
+                    case 409:
+                        toast.error("A lesson already exists for this time")
+                        break
+                    case "FETCH_ERROR":
+                        toast.error("No connection to the server. Please try again later")
+                        break
+                    default:
+                        toast.error("Something went wrong. Please try again")
+                }
+            }
         }
         handleClose()
     }

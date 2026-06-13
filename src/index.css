@@ -2,6 +2,8 @@
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+  --toastify-font-family: inherit;
+  --toastify-icon-color-success: #75dc9b;
 
   @media (max-width: 1024px) {
     font-size: 16px;
@@ -54,8 +56,8 @@ main {
   opacity 0.4s ease;
 
   z-index: 9999 !important;
-  position: fixed !important;
-  inset: 0;
+  position: relative !important;
+  inset: auto !important;
   margin: 0 1rem;
   width: fit-content;
   height: fit-content;
@@ -82,13 +84,6 @@ main {
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
-}
-
-@media (min-width: 1024px)  {
-  .modalWindow {
-    left: 50%;
-    transform: translateX(-50%);
-  }
 }
 
 #root {
