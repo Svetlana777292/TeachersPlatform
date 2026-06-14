@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react"
 import { useCreateLessonMutation, useEditLessonMutation } from "../../store/api/lessonsApi.js"
+<<<<<<< Updated upstream
+=======
+import {toast} from "react-toastify";
+import "../../utils/toastStyles.css"
+>>>>>>> Stashed changes
 
 const initialLessonData = {
     topic: "",
@@ -68,14 +73,43 @@ export function useCreateLesson({ isOpen, isEditing, fieldsValues, onClose }) {
         }
     }
 
+    function validateLessonError(error) {
+        switch (error.status) {
+            case 400:
+                toast.error("Check that the fields are filled in correctly", )
+                break
+            case 401:
+                toast.error("Session expired, please log in again")
+                break
+            case 409:
+                toast.error("A lesson already exists for this time")
+                break
+            case "FETCH_ERROR":
+                toast.error("No connection to the server. Please try again later")
+                break
+            default:
+                toast.error("Something went wrong. Please try again")
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const { created_at, updated_at, teacher_id, id, ...cleanData } = getDateTime()
 
         if (isEditing) {
-            await editLesson({ id: fieldsValues.id, ...cleanData })
+            await editLesson({ id: fieldsValues.id, ...cleanData }).unwrap()
+            toast.success("The lesson has been successfully edited!")
         } else {
+<<<<<<< Updated upstream
             await createLesson(cleanData)
+=======
+            try {
+                await createLesson(cleanData).unwrap()
+                toast.success("The lesson has been successfully scheduled!")
+            } catch (err) {
+                validateLessonError(err)
+            }
+>>>>>>> Stashed changes
         }
         handleClose()
     }
