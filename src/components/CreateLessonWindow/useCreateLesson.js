@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react"
 import { useCreateLessonMutation, useEditLessonMutation } from "../../store/api/lessonsApi.js"
-<<<<<<< Updated upstream
-=======
 import {toast} from "react-toastify";
 import "../../utils/toastStyles.css"
->>>>>>> Stashed changes
-
 const initialLessonData = {
     topic: "",
     description: "",
@@ -100,16 +96,12 @@ export function useCreateLesson({ isOpen, isEditing, fieldsValues, onClose }) {
             await editLesson({ id: fieldsValues.id, ...cleanData }).unwrap()
             toast.success("The lesson has been successfully edited!")
         } else {
-<<<<<<< Updated upstream
-            await createLesson(cleanData)
-=======
             try {
                 await createLesson(cleanData).unwrap()
                 toast.success("The lesson has been successfully scheduled!")
             } catch (err) {
                 validateLessonError(err)
             }
->>>>>>> Stashed changes
         }
         handleClose()
     }

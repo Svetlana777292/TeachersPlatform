@@ -9,28 +9,7 @@ import {useLogoutUserMutation} from "../../store/api/userApi.js";
 const AccountManagement = () => {
     const navigate = useNavigate()
     const [editingPasswordEnabled, setEditingPasswordEnabled] = useState(false)
-    const [logoutUser, {error}] = useLogoutUserMutation()
-
-    async function handleLogout(e, navigate){
-        e.preventDefault()
-
-        try{
-            const response = await fetch(`${CONFIG.API_URL}/logout`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                credentials: 'include'
-            })
-
-            if(response.ok){
-                navigate('/login/')
-                console.log('logout success')
-            }
-        } catch (error) {
-            console.error(error)
-        }
-    }
+    const [logoutUser] = useLogoutUserMutation()
 
     return(
         <>
