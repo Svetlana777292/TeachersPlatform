@@ -4,15 +4,16 @@ import {
 } from "../../../utils/getEndTimeString.js";
 import "./ProfileSummary.css"
 import getNameById from "../../../utils/getName.js";
-import CalendarIcon from "../../../../public/CalendarIcon.jsx";
-import PeopleIcon from "../../../../public/PeopleIcon.jsx";
+import CalendarIcon from "../../../assets/CalendarIcon.jsx";
+import PeopleIcon from "../../../assets/PeopleIcon.jsx";
 import {useSummary} from "../../../hooks/useSummary.js";
 import {useMyStudents} from "../../../hooks/useMyStudents.js";
-import SummaryLessonPreview from "../SummaryLessonPreview/SummaryLessonPreview.jsx";
+import SummaryLessonPreview from "../../TodaySchedulePreview/SummaryLessonPreview/SummaryLessonPreview.jsx";
+import TodaySchedule from "../../TodaySchedulePreview/TodaySchedule/TodaySchedule.jsx";
 
 const ProfileSummary = () => {
     const {myStudents} = useMyStudents()
-    const {upcomingLesson,todayLessons, weekLessonsCount, totalDayLessonsDuration,} = useSummary()
+    const {upcomingLesson,todayLessons, weekLessonsCount, totalDayLessonsDuration} = useSummary()
 
     return (
         <div className="profileSummaryContainer">
@@ -73,17 +74,7 @@ const ProfileSummary = () => {
                 </div>
             </section>
 
-            <div className="todaysSchedule">
-                <h2 className="todaysScheduleTitle">
-                    <CalendarIcon className="todaysScheduleIcon"/>
-                    Today's schedule - {`${getWeekdayString(new Date())}, ${getDateString(new Date)}`}
-                </h2>
-                {todayLessons.length !== 0 ? todayLessons.map(lesson => (
-                        <SummaryLessonPreview lesson={lesson}/>))
-                : (
-                    <p className="emptyScheduleMessage">You don't have lessons today</p>
-                    )}
-            </div>
+            <TodaySchedule />
         </div>
     )
 }

@@ -5,6 +5,8 @@
     align-items: stretch;
     justify-content: stretch;
     gap: 1rem;
+    flex: 1;
+    min-height: 0;
 }
 
 .statistics {
@@ -81,16 +83,6 @@
     background: #FFFFFF;
 }
 
-.todaysScheduleTitle {
-    display: flex;
-    flex-direction: row;
-    font-size: 1rem;
-    gap: 0.4rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    align-items: center;
-}
-
 .emptyScheduleMessage {
     display: flex;
     flex: 1;
@@ -104,23 +96,6 @@
 .todaysScheduleIcon {
     height: 1.3rem;
     width: 1.3rem;
-}
-
-.todayLessonCard {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    border: 1px solid #dcdcdc;
-    border-radius: 1rem;
-    background: #e7e9ed;
-}
-
-.iconWrapper {
-    height: 3.5rem;
-    width: 3.5rem;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    margin-bottom: 0.8rem;
 }
 
 .calendarStatsIcon {
