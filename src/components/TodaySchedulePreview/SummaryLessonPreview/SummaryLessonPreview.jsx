@@ -4,7 +4,7 @@ import {useMyStudents} from "../../../hooks/useMyStudents.js";
 import {useMyTeachers} from "../../../hooks/useMyTeachers.js";
 import {useGetUserQuery} from "../../../store/api/userApi.js";
 import "./SummaryLessonPreview.css"
-import BookIcon from "../../../../public/BookIcon.jsx";
+import BookIcon from "../../../assets/BookIcon.jsx";
 
 const SummaryLessonPreview = ({lesson}) => {
     const {myStudents} = useMyStudents()

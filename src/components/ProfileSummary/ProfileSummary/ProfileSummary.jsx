@@ -8,7 +8,6 @@ import CalendarIcon from "../../../assets/CalendarIcon.jsx";
 import PeopleIcon from "../../../assets/PeopleIcon.jsx";
 import {useSummary} from "../../../hooks/useSummary.js";
 import {useMyStudents} from "../../../hooks/useMyStudents.js";
-import SummaryLessonPreview from "../../TodaySchedulePreview/SummaryLessonPreview/SummaryLessonPreview.jsx";
 import TodaySchedule from "../../TodaySchedulePreview/TodaySchedule/TodaySchedule.jsx";
 import {useMyTeachers} from "../../../hooks/useMyTeachers.js";
 
