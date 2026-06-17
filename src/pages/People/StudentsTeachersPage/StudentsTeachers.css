@@ -19,7 +19,14 @@
     font-size: 1.2rem;
     font-weight: 400;
     color: #72757b;
-    margin-bottom: 1rem;
+    background-color: #FFFFFF;
+    transition: transform 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+}
+
+.teachersCount:hover {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 2px 5px #d1d0d0;
 }
 
 .totalTeachersCount {
@@ -37,6 +44,7 @@
     border-radius: 1rem;
     box-shadow: 0 0 1px #d5d5d5;
     color: #72757b;
+    background: #FFFFFF;
 }
 
 .teachersListTitle {
