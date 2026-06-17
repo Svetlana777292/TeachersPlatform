@@ -41,7 +41,7 @@ const ProfilePage = () => {
                         <Button className="switchTabButton" onClick={() => setTab("summary")} style={tab === "summary" ? switchTabButtonStyle : null}>Summary</Button>
                         <Button className="switchTabButton" onClick={() => setTab("info")} style={tab === "info" ? switchTabButtonStyle : null}>Account information</Button>
                     </div>
-                    {tab === "summary" && (<ProfileSummary  style={{ width: '100%' }}/>)}
+                    {tab === "summary" && (<ProfileSummary  user={user} style={{ width: '100%' }}/>)}
                     {tab === "info" && (<UserInfoForm />)}
                 </div>
                 <AccountManagement />
