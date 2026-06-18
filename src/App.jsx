@@ -11,7 +11,6 @@ import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./utils/toastStyles.css"
 
-
 function App() {
   const {isSuccess: isTokenValid, isLoading} = useVerifyUserQuery()
 

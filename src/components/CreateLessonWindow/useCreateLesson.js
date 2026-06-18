@@ -97,7 +97,6 @@ export function useCreateLesson({ isOpen, isEditing, fieldsValues, onClose }) {
             await editLesson({ id: fieldsValues.id, ...cleanData }).unwrap()
             toast.success("The lesson has been successfully edited!")
         } else {
-            await createLesson(cleanData)
             try {
                 await createLesson(cleanData).unwrap()
                 toast.success("The lesson has been successfully scheduled!")

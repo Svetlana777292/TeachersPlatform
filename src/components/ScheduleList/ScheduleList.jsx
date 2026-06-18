@@ -1,5 +1,5 @@
 import Button from "../Button/Button.jsx";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import "./ScheduleList.css"
 import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
 import useMyLessons from "../../hooks/useMyLessons.js";
@@ -7,20 +7,14 @@ import Loading from "../Loading/Loading.jsx";
 import {getWeekDays} from "../../utils/getEndTimeString.js";
 import ScheduleMobile from "./ScheduleMobile.jsx";
 import ScheduleDesktop from "./ScheduleDesktop.jsx";
+import useIsDesktop from "../../hooks/useIsDesktop.js";
 
 const ScheduleList = ({isTeacher}) => {
     const [weekOffset, setWeekOffset] = useState(0)
     const [creatingLesson, setCreatingLesson] = useState(false)
     const [editingLesson, setEditingLesson] = useState(null)
     const {lessonsIsLoading} = useMyLessons()
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024)
-
-    useEffect(() => {
-        const handleResize = () => setIsDesktop(window.innerWidth >= 1024)
-        window.addEventListener("resize", handleResize)
-
-        return () => window.removeEventListener("resize", handleResize)
-    }, [])
+    const {isDesktop} = useIsDesktop()
 
     if (lessonsIsLoading) return <Loading message="Loading your shedule.."/>
 

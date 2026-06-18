@@ -25,3 +25,13 @@
     font-weight: 400;
     color: rgba(255, 255, 255, 0.91);
 }
+
+@media (min-width: 1024px) {
+    .name {
+        font-size: 0.9rem;
+    }
+
+    .lessonCardWrapper {
+        box-shadow: 0 2px 3px #d1d0d0;
+    }
+}

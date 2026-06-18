@@ -1,19 +1,67 @@
+.todayLessonCard {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: auto auto;
+    justify-content: start;
+    align-items: start;
+    column-gap: 0.5rem;
+    padding: 1rem;
+    border: 1px solid #dcdcdc;
+    border-radius: 1rem;
+    background: #FFFFFF;
+    transition: transform 0.3s ease-in-out,
+                box-shadow 0.3s ease-in-out;
+}
+
+.todayLessonCard:hover {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 1px 5px #EAEAEA;
+}
+
+.iconWrapper {
+    height: 3rem;
+    width: 3rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    grid-row: 1 / -1;
+    grid-column: 1;
+    align-self: center;
+}
+
 .bookIcon {
     color: #FFFFFF;
 }
 
-.lessonTopic, .beginTime {
-    font-size: 1.1rem;
-    font-weight: 400;
-}
-
-.lessonDurationAndPrice {
-    font-size: 0.9rem;
-    color: #72757b;
+.lessonTopic{
+    font-size: 1rem;
+    font-weight: 500;
+    grid-column: 2;
+    grid-row: 1;
 }
 
 .previewName {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 400;
-    color: #72757b
+    color: #72757b;
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.lessonTimePeriod {
+    font-size: 0.9rem;
+    font-weight: 500;
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    align-self: start;
+}
+
+.lessonDuration {
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: end;
+    align-self: start;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #878787;
 }
