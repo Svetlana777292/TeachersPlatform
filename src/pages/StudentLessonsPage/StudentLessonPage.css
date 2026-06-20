@@ -1,0 +1,21 @@
+.studentLessonsPageContainer {
+    padding: 1rem;
+}
+
+.studentLessonsPageTitle {
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.studentLessonsPageDescription {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #878787;
+}
+
+.studentLessonsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
