@@ -10,6 +10,7 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./utils/toastStyles.css"
+import FinancePage from "./pages/FinancePage/FinancePage.jsx";
 
 function App() {
   const {isSuccess: isTokenValid, isLoading} = useVerifyUserQuery()
@@ -27,6 +28,7 @@ function App() {
         <Route path="/Profile/" element={<ProtectedRoute><ProfilePage/></ProtectedRoute>}/>
         <Route path="/people/" element={<ProtectedRoute><PeoplePage /></ProtectedRoute>}/>
         <Route path="/schedule/" element={<ProtectedRoute><SchedulePage/></ProtectedRoute>}/>
+        <Route path="/finance/" element={<ProtectedRoute><FinancePage/></ProtectedRoute>}/>
       </Routes>
       <ToastContainer autoClose={3000} position={"top-center"} toastClassName="appToast" className="appToastContainer" hideProgressBar={true}/>
     </>

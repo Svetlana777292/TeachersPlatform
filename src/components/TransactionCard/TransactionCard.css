@@ -1,0 +1,56 @@
+.transactionCardContainer{
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #EAEAEA;
+    border-radius: 1rem;
+    box-shadow: 0 0 5px #EAEAEA;
+    background-color: #FFFFFF;
+}
+
+.transactionIconWrapper {
+    grid-row: 1 / -1;
+    grid-column: 1;
+    width: 3rem;
+    height: 3rem;
+    background-color: #1f9c56;
+    border-radius: 0.5rem;
+}
+
+.transactionType {
+    grid-row: 1;
+    grid-column: 2;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.transactionSender {
+    grid-row: 2;
+    grid-column: 2;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #878787;
+}
+
+.transactionAmount {
+    grid-row: 1;
+    grid-column: 3;
+    justify-self: end;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.transactionStatus {
+    grid-row: 2;
+    grid-column: 3;
+    justify-self: end;
+    padding: 0.1rem 0.5rem;
+    border-radius: 1rem;
+    background-color: #EAEAEA;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
