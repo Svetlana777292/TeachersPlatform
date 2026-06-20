@@ -6,7 +6,7 @@ import PeopleIcon from "../../assets/PeopleIcon.jsx";
 import MoneyIcon from "../../assets/MoneyIcon.jsx";
 
 const teacherItems = [
-    {href: "/", text: "Finance", icon: MoneyIcon},
+    {href: "/finance", text: "Finance", icon: MoneyIcon},
     {href: "/schedule", text: "Schedule", icon: CalendarIcon},
     {href: "/people", text: "My students", icon: PeopleIcon},
     {href: "/Profile", text: "Profile", icon: ProfileIcon},
