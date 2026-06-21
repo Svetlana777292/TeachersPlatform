@@ -10,7 +10,7 @@ export const financeApi = createApi({
             query: (params) => `/economy/my?${params}`,
             providesTags: ['finance'],
         }),
-        payForLesson:builder.mutation({
+        payForLesson: builder.mutation({
             query: (lesson_id)  => ({
                 url: `/lessons/${lesson_id}`,
                 method: 'POST',
@@ -54,6 +54,13 @@ export const financeApi = createApi({
                 invalidatesTags: ['finance'],
             })
         }),
+        makeCardDefault: builder.mutation({
+            query: (card_id) => ({
+                url: `/me/cards/${card_id}`,
+                method: 'POST',
+                invalidatesTags: ['finance'],
+            })
+        })
     })
 })
 
@@ -62,9 +69,10 @@ export const {
     useGetAllCardsQuery,
     useInitCardMutation,
     useChargeMutation,
-    useGetBalanceMutation,
+    useGetBalanceQuery,
     useGetAllTransactionsQuery,
     useGetTransactionByIdQuery,
     useDeleteCardMutation,
+    useMakeCardDefaultMutation,
     useGetFinanceStatsQuery,
 } = financeApi
