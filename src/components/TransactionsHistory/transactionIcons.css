@@ -1,0 +1,22 @@
+.transactionIcon {
+    width: 3rem;
+    height: 3rem;
+    grid-column: 1;
+    grid-row: 1 / -1;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.topUpIcon, .withdrawIcon {
+    background-color: #e4f4ea;
+    color: #2ca15f;
+}
+
+.paymentIcon, .withdrawIcon {
+    transform: rotatex(180deg);
+}
+
+.tokenisationIcon {
+    background-color: #EAEAEA;
+    color: #000000;
+}
