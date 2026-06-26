@@ -28,10 +28,10 @@ export const financeApi = createApi({
             })
         }),
         charge: builder.mutation({
-            query: ({amount}) => ({
+            query: (amount) => ({
                 url: '/payments/charge',
                 method: 'POST',
-                body: amount,
+                body: {amount: amount},
                 invalidatesTags: ['finance'],
             })
         }),
@@ -60,7 +60,15 @@ export const financeApi = createApi({
                 method: 'POST',
                 invalidatesTags: ['finance'],
             })
-        })
+        }),
+        withdrawMoney: builder.mutation({
+            query: (amount) => ({
+                url: '/payments/withdrawal',
+                body: {amount: amount},
+                method: 'POST',
+                invalidatesTags: ['finance', 'user'],
+            })
+        }),
     })
 })
 
@@ -69,6 +77,7 @@ export const {
     useGetAllCardsQuery,
     useInitCardMutation,
     useChargeMutation,
+    useWithdrawMoneyMutation,
     useGetBalanceQuery,
     useGetAllTransactionsQuery,
     useGetTransactionByIdQuery,
