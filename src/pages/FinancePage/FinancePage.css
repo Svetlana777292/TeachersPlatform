@@ -85,6 +85,12 @@
     margin-bottom: 0.5rem;
 }
 
+.paymentCardsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .addNewCard {
     max-width: 350px;
     height: 10rem;
