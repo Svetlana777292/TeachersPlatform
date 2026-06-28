@@ -1,7 +1,3 @@
-.studentLessonsPageContainer {
-    padding: 1rem;
-}
-
 .studentLessonsPageTitle {
     font-weight: 700;
     font-size: 1.8rem;
@@ -17,5 +13,42 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin: 1rem 0;
+}
+
+.lessonsSectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.lessonsCountBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.4rem;
+    height: 1.4rem;
+    padding: 0 0.4rem;
+    border-radius: 999px;
+    background: #EAEAEA;
+    color: #555555;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+@media (min-width: 1024px) {
+    .studentLessonsContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .lessonsSectionTitle {
+        grid-column: 1 / -1;
+    }
 }
