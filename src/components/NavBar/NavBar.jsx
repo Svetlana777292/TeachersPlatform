@@ -13,7 +13,8 @@ const teacherItems = [
 ]
 
 const studentItems = [
-    {href: "/schedule", text: "Schedule", icon: CalendarIcon},
+    {href: "/finance", text: "Finance", icon: MoneyIcon},
+    {href: "/lessons", text: "My lessons", icon: CalendarIcon},
     {href: "/Profile", text: "Profile", icon: ProfileIcon},
 ]
 
