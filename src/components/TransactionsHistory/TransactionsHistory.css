@@ -1,0 +1,38 @@
+.transactionHistoryContainer {
+    margin-top: 1.5rem;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    border: 1px solid #e5e5e8;
+    border-radius: 1rem;
+}
+
+.transactionHistoryHeader {
+    display: flex;
+    background: #FFFFFF;
+    height: auto;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e5e8;
+}
+
+.transactionHistoryTitle {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.transactionGroupDateWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 1rem;
+    width: 100%;
+    height: 2rem;
+    border: 1px solid #e5e5e8;
+}
+
+.transactionGroupDate {
+    font-size: 1rem;
+    color: #878787;
+    font-weight: 400;
+}

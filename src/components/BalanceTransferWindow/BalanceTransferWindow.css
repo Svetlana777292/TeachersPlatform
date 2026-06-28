@@ -1,0 +1,155 @@
+.moneyDealModalWindow {
+    padding: 1rem !important;
+}
+
+.moneyDealWindowTitle {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.moneyDealWindowDescription {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #878787;
+    margin-bottom: 1rem;
+}
+
+.moneyDealWindowHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cancelMoneyDealWindowButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    text-align: center;
+}
+
+.crossSign {
+    font-size: 1.5rem;
+    line-height: 1;
+    transform: translateY(-10%)
+}
+
+.moneyDealWindowInputLabel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #878787;
+}
+
+.amountField {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.amountPrefix {
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #878787;
+    pointer-events: none;
+}
+
+.moneyDealWindowInput {
+    width: 100% !important;
+    height: 3rem !important;
+    border: 1px solid #EAEAEA !important;
+    border-radius: 0.5rem !important;
+    color: #000000 !important;
+    font-size: 2rem !important ;
+    font-weight: 800;
+    padding-left: 2.2rem !important;
+}
+
+.moneyDealWindowInput:focus {
+    outline: none;
+    border-color: #000000;
+}
+
+.moneyDealWindowInput::placeholder {
+    color: #BDBDBD;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.moneyDealWindowInput::-webkit-outer-spin-button,
+.moneyDealWindowInput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.moneyDealWindowInput[type=number] {
+    appearance: textfield;
+}
+
+.moneyDealPaymentMethod {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem;
+    border: 1px solid #EAEAEA;
+    border-radius: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.moneyDealCardThumb {
+    width: 2.8rem;
+    height: 1.8rem;
+    flex-shrink: 0;
+    border-radius: 0.3rem;
+    background: linear-gradient(135deg, #4d8bff 0%, #1e62fa 50%, #0b3bb0 100%);
+}
+
+.moneyDealCardInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.moneyDealCardNumber {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000000;
+    text-transform: capitalize;
+}
+
+.moneyDealCardLabel {
+    font-size: 0.8rem;
+    color: #878787;
+}
+
+.moneyDealBrandIcon {
+    width: 3rem;
+    margin-left: auto;
+    fill: #1a1f71;
+}
+
+.moneyDealSubmitButton, .moneyDealSubmitButton:disabled {
+    width: 100%;
+    height: 3.5rem;
+    border-radius: 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.moneyDealSubmitButton {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+.moneyDealSubmitButton:disabled {
+    background: #B0B0B0;
+    color: #FFFFFF;
+}

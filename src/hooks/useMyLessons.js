@@ -24,8 +24,17 @@ function useMyLessons() {
         }, {})
     }, [myLessons])
 
+    const upcomingLessons = useMemo(
+        () => myLessons.filter(lesson => getTime(lesson?.date) > new Date().getTime()),
+        [myLessons]
+    )
 
-    return {lessonsIsLoading, myLessons, lessonsByDate}
+    const pastLessons = useMemo(
+        () => myLessons.filter(lesson => getTime(lesson?.date) < new Date().getTime()),
+        [myLessons]
+    )
+
+    return {lessonsIsLoading, myLessons, lessonsByDate, upcomingLessons, pastLessons}
 }
 
 export default useMyLessons

@@ -4,15 +4,18 @@ import LoginPage from "./pages/Auth/LoginPage.jsx";
 import ProfilePage from "./pages/Profile/ProfilePage.jsx";
 import Loading from "./components/Loading/Loading.jsx";
 import SchedulePage from "./pages/SchedulePage/SchedulePage.jsx";
-import {useVerifyUserQuery} from "./store/api/userApi.js";
+import {useGetUserQuery, useVerifyUserQuery} from "./store/api/userApi.js";
 import PeoplePage from "./pages/People/PeoplePage/PeoplePage.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./utils/toastStyles.css"
+import FinancePage from "./pages/FinancePage/FinancePage.jsx";
+import StudentLessonPage from "./pages/StudentLessonsPage/StudentLessonPage.jsx";
 
 function App() {
   const {isSuccess: isTokenValid, isLoading} = useVerifyUserQuery()
+    const {data: user} = useGetUserQuery()
 
   if(isLoading){
       return <Loading />
@@ -27,6 +30,8 @@ function App() {
         <Route path="/Profile/" element={<ProtectedRoute><ProfilePage/></ProtectedRoute>}/>
         <Route path="/people/" element={<ProtectedRoute><PeoplePage /></ProtectedRoute>}/>
         <Route path="/schedule/" element={<ProtectedRoute><SchedulePage/></ProtectedRoute>}/>
+        <Route path="/finance/" element={<ProtectedRoute><FinancePage/></ProtectedRoute>}/>
+        <Route path="/lessons/" element={<ProtectedRoute><StudentLessonPage/></ProtectedRoute>}/>
       </Routes>
       <ToastContainer autoClose={3000} position={"top-center"} toastClassName="appToast" className="appToastContainer" hideProgressBar={true}/>
     </>

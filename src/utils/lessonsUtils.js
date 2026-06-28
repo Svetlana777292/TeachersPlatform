@@ -42,7 +42,7 @@ export const calcTotalDayLessonsDuration = (lessonsByDate) => {
 
 export function getUpcomingLesson(lessons) {
     const closestScheduledDay = Object.keys(lessons)
-        .filter(key => new Date(key).getTime() >= new Date().getTime())
+        .filter(key => new Date(key).getDate() >= new Date().getDate())
         .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
         .at(0)
 
