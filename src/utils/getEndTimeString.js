@@ -61,5 +61,19 @@ export function getWeekDays(weekOffset) {
         day.setDate(mondayDate.getDate() + i)
         return day
     })
+}
 
+export function toISOStringWithTZ(date) {
+    const pad = (n) => String(Math.floor(Math.abs(n))).padStart(2, "0");
+    const offsetMin = -date.getTimezoneOffset();   // e.g. +180 for UTC+3
+    const sign = offsetMin >= 0 ? "+" : "-";
+
+    return date.getFullYear() +
+        "-" + pad(date.getMonth() + 1) +
+        "-" + pad(date.getDate()) +
+        "T" + pad(date.getHours()) +
+        ":" + pad(date.getMinutes()) +
+        ":" + pad(date.getSeconds()) +
+        sign + pad(offsetMin / 60) +
+        ":" + pad(offsetMin % 60);
 }

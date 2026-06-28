@@ -230,11 +230,6 @@ body {
     color: #000000;
 }
 
-.errorMessage{
-    font-size: 0.8rem;
-    color: red;
-}
-
 @keyframes spin{
     from{
         transform: rotate(0deg);
