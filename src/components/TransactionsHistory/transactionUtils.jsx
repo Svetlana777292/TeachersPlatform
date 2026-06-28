@@ -52,7 +52,7 @@ export function renderTransactionStatus(status, type) {
         case "PENDING":
             return <span className="transactionStatus pendingStatus">• Pending</span>
         case "PAID":
-            if(type === "TOKENIZATION" || type === "WITHDRAWAL") {
+            if(type === "TOKENIZATION" || type === "WITHDRAWAL" || type === "TOP_UP") {
                 return <span className="transactionStatus paidStatus">• Success</span>
             }
             else {
