@@ -10,7 +10,7 @@ export const financeApi = createApi({
             query: (params) => `/economy/my?${params}`,
             providesTags: ['finance'],
         }),
-        payForLesson:builder.mutation({
+        payForLesson: builder.mutation({
             query: (lesson_id)  => ({
                 url: `/lessons/${lesson_id}`,
                 method: 'POST',
@@ -28,10 +28,10 @@ export const financeApi = createApi({
             })
         }),
         charge: builder.mutation({
-            query: ({amount}) => ({
+            query: (amount) => ({
                 url: '/payments/charge',
                 method: 'POST',
-                body: amount,
+                body: {amount: amount},
                 invalidatesTags: ['finance'],
             })
         }),
@@ -54,6 +54,21 @@ export const financeApi = createApi({
                 invalidatesTags: ['finance'],
             })
         }),
+        makeCardDefault: builder.mutation({
+            query: (card_id) => ({
+                url: `/me/cards/${card_id}`,
+                method: 'POST',
+                invalidatesTags: ['finance'],
+            })
+        }),
+        withdrawMoney: builder.mutation({
+            query: (amount) => ({
+                url: '/payments/withdrawal',
+                body: {amount: amount},
+                method: 'POST',
+                invalidatesTags: ['finance', 'user'],
+            })
+        }),
     })
 })
 
@@ -62,9 +77,11 @@ export const {
     useGetAllCardsQuery,
     useInitCardMutation,
     useChargeMutation,
-    useGetBalanceMutation,
+    useWithdrawMoneyMutation,
+    useGetBalanceQuery,
     useGetAllTransactionsQuery,
     useGetTransactionByIdQuery,
     useDeleteCardMutation,
+    useMakeCardDefaultMutation,
     useGetFinanceStatsQuery,
 } = financeApi

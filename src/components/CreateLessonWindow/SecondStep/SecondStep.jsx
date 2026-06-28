@@ -4,10 +4,9 @@ import Button from "../../Button/Button.jsx";
 import {selectStyles} from "../selectStyles.js";
 import LessonCard from "../../LessonCard/LessonCard.jsx";
 import "./SecondStep.css"
-import {useCreateLesson} from "../useCreateLesson.js";
 
 const COLORS = [
-    {value: "#FFFF00", label: "yellow"},
+    {value: "#dd24ce", label: "pink"},
     {value: "#9ACD32", label: "green"},
     {value: "#4682B4", label: "blue"},
     {value: "#8A2BE2", label: "purple"},

@@ -1,20 +1,25 @@
 import "./TransactionCard.css"
 import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
-
-const TRANSACTION_CARD_SETTINGS = () => {
-
-}
+import {
+    renderTransactionAmount,
+    renderTransactionIcon,
+    renderTransactionName, renderTransactionStatus
+} from "../TransactionsHistory/transactionUtils.jsx";
+import getNameById from "../../utils/getName.js";
 
 const TransactionCard = ({transaction}) => {
-    const {dat: {students = []} = {}} = useGetAllStudentsQuery()
+    const {data: {students = []} = {}} = useGetAllStudentsQuery()
+
+    console.log(transaction.amount)
 
     return (
         <div className="transactionCardContainer">
-            <div className="transactionIconWrapper"></div>
-            <h3 className="transactionType">Lesson payment</h3>
-                <span className="transactionSender">Иван Рубцов</span>
-                <span className="transactionAmount"> $60</span>
-                <span className="transactionStatus">• Paid</span>
+            {renderTransactionIcon(transaction.type)}
+            <h3 className="transactionType">{renderTransactionName(transaction.type)}</h3>
+            <span className="transactionSender">{getNameById(transaction.user_id, students)}</span>
+            <span className="transactionTime"></span>
+            {renderTransactionAmount(transaction.type, transaction.amount)}
+            {renderTransactionStatus(transaction.status, transaction.type)}
         </div>
     )
 }

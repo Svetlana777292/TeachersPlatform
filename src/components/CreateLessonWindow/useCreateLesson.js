@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useCreateLessonMutation, useEditLessonMutation } from "../../store/api/lessonsApi.js"
 import {toast} from "react-toastify";
 import "../../utils/toastStyles.css"
+import {dollarsToCents} from "../../utils/moneyUtils.js"
 
 const initialLessonData = {
     topic: "",
@@ -28,8 +29,11 @@ export function useCreateLesson({ isOpen, isEditing, fieldsValues, onClose }) {
 
     useEffect(() => {
         if (!isOpen) return
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setLessonData(fieldsValues || initialLessonData)
+        setLessonData(
+            fieldsValues
+                ? { ...fieldsValues, price: (fieldsValues.price ?? 0) / 100 }
+                : initialLessonData
+        )
         if (isEditing && fieldsValues?.date) {
             const date = new Date(fieldsValues.date)
             if (!isNaN(date.getTime())) {
@@ -69,7 +73,7 @@ export function useCreateLesson({ isOpen, isEditing, fieldsValues, onClose }) {
             )
         }
     }
-
+    
     function validateLessonError(error) {
         switch (error.status) {
             case 400:
@@ -93,12 +97,14 @@ export function useCreateLesson({ isOpen, isEditing, fieldsValues, onClose }) {
         e.preventDefault()
         const { created_at, updated_at, teacher_id, id, ...cleanData } = getDateTime()
 
+        const dataToSend = { ...cleanData, price: dollarsToCents(cleanData.price) }
+
         if (isEditing) {
-            await editLesson({ id: fieldsValues.id, ...cleanData }).unwrap()
+            await editLesson({ id: fieldsValues.id, ...dataToSend }).unwrap()
             toast.success("The lesson has been successfully edited!")
         } else {
             try {
-                await createLesson(cleanData).unwrap()
+                await createLesson(dataToSend).unwrap()
                 toast.success("The lesson has been successfully scheduled!")
             } catch (err) {
                 validateLessonError(err)
