@@ -1,22 +1,57 @@
+import {useMemo, useState} from "react";
 import Header from "../../components/Header/Header.jsx";
 import {useGetUserQuery} from "../../store/api/userApi.js";
 import "./FinancePage.css"
 import MoneyIcon from "../../assets/MoneyIcon.jsx";
 import ChartIcon from "../../assets/ChartIcon.jsx";
-import {useGetFinanceStatsQuery} from "../../store/api/financeApi.js";
-import TransactionCard from "../../components/TransactionCard/TransactionCard.jsx";
+import {
+    useGetAllCardsQuery,
+    useGetBalanceQuery,
+    useGetFinanceStatsQuery,
+    useInitCardMutation
+} from "../../store/api/financeApi.js";
+import Button from "../../components/Button/Button.jsx";
+import PaymentCardPreview from "../../components/PaymentCardPreview/PaymentCardPreview.jsx";
+import Loading from "../../components/Loading/Loading.jsx";
+import BalanceTransferWindow from "../../components/BalanceTransferWindow/BalanceTransferWindow.jsx";
+import {formatMoney, getDollarsPart, getCentsPart} from "../../utils/moneyUtils.js";
+import TransactionsHistory from "../../components/TransactionsHistory/TransactionsHistory.jsx";
+import {toISOStringWithTZ} from "../../utils/getEndTimeString.js";
+
 
 const now = new Date()
 const start = new Date(now.getFullYear(), now.getMonth(), 1)
 
+console.log(toISOStringWithTZ(now))
+
 const params = new URLSearchParams({
-    period_start: start.toISOString(),
-    period_end: now.toISOString(),
+    period_start: toISOStringWithTZ(start),
+    period_end: toISOStringWithTZ(now),
 }).toString()
 
 const FinancePage = () => {
     const {data: user} = useGetUserQuery()
     const {data: financeStats} = useGetFinanceStatsQuery(params)
+    const [initCard] = useInitCardMutation()
+    const {data: {cards = []} = {}, isLoading: isCardsLoading} = useGetAllCardsQuery()
+    const {data: balance = {}, isLoading: isBalanceLoading} = useGetBalanceQuery()
+    const [balanceChanging, setBalanceChanging] = useState(false)
+
+    const sortedCards = useMemo(
+        () => [...cards].sort((a, b) => Number(b.is_default) - Number(a.is_default)),
+        [cards]
+    )
+
+    if (isBalanceLoading && isCardsLoading) return <Loading />
+
+    async function addNewCard() {
+        try {
+            const result = await initCard().unwrap()
+            window.open(result.redirect_url)
+        } catch (err) {
+            console.error("Failed to init card:", err)
+        }
+    }
 
     return (
         <>
@@ -26,29 +61,45 @@ const FinancePage = () => {
                     <h1 className="financePageTitle">Finance</h1>
                     <h3 className="financePageDescription">Your saved cards and full transaction history.</h3>
 
-                    <section className="financeStatsContainer">
+                    {user.role === "teacher" ? (<section className="financeStatsContainer">
                         <article className="financeStats">
                             <MoneyIcon className="financeStatsIcon financeStatsMoneyIcon"/>
                             <h3 className="financeStatsTitle">Earned this month</h3>
-                            <div className="financeStatsValue">{financeStats?.paid_lessons_count ?? 0}</div>
+                            <div className="financeStatsValue">{`$${formatMoney(financeStats?.paid_lessons_sum)}`}</div>
                         </article>
 
                         <article className="financeStats">
                             <ChartIcon className="financeStatsIcon financeStatsChartIcon"/>
                             <h3 className="financeStatsTitle">Payments received</h3>
-                            <div className="financeStatsValue">0</div>
+                            <div className="financeStatsValue">{financeStats?.paid_lessons_count ?? 0}</div>
                         </article>
+                    </section>)
+                    : null}
+
+                    <section className="balanseContainer">
+                        <h3 className="balanceCardTitle"><div className="availableBalanceMarker"></div>Available balance</h3>
+                        <div className="balanceAmount">
+                            <span className="balanceDollars">{`$${getDollarsPart(balance.balance)}`}</span>
+                            <span className="balanceCent">{`.${getCentsPart(balance.balance)}`}</span>
+                        </div>
+                        {user.role !== "teacher" ? (<Button className="topUpButton" onClick={() => setBalanceChanging(true)}>+ Top up</Button>) : null}
+                        {user.role === "teacher" ? (<Button className="withdrawButton" onClick={() => setBalanceChanging(true)}>- Withdraw</Button>) : null}
                     </section>
 
-                    <section>
-                        <h2 className="financePaymentCardsTitle">Your payment cards</h2>
+                    <h2 className="financePaymentCardsTitle">Your payment cards</h2>
+                    <section className="paymentCardsContainer">
+                        {sortedCards.map((card) => (
+                            <PaymentCardPreview key={card.id} card={card}/>
+                        ))}
+                        <Button className="addNewCard" onClick={() => addNewCard()}>
+                            <span className="addNewCardSignature plus">+</span>
+                            <span className="addNewCardSignature">Add new card</span>
+                        </Button>
                     </section>
-                    <section className="transactionHistoryContainer">
-                        <h2 className="financePaymentCardsTitle">Your transactions history</h2>
-                        <TransactionCard />
-                    </section>
+                    <TransactionsHistory />
                 </div>
             </main>
+            <BalanceTransferWindow isOpen={balanceChanging} onClose={() => setBalanceChanging(false)}/>
         </>
     )
 }
