@@ -1,6 +1,6 @@
-import Header from "../../../components/Header/Header.jsx";
+import Header from "../../../components/shared/Header/Header.jsx";
 import {useGetUserQuery} from "../../../store/api/userApi.js";
-import StudentsTeachers from "../StudentsTeachersPage/StudentsTeachers.jsx";
+import StudentsTeachers from "../../../components/people/StudentsTeachers/StudentsTeachers.jsx";
 import TeachersStudentsPage from "../TeachersStudentsPage/TeachersStudentsPage.jsx";
 
 const PeoplePage = () => {

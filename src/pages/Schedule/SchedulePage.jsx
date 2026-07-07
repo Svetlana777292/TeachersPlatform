@@ -3,7 +3,7 @@ import Header from "../../components/shared/Header/Header.jsx";
 import ScheduleList from "../../components/schedule/ScheduleList/ScheduleList.jsx";
 import Modal from "react-modal";
 import {useGetUserQuery} from "../../store/api/userApi.js";
-import StudentsTeachers from "../People/StudentsTeachersPage/StudentsTeachers.jsx";
+import StudentsTeachers from "../../components/people/StudentsTeachers/StudentsTeachers.jsx";
 
 Modal.setAppElement("#root")
 

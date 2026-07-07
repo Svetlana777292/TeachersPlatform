@@ -1,9 +1,9 @@
 import {Route, Routes} from "react-router-dom";
-import RegisterPage from "./pages/Auth/RegisterPage/RegisterPage.jsx";
+import RegisterPage from "./pages/Auth/RegisterPage.jsx";
 import LoginPage from "./pages/Auth/LoginPage.jsx";
 import ProfilePage from "./pages/Profile/ProfilePage.jsx";
-import Loading from "./components/Loading/Loading.jsx";
-import SchedulePage from "./pages/SchedulePage/SchedulePage.jsx";
+import Loading from "./components/shared/Loading/Loading.jsx";
+import SchedulePage from "./pages/Schedule/SchedulePage.jsx";
 import {useVerifyUserQuery} from "./store/api/userApi.js";
 import PeoplePage from "./pages/People/PeoplePage/PeoplePage.jsx";
 

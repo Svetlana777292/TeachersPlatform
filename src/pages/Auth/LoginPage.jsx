@@ -1,11 +1,11 @@
-import InputField from '../../components/Inputs/InputField.jsx'
-import Button from "../../components/Button/Button.jsx";
-import AuthRedirection from "../../components/AuthRedirection/AuthRedirection.jsx";
-import RadioField from "../../components/Inputs/RadioField.jsx";
+import InputField from '../../components/shared/Inputs/InputField.jsx'
+import Button from "../../components/shared/Button/Button.jsx";
+import AuthRedirection from "../../components/auth/AuthRedirection/AuthRedirection.jsx";
+import RadioField from "../../components/shared/Inputs/RadioField.jsx";
 import "./AuthPage.css"
 import {useState} from "react";
 import {getFetchErrorMessage} from "../../utils/errorsHandling.jsx";
-import ErrorField from "../../components/ErrorField/ErrorField.jsx";
+import ErrorField from "../../components/shared/ErrorField/ErrorField.jsx";
 import {useLoginUserMutation} from "../../store/api/userApi.js";
 import {useNavigate} from "react-router-dom";
 

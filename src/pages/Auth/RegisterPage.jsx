@@ -1,12 +1,12 @@
-import AuthRedirection from "../../../components/AuthRedirection/AuthRedirection.jsx";
-import "../AuthPage.css"
+import AuthRedirection from "../../components/auth/AuthRedirection/AuthRedirection.jsx";
+import "./AuthPage.css"
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import FirstRegisterStep from "./FirstRegisterStep.jsx";
-import SecondRegisterStep from "./SecondRegisterStep.jsx";
-import {getFetchErrorMessage} from "../../../utils/errorsHandling.jsx";
-import ErrorField from "../../../components/ErrorField/ErrorField.jsx";
-import {useRegisterUserMutation} from "../../../store/api/userApi.js";
+import FirstRegisterStep from "../../components/auth/RegisterSteps/FirstRegisterStep.jsx";
+import SecondRegisterStep from "../../components/auth/RegisterSteps/SecondRegisterStep.jsx";
+import {getFetchErrorMessage} from "../../utils/errorsHandling.jsx";
+import ErrorField from "../../components/shared/ErrorField/ErrorField.jsx";
+import {useRegisterUserMutation} from "../../store/api/userApi.js";
 
 const RegisterPage = () => {
     const [nextStep, setNextStep] = useState(false)

@@ -1,5 +1,3 @@
-import ErrorField from "../components/ErrorField/ErrorField.jsx";
-
 export function getFetchErrorMessage(status) {
     const messages = {
         400: 'Bad request. Please check your input',
