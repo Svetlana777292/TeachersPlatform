@@ -3,16 +3,36 @@
 }
 
 .newLessonTitle {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    justify-content: space-between;
     align-self: start;
     font-size: 1.5rem;
     font-weight: 500;
     margin-bottom: 1rem;
 }
 
+.deleteLessonButton {
+    width: 2rem;
+    height: 2rem;
+    color: #e65d61;
+    background: none;
+    border: none;
+    grid-column: 3;
+    justify-self: end;
+}
+
+.deleteLessonButton:hover {
+    background: #fbe8e8;
+}
+
 .stepsCounter {
     font-size: 1.2rem;
     font-weight: 400;
     color: #72757b;
+    grid-column: 2;
+    margin-left: 0.5rem;
 }
 
 .selects {

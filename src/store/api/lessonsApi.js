@@ -25,6 +25,12 @@ export const lessonsApi = createApi({
                 body: lessonData,
             }),
             invalidatesTags: ['lessons'],
+        }),
+        deleteLesson: builder.mutation({
+            query: (lesson_id) => ({
+                url: `/lessons/${lesson_id}`,
+                method: 'DELETE',
+            })
         })
     })
 })
@@ -32,5 +38,6 @@ export const lessonsApi = createApi({
 export const {
     useGetAllLessonsQuery,
     useCreateLessonMutation,
-    useEditLessonMutation
+    useEditLessonMutation,
+    useDeleteLessonMutation,
 } = lessonsApi

@@ -6,8 +6,11 @@ import FirstStep from "./FirstStep/FirstStep.jsx";
 import SecondStep from "./SecondStep/SecondStep.jsx";
 import {useMyStudents} from "../../hooks/useMyStudents.js";
 import {useCreateLesson} from "./useCreateLesson.js";
+import {TrashIcon} from "../../assets/Trash.jsx";
+import Button from "../Button/Button.jsx";
+import {useDeleteLessonMutation} from "../../store/api/lessonsApi.js";
 
-const CreateLessonWindow = ({ isOpen, isEditing, fieldsValues, onClose, title, onSubmitText }) => {
+const CreateLessonWindow = ({ isOpen, isEditing, fieldsValues, onClose, title, onSubmitText, lesson_id}) => {
     const { isStudentsLoading } = useMyStudents()
     const {
         nextStep, setNextStep,
@@ -17,6 +20,7 @@ const CreateLessonWindow = ({ isOpen, isEditing, fieldsValues, onClose, title, o
         handleChange,
         handleClose,
         handleSubmit,
+        handleDeleteLesson
     } = useCreateLesson({ isOpen, isEditing, fieldsValues, onClose })
 
     if (isStudentsLoading) return <Loading message="Loading your schedule.."/>
@@ -32,6 +36,7 @@ const CreateLessonWindow = ({ isOpen, isEditing, fieldsValues, onClose, title, o
                 <h2 className="newLessonTitle">
                     {title}
                     <span className="stepsCounter">{!nextStep ? "1/2" : "2/2"}</span>
+                    {isEditing && (<Button className="deleteLessonButton" onClick={() => handleDeleteLesson(lesson_id)}><TrashIcon className="deleteLessonIcon"/></Button>)}
                 </h2>
                 {!nextStep ? (
                     <FirstStep

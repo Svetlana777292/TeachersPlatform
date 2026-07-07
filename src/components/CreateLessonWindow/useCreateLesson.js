@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useCreateLessonMutation, useEditLessonMutation } from "../../store/api/lessonsApi.js"
+import {useCreateLessonMutation, useDeleteLessonMutation, useEditLessonMutation} from "../../store/api/lessonsApi.js"
 import {toast} from "react-toastify";
 import "../../utils/toastStyles.css"
 import {dollarsToCents} from "../../utils/moneyUtils.js"
@@ -21,6 +21,7 @@ const NUMERIC_FIELDS = ["price", "duration", "student_id"]
 export function useCreateLesson({ isOpen, isEditing, fieldsValues, onClose }) {
     const [createLesson] = useCreateLessonMutation()
     const [editLesson] = useEditLessonMutation()
+    const [deleteLesson] = useDeleteLessonMutation()
 
     const [nextStep, setNextStep] = useState(false)
     const [selectedTime, setSelectedTime] = useState(null)
@@ -74,7 +75,7 @@ export function useCreateLesson({ isOpen, isEditing, fieldsValues, onClose }) {
         }
     }
     
-    function validateLessonError(error) {
+    function validateCreateLessonError(error) {
         switch (error.status) {
             case 400:
                 toast.error("Check that the fields are filled in correctly", )
@@ -107,8 +108,19 @@ export function useCreateLesson({ isOpen, isEditing, fieldsValues, onClose }) {
                 await createLesson(dataToSend).unwrap()
                 toast.success("The lesson has been successfully scheduled!")
             } catch (err) {
-                validateLessonError(err)
+                validateCreateLessonError(err)
             }
+        }
+        handleClose()
+    }
+
+    const handleDeleteLesson = async (lesson_id) => {
+        try {
+            await deleteLesson(lesson_id)
+            toast.success("The lesson has been successfully deleted!")
+        }
+        catch (error) {
+            toast.error("Something went wrong. Please try again later")
         }
         handleClose()
     }
@@ -121,5 +133,6 @@ export function useCreateLesson({ isOpen, isEditing, fieldsValues, onClose }) {
         handleChange,
         handleClose,
         handleSubmit,
+        handleDeleteLesson,
     }
 }
