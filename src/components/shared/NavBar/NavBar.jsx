@@ -1,9 +1,9 @@
 import {Link} from "react-router-dom";
 import "./NavBar.css"
-import ProfileIcon from "../../assets/icons/ProfileIcon.jsx"
-import CalendarIcon from "../../assets/icons/CalendarIcon.jsx";
-import PeopleIcon from "../../assets/icons/PeopleIcon.jsx";
-import MoneyIcon from "../../assets/icons/MoneyIcon.jsx";
+import ProfileIcon from "../../../assets/icons/ProfileIcon.jsx"
+import CalendarIcon from "../../../assets/icons/CalendarIcon.jsx";
+import PeopleIcon from "../../../assets/icons/PeopleIcon.jsx";
+import MoneyIcon from "../../../assets/icons/MoneyIcon.jsx";
 
 const teacherItems = [
     {href: "/", text: "Finance", icon: MoneyIcon},
