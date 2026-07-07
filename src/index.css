@@ -23,6 +23,17 @@ body {
   width: 100%;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button:active, button:focus, button:hover {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
 main {
   background: #f3f3f4;
   flex: 1;
@@ -47,7 +58,7 @@ main {
   top: 0;
 }
 
-.modalWindow{
+.modal-window{
   display: flex;
   opacity: 1;
   transition: display 0.4s allow-discrete,
@@ -85,7 +96,7 @@ main {
 }
 
 @media (min-width: 1024px)  {
-  .modalWindow {
+  .modal-window {
     left: 50%;
     transform: translateX(-50%);
   }

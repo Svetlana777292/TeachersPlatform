@@ -1,0 +1,39 @@
+.loading{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 400;
+    background-color: #FFFFFF;
+}
+
+.gear-wrapper{
+    animation: pulse 1.5s ease-in-out infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes pulse{
+    0%, 100% {transform: scale(1);}
+    50%{transform: scale(1.2);}
+}
+
+.gear{
+    animation: spin 1.5s infinite;
+}
+
+@keyframes spin{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

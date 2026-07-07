@@ -82,37 +82,30 @@ body:has(.auth-container) {
     box-shadow: 2px 2px 8px #EAEAEA;
 }
 
-.registerButton {
+.register-button {
     margin-top: 0;
     background-color: #000000;
     color: #FFFFFF;
 }
 
-.nextStepButton {
+.next-step-button {
     margin-bottom: 0 !important;
 }
 
-.error-message {
-    max-width: 100%;
-    font-size: 0.9rem;
-    color: red;
-    word-break: break-word;
-}
-
-.stepProgressWrapper {
+.step-progress-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(2, 1fr);
     column-gap: 0.5rem;
 }
 
-.stepProgressMessage {
+.step-progress-message {
     grid-column: 1/-1;
     margin-bottom: 0.5rem;
     color: #72757b;
 }
 
-.stepIndicator {
+.step-indicator {
     width: 100%;
     height: 0.4rem;
     background-color: #000000;
@@ -120,11 +113,11 @@ body:has(.auth-container) {
     border-radius: 0.2rem;
 }
 
-.secondStepIndicator {
+.second-step-indicator {
     background-color: #EAEAEA;
 }
 
-.prevStepButton {
+.prev-step-button {
     background: none;
     border: none !important;
     padding: 0;

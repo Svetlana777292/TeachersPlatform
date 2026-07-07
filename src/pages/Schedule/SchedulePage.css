@@ -1,0 +1,27 @@
+.page-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.schedule-container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin: 0;
+}
+
+.schedule-main {
+    background: #FFFFFF;
+}
+
+@media (min-width: 1024px){
+    .page-container {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        align-items: stretch;
+    }
+}

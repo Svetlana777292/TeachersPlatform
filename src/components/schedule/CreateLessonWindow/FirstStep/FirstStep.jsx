@@ -1,0 +1,98 @@
+import Select from "react-select";
+import DatePicker from "react-datepicker";
+import {selectStyles} from "../selectStyles.js";
+import InputField from "../../shared/Inputs/InputField.jsx";
+import Button from "../../shared/Button/Button.jsx";
+import {useMyStudents} from "../../../hooks/useMyStudents.js";
+
+const FirstStep = (props) => {
+    const {myStudents} = useMyStudents()
+
+    const handleStudentChange = (selectedOption) => {
+        props.setLessonData(prev => ({
+            ...prev,
+            student_id: selectedOption.value
+        }))
+    }
+
+    const students = myStudents.map((student) => ({
+        value: student.id,
+        label: `${student.name} ${student.surname} (${student.username})`,
+    }))
+
+    return(
+        <div className="step-container">
+            <label className="select-label">
+                Select student
+                <Select
+                    classNamePrefix="selectStudent"
+                    isSearchable={false}
+                    unstyled
+                    options={students}
+                    value={students.find(student => student.value === (props.lessonData.student_id)) || null}
+                    onChange={handleStudentChange}
+                    menuPortalTarget={document.body}
+                    styles={selectStyles}
+                />
+            </label>
+            <div className="date-time-group">
+                <label className="date-label">
+                    Date
+                    <DatePicker
+                        onChange={(date) => props.setSelectedDate(date)}
+                        selected={props.selectedDate}
+                        dateFormat="dd.MM.yyyy"
+                        placeholderText="DD.MM.YYYY"
+                        className="custom-date-input"
+                        showMonthYearDropdown
+                    />
+                </label>
+                <label className="date-label">
+                    Time
+                    <DatePicker
+                        onChange={(time) => props.setSelectedTime(time)}
+                        selected={props.selectedTime}
+                        showTimeSelect
+                        showTimeSelectOnly
+                        timeIntervals={15}
+                        timeCaption="Time"
+                        dateFormat="HH:mm"
+                        timeFormat="HH:mm"
+                        placeholderText="HH:MM"
+                    />
+                </label>
+            </div>
+            <InputField
+                name="duration"
+                type="number"
+                value={props.lessonData.duration}
+                label="Duration"
+                placeholder="Enter duration (min)"
+                onChange={props.handleChange}
+            />
+            <InputField
+                name="price"
+                type="number"
+                value={props.lessonData.price}
+                label="Price"
+                placeholder="Enter price"
+                onChange={props.handleChange}
+            />
+            <Button
+                className="cancel"
+                onClick={(e) => props.handleClose(e)}
+            >
+                Cancel
+            </Button>
+            <Button
+                onClick={() => {props.setNextStep(true)}}
+                type="button"
+                className="next-step-button"
+            >
+                Next
+            </Button>
+        </div>
+    )
+}
+
+export default FirstStep

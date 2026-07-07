@@ -1,0 +1,31 @@
+.add-student-modal {
+    top: 35%;
+}
+
+.add-student-prompt {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 1rem 1rem;
+}
+
+.add-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.disagree-button:hover {
+    background: #d3d4d6;
+}
+
+.agree-button {
+    background: #000000;
+    color: #FFFFFF;
+    border: 1px solid #000000;
+}
+
+.agree-button:hover {
+    background: #111111;
+    border: 1px solid #000000;
+}

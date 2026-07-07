@@ -1,4 +1,4 @@
-.teachersListPageContainer {
+.teachers-list-page-container {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -8,7 +8,7 @@
     padding-bottom: 1rem;
 }
 
-.teachersCount {
+.teachers-count {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -22,12 +22,12 @@
     margin-bottom: 1rem;
 }
 
-.totalTeachersCount {
+.total-teachers-count {
     font-size: 1.5rem;
     color: #000000;
 }
 
-.teachersListContainer {
+.teachers-list-container {
     display: flex;
     flex-direction: column;
     min-height: 10vh;
@@ -39,7 +39,7 @@
     color: #72757b;
 }
 
-.teachersListTitle {
+.teachers-list-title {
     align-self: flex-start;
     color: #000000;
     font-weight: 500;
@@ -47,7 +47,7 @@
     margin-bottom: 1rem;
 }
 
-.teachersList {
+.teachers-list {
     display: flex;
     flex-direction: column;
     gap: 1rem;

@@ -1,0 +1,15 @@
+.lesson-topic, .begin-time {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.lesson-duration-and-price {
+    font-size: 0.9rem;
+    color: #72757b;
+}
+
+.preview-name {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #72757b
+}
