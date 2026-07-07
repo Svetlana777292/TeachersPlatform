@@ -1,16 +1,16 @@
-import Button from "../../../components/Button/Button.jsx";
-import InputField from "../../../components/Inputs/InputField.jsx";
-import RadioField from "../../../components/Inputs/RadioField.jsx";
+import Button from "../../shared/Button/Button.jsx";
+import InputField from "../../shared/Inputs/InputField.jsx";
+import RadioField from "../../shared/Inputs/RadioField.jsx";
 
 const SecondRegisterStep = ({formData, handleChange, setNextStep}) => {
     return (
         <>
 
 
-            <div className="stepProgressWrapper">
-                <div className="stepProgressMessage">Step 2 of 2</div>
-                <div className="stepIndicator"></div>
-                <div className="stepIndicator"></div>
+            <div className="step-progress-wrapper">
+                <div className="step-progress-message">Step 2 of 2</div>
+                <div className="step-indicator"></div>
+                <div className="step-indicator"></div>
             </div>
 
             <InputField name="email" type="email" placeholder="ivan.ivanov@example.com" label="Email" vlaue={formData.email} onChange={handleChange}/>
@@ -22,8 +22,8 @@ const SecondRegisterStep = ({formData, handleChange, setNextStep}) => {
                 <RadioField name="role" className="role" label="I'm a student" value="student" checked={formData.role === 'student'} onChange={handleChange}/>
             </div>
 
-            <button type="button" className="prevStepButton" onClick={() => setNextStep(false)}>⬅ Back</button>
-            <Button type="submit" className="registerButton">Register</Button>
+            <button type="button" className="prev-step-button" onClick={() => setNextStep(false)}>⬅ Back</button>
+            <Button type="submit" className="register-button">Register</Button>
         </>
     )
 }

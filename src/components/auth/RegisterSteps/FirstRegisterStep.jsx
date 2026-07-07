@@ -1,13 +1,13 @@
-import InputField from "../../../components/Inputs/InputField.jsx";
-import Button from "../../../components/Button/Button.jsx";
+import InputField from "../../shared/Inputs/InputField.jsx";
+import Button from "../../shared/Button/Button.jsx";
 
 const FirstRegisterStep = ({formData, handleChange, setNextStep}) => {
     return (
         <>
-            <div className="stepProgressWrapper">
-                <div className="stepProgressMessage">Step 1 of 2</div>
-                <div className="stepIndicator"></div>
-                <div className="stepIndicator secondStepIndicator"></div>
+            <div className="step-progress-wrapper">
+                <div className="step-progress-message">Step 1 of 2</div>
+                <div className="step-indicator"></div>
+                <div className="step-indicator second-step-indicator"></div>
             </div>
 
             <div className="fullname-group">
@@ -17,7 +17,7 @@ const FirstRegisterStep = ({formData, handleChange, setNextStep}) => {
 
             <InputField name="username" type="text" placeholder="ivanovivan" label="Username" value={formData.username} onChange={handleChange}/>
 
-            <Button type="button" className="nextStepButton" onClick={() => setNextStep(true)}>Next step</Button>
+            <Button type="button" className="next-step-button" onClick={() => setNextStep(true)}>Next step</Button>
         </>
     )
 }
