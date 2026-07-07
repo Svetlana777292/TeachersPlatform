@@ -1,13 +1,13 @@
 import {
     getDateString, getTimeString,
     getWeekdayString
-} from "../../../utils/getEndTimeString.js";
+} from "../../../../utils/getEndTimeString.js";
 import "./ProfileSummary.css"
-import getNameById from "../../../utils/getName.js";
-import CalendarIcon from "../../../assets/icons/CalendarIcon.jsx";
-import PeopleIcon from "../../../assets/icons/PeopleIcon.jsx";
-import {useSummary} from "../../../hooks/useSummary.js";
-import {useMyStudents} from "../../../hooks/useMyStudents.js";
+import getNameById from "../../../../utils/getName.js";
+import CalendarIcon from "../../../../assets/icons/CalendarIcon.jsx";
+import PeopleIcon from "../../../../assets/icons/PeopleIcon.jsx";
+import {useSummary} from "../../../../hooks/useSummary.js";
+import {useMyStudents} from "../../../../hooks/useMyStudents.js";
 import SummaryLessonPreview from "../SummaryLessonPreview/SummaryLessonPreview.jsx";
 
 const ProfileSummary = () => {

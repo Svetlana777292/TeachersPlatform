@@ -1,8 +1,8 @@
-import getNameById from "../../../utils/getName.js";
-import {getTimeString} from "../../../utils/getEndTimeString.js";
-import {useMyStudents} from "../../../hooks/useMyStudents.js";
-import {useMyTeachers} from "../../../hooks/useMyTeachers.js";
-import {useGetUserQuery} from "../../../store/api/userApi.js";
+import getNameById from "../../../../utils/getName.js";
+import {getTimeString} from "../../../../utils/getEndTimeString.js";
+import {useMyStudents} from "../../../../hooks/useMyStudents.js";
+import {useMyTeachers} from "../../../../hooks/useMyTeachers.js";
+import {useGetUserQuery} from "../../../../store/api/userApi.js";
 import "./SummaryLessonPreview.css"
 
 const SummaryLessonPreview = ({lesson}) => {

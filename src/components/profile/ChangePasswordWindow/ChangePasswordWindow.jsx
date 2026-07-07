@@ -1,11 +1,11 @@
-import InputField from "../Inputs/InputField.jsx";
-import ErrorField from "../ErrorField/ErrorField.jsx";
-import Button from "../Button/Button.jsx";
+import InputField from "../../shared/Inputs/InputField.jsx";
+import ErrorField from "../../shared/ErrorField/ErrorField.jsx";
+import Button from "../../shared/Button/Button.jsx";
 import Modal from "react-modal";
-import '../../pages/Profile/ProfilePage.css';
+import '../../../pages/Profile/ProfilePage.css';
 import {useState} from "react";
 import "./ChangePasswordWindow.css"
-import {useEditUserMutation} from "../../store/api/userApi.js";
+import {useEditUserMutation} from "../../../store/api/userApi.js";
 
 const ChangePasswordWindow = (props) => {
     const [error, setError] = useState(null)

@@ -1,9 +1,9 @@
 import ChangePasswordWindow from "../ChangePasswordWindow/ChangePasswordWindow.jsx";
-import Button from "../Button/Button.jsx";
+import Button from "../../shared/Button/Button.jsx";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import "./AccountManagement.css"
-import {useLogoutUserMutation} from "../../store/api/userApi.js";
+import {useLogoutUserMutation} from "../../../store/api/userApi.js";
 
 const AccountManagement = () => {
     const navigate = useNavigate()

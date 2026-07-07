@@ -1,9 +1,9 @@
-import { useGetUserQuery }                        from "../../store/api/userApi.js";
-import { useGetAvatarQuery, useSetAvatarMutation } from "../../store/api/storageApi.js";
-import { useMyStudents }                          from "../../hooks/useMyStudents.js";
+import { useGetUserQuery }                        from "../../../store/api/userApi.js";
+import { useGetAvatarQuery, useSetAvatarMutation } from "../../../store/api/storageApi.js";
+import { useMyStudents }                          from "../../../hooks/useMyStudents.js";
 
 import "./UserInfo.css";
-import {useSummary} from "../../hooks/useSummary.js";
+import {useSummary} from "../../../hooks/useSummary.js";
 
 const UserInfo = () => {
     const { data: user }              = useGetUserQuery();
