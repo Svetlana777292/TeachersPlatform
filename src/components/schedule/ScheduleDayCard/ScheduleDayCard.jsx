@@ -1,8 +1,8 @@
 import "./ScheduleDayCard.css"
 import LessonCard from "../LessonCard/LessonCard.jsx"
-import getNameById from "../../utils/getName.js"
-import {getTimeString, getEndTimeString} from "../../utils/getEndTimeString.js";
-import {useMyStudents} from "../../hooks/useMyStudents.js";
+import getNameById from "../../../utils/getName.js"
+import {getTimeString, getEndTimeString} from "../../../utils/getEndTimeString.js";
+import {useMyStudents} from "../../../hooks/useMyStudents.js";
 
 const ScheduleDayCard = ({lessons, dayLabel, setEditingLesson, isTeacher}) => {
     const {myStudents} = useMyStudents()

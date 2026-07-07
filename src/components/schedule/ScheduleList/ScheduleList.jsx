@@ -1,10 +1,10 @@
-import Button from "../Button/Button.jsx";
+import Button from "../../shared/Button/Button.jsx";
 import {useEffect, useState} from "react";
 import "./ScheduleList.css"
 import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
-import useMyLessons from "../../hooks/useMyLessons.js";
-import Loading from "../Loading/Loading.jsx";
-import {getWeekDays} from "../../utils/getEndTimeString.js";
+import useMyLessons from "../../../hooks/useMyLessons.js";
+import Loading from "../../shared/Loading/Loading.jsx";
+import {getWeekDays} from "../../../utils/getEndTimeString.js";
 import ScheduleMobile from "./ScheduleMobile.jsx";
 import ScheduleDesktop from "./ScheduleDesktop.jsx";
 

@@ -1,10 +1,10 @@
 import Modal from "react-modal";
 import "react-datepicker/dist/react-datepicker.css"
 import "./CreateLessonWindow.css"
-import Loading from "../shared/Loading/Loading.jsx";
+import Loading from "../../shared/Loading/Loading.jsx";
 import FirstStep from "./FirstStep/FirstStep.jsx";
 import SecondStep from "./SecondStep/SecondStep.jsx";
-import {useMyStudents} from "../../hooks/useMyStudents.js";
+import {useMyStudents} from "../../../hooks/useMyStudents.js";
 import {useCreateLesson} from "./useCreateLesson.js";
 
 const CreateLessonWindow = ({ isOpen, isEditing, fieldsValues, onClose, title, onSubmitText }) => {

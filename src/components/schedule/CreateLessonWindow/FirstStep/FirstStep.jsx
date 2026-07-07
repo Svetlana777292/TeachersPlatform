@@ -1,9 +1,9 @@
 import Select from "react-select";
 import DatePicker from "react-datepicker";
 import {selectStyles} from "../selectStyles.js";
-import InputField from "../../shared/Inputs/InputField.jsx";
-import Button from "../../shared/Button/Button.jsx";
-import {useMyStudents} from "../../../hooks/useMyStudents.js";
+import InputField from "../../../shared/Inputs/InputField.jsx";
+import Button from "../../../shared/Button/Button.jsx";
+import {useMyStudents} from "../../../../hooks/useMyStudents.js";
 
 const FirstStep = (props) => {
     const {myStudents} = useMyStudents()

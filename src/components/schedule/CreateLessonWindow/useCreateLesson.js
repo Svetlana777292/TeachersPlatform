@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useCreateLessonMutation, useEditLessonMutation } from "../../store/api/lessonsApi.js"
+import { useCreateLessonMutation, useEditLessonMutation } from "../../../store/api/lessonsApi.js"
 
 const initialLessonData = {
     topic: "",

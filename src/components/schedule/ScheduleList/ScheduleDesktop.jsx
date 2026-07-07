@@ -1,9 +1,9 @@
-import {formatDateLocal, getEndTimeString, getTimeString} from "../../utils/getEndTimeString.js";
-import getNameById from "../../utils/getName.js";
+import {formatDateLocal, getEndTimeString, getTimeString} from "../../../utils/getEndTimeString.js";
+import getNameById from "../../../utils/getName.js";
 import LessonCard from "../LessonCard/LessonCard.jsx";
-import useMyLessons from "../../hooks/useMyLessons.js";
+import useMyLessons from "../../../hooks/useMyLessons.js";
 import {HOUR_HEIGHT, HOURS, WEEK_DAYS} from "./scheduleConstants.js";
-import {useMyStudents} from "../../hooks/useMyStudents.js";
+import {useMyStudents} from "../../../hooks/useMyStudents.js";
 
 const ScheduleDesktop = ({days, setEditingLesson, isTeacher}) => {
     const {lessonsByDate} = useMyLessons()

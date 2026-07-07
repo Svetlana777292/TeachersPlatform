@@ -1,8 +1,8 @@
 import "./LessonCard.css"
-import {getEndTimeString, getTime, getTimeString, getEndTime} from "../../utils/getEndTimeString.js";
+import {getEndTimeString, getTime, getTimeString, getEndTime} from "../../../utils/getEndTimeString.js";
 import {useEffect, useState} from "react";
-import getNameById from "../../utils/getName.js";
-import {useMyStudents} from "../../hooks/useMyStudents.js";
+import getNameById from "../../../utils/getName.js";
+import {useMyStudents} from "../../../hooks/useMyStudents.js";
 
 const LessonCard = (props) => {
     const [timeProgress, setTimeProgress] = useState(0)

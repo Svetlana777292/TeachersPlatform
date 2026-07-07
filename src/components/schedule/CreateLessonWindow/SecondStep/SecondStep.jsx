@@ -1,8 +1,8 @@
-import InputField from "../../shared/Inputs/InputField.jsx";
+import InputField from "../../../shared/Inputs/InputField.jsx";
 import Select from "react-select";
-import Button from "../../shared/Button/Button.jsx";
+import Button from "../../../shared/Button/Button.jsx";
 import {selectStyles} from "../selectStyles.js";
-import LessonCard from "../../schedule/LessonCard/LessonCard.jsx";
+import LessonCard from "../../LessonCard/LessonCard.jsx";
 import "./SecondStep.css"
 import {useCreateLesson} from "../useCreateLesson.js";
 
