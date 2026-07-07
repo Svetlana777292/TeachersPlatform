@@ -1,8 +1,8 @@
 import {useState, useRef, useEffect} from "react";
 import "./Search.css"
 import AddStudentModal from "../AddStudentModal/AddStudentModal.jsx";
-import {useSearchStudentQuery} from "../../store/api/studentsApi.js";
-import SearchIcon from "../../assets/icons/SearchIcon.jsx";
+import {useSearchStudentQuery} from "../../../store/api/studentsApi.js";
+import SearchIcon from "../../../assets/icons/SearchIcon.jsx";
 
 const Search = () => {
     const [searchedStudent, setSearchedStudent] = useState("")

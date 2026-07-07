@@ -1,7 +1,7 @@
 import Modal from "react-modal";
 import "./AddStudentModal.css"
-import Button from "../shared/Button/Button.jsx";
-import {useAddStudentMutation} from "../../store/api/studentsApi.js";
+import Button from "../../shared/Button/Button.jsx";
+import {useAddStudentMutation} from "../../../store/api/studentsApi.js";
 
 const AddStudentModal = (props) => {
     const [addStudent, {error}] = useAddStudentMutation()

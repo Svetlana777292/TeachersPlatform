@@ -1,6 +1,6 @@
 import { useGetAvatarQuery } from "../../../store/api/storageApi.js";
 
-import Button from "../../../components/shared/Button/Button.jsx";
+import Button from "../../shared/Button/Button.jsx";
 
 import "./StudentCard.css";
 

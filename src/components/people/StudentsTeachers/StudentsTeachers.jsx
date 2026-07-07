@@ -7,16 +7,16 @@ const StudentsTeachers = () => {
 
     return (
         <>
-            <div className="teachersListPageContainer layout-container">
+            <div className="teachers-list-page-container layout-container">
                 <aside className="aside">
-                    <section className="teachersCount">
-                        Total teachers <span className="totalTeachersCount">{teachersCount}</span>
+                    <section className="teachers-count">
+                        Total teachers <span className="total-teachers-count">{teachersCount}</span>
                     </section>
                 </aside>
 
-                <main className="teachersListContainer">
-                    <h2 className="teachersListTitle">My teachers:</h2>
-                    <div className="teachersList">{teachersCount > 0 ?
+                <main className="teachers-list-container">
+                    <h2 className="teachers-list-title">My teachers:</h2>
+                    <div className="teachers-list">{teachersCount > 0 ?
                         myTeachers.map((teacher) => (
                             <TeacherCard key={teacher.id} teacher={teacher} />)) :
                         "You don't have any teachers yet :("}</div>
