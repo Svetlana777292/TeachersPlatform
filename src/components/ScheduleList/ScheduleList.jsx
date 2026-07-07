@@ -12,7 +12,6 @@ import useIsDesktop from "../../hooks/useIsDesktop.js";
 const ScheduleList = ({isTeacher}) => {
     const [weekOffset, setWeekOffset] = useState(0)
     const [creatingLesson, setCreatingLesson] = useState(false)
-    const [editingLesson, setEditingLesson] = useState(null)
     const {lessonsIsLoading} = useMyLessons()
     const {isDesktop} = useIsDesktop()
 
@@ -38,23 +37,15 @@ const ScheduleList = ({isTeacher}) => {
                 </div>
             </aside>
             { !isDesktop ? (
-                <ScheduleMobile days={days} setEditingLesson={setEditingLesson} isTeacher={isTeacher}/>
+                <ScheduleMobile days={days} creatingLesson={creatingLesson} isTeacher={isTeacher}/>
             ) : (
-                <ScheduleDesktop days={days} setEditingLesson={setEditingLesson} isTeacher={isTeacher}/>
+                <ScheduleDesktop days={days} creatingLesson={creatingLesson} isTeacher={isTeacher}/>
             )}
             <CreateLessonWindow
                 isOpen={creatingLesson}
                 onClose={() => setCreatingLesson(false)}
                 title="Create Lesson"
                 onSubmitText="Create Lesson"
-            />
-            <CreateLessonWindow
-                isOpen={editingLesson !== null}
-                onClose={() => setEditingLesson(null)}
-                title="Edit Lesson"
-                onSubmitText="Save changes"
-                fieldsValues={editingLesson}
-                isEditing={true}
             />
         </div>
     )

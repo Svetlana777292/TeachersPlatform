@@ -5,7 +5,7 @@ import useMyLessons from "../../hooks/useMyLessons.js";
 import {HOUR_HEIGHT, HOURS, WEEK_DAYS} from "./scheduleConstants.js";
 import {useMyStudents} from "../../hooks/useMyStudents.js";
 
-const ScheduleDesktop = ({days, setEditingLesson, isTeacher}) => {
+const ScheduleDesktop = ({days, setEditingLesson, isTeacher, creatingLesson}) => {
     const {lessonsByDate} = useMyLessons()
     const {myStudents} = useMyStudents()
 
@@ -48,6 +48,7 @@ const ScheduleDesktop = ({days, setEditingLesson, isTeacher}) => {
                         isDurationShort={isDurationShort}
                         isDurationShortest={isDurationShortest}
                         textPosition={!isDurationShort ? 'start' : "center"}
+                        creatingLesson={creatingLesson}
                     />
                 </div>
             )

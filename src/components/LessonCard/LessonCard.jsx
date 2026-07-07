@@ -3,11 +3,12 @@ import {getEndTimeString, getTime, getTimeString, getEndTime} from "../../utils/
 import {useEffect, useState} from "react";
 import getNameById from "../../utils/getName.js";
 import {useMyStudents} from "../../hooks/useMyStudents.js";
+import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
 
 const LessonCard = (props) => {
     const [timeProgress, setTimeProgress] = useState(0)
     const {myStudents} = useMyStudents()
-
+    const [editingLesson, setEditingLesson] = useState(null)
 
     useEffect(() => {
         const dateNow = new Date().getTime()
@@ -52,26 +53,37 @@ const LessonCard = (props) => {
     }
 
     return (
-        <div
-            className={`lessonCardWrapper ${props.className}`}
-            style={wrapperStyle}
-            onClick={props.onClick}
-        >
-            <h1
-                className="name"
-                style={props.isDurationShortest
-                    ? shortestCardStyleTitle
-                    : null}
+        <>
+            <div
+                className={`lessonCardWrapper ${props.className}`}
+                style={wrapperStyle}
+                onClick={() => setEditingLesson(props.lesson)}
             >
-                {getNameById(props.lesson.student_id, myStudents)}
-            </h1>
-            {!props.isDurationShort
-                ? <h2 className="lessonTitle">{props.lesson.topic}</h2>
-                : null}
-            {!props.isDurationShortest
-                ? <div className="lessonData">{`${getTimeString(props.lesson.date)} - ${getEndTimeString(props.lesson.date, props.lesson.duration)} • ${props.lesson.duration}min`}</div>
-                : null}
-        </div>
+                <h1
+                    className="name"
+                    style={props.isDurationShortest
+                        ? shortestCardStyleTitle
+                        : null}
+                >
+                    {getNameById(props.lesson.student_id, myStudents)}
+                </h1>
+                {!props.isDurationShort
+                    ? <h2 className="lessonTitle">{props.lesson.topic}</h2>
+                    : null}
+                {!props.isDurationShortest
+                    ? <div className="lessonData">{`${getTimeString(props.lesson.date)} - ${getEndTimeString(props.lesson.date, props.lesson.duration)} • ${props.lesson.duration}min`}</div>
+                    : null}
+            </div>
+            <CreateLessonWindow
+                isOpen={editingLesson !== null}
+                onClose={() => setEditingLesson(null)}
+                title="Edit Lesson"
+                onSubmitText="Save changes"
+                fieldsValues={editingLesson}
+                isEditing={true}
+                lesson_id={props.lesson.id}
+            />
+        </>
     )
 }
 

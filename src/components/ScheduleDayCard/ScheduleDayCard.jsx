@@ -4,7 +4,7 @@ import getNameById from "../../utils/getName.js"
 import {getTimeString, getEndTimeString} from "../../utils/getEndTimeString.js";
 import {useMyStudents} from "../../hooks/useMyStudents.js";
 
-const ScheduleDayCard = ({lessons, dayLabel, setEditingLesson, isTeacher}) => {
+const ScheduleDayCard = ({lessons, dayLabel, setEditingLesson, isTeacher, creatingLesson}) => {
     const {myStudents} = useMyStudents()
 
     return (
@@ -28,6 +28,7 @@ const ScheduleDayCard = ({lessons, dayLabel, setEditingLesson, isTeacher}) => {
                                 onClick={() => {
                                     isTeacher ? setEditingLesson(lesson.originalLesson ?? lesson) : null
                                 }}
+                                creatingLesson={creatingLesson}
                             />
                         ))
                     ) : <div className="emptyDayMessage">You haven't any lessons :(</div>}

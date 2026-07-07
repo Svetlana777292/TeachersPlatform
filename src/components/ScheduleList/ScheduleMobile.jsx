@@ -3,7 +3,7 @@ import ScheduleDayCard from "../ScheduleDayCard/ScheduleDayCard.jsx";
 import useMyLessons from "../../hooks/useMyLessons.js";
 import {WEEK_DAYS} from "./scheduleConstants.js";
 
-const ScheduleMobile = ({days, setEditingLesson, isTeacher}) => {
+const ScheduleMobile = ({days, setEditingLesson, isTeacher, creatingLesson}) => {
     const {lessonsByDate} = useMyLessons()
 
     function renderScheduleCards() {
@@ -23,6 +23,7 @@ const ScheduleMobile = ({days, setEditingLesson, isTeacher}) => {
                     key={dayKey}
                     setEditingLesson={setEditingLesson}
                     isTeacher={isTeacher}
+                    creatingLesson={creatingLesson}
                 />
             )
         })
