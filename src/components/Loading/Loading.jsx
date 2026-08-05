@@ -5,7 +5,7 @@ const Loading = (props) => {
         <>
             <div className="loading">
                 <div className="gear-wrapper">
-                    <img className="gear" src="/src/assets/gear.svg" alt="Загрузка"/>
+                    <img className="gear" src="/gear.svg" alt="Загрузка"/>
                 </div>
                 <h2>{props.message}</h2>
             </div>
