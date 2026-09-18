@@ -1,0 +1,17 @@
+const CheckIcon = ({ className }) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            preserveAspectRatio="xMidYMid meet"
+            className={className}
+            aria-hidden="true"
+        >
+            <g fill="currentColor" stroke="none">
+                <path d="M8.43,20h0a1,1,0,0,1-.72-.32l-6.44-7a1,1,0,1,1,1.48-1.36l5.71,6.22L21.28,4.3a1,1,0,1,1,1.44,1.4L9.15,19.7A1,1,0,0,1,8.43,20Z" />
+            </g>
+        </svg>
+    );
+};
+
+export default CheckIcon

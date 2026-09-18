@@ -2,6 +2,8 @@
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+  --toastify-font-family: inherit;
+  --toastify-icon-color-success: #75dc9b;
 
   @media (max-width: 1024px) {
     font-size: 16px;
@@ -94,6 +96,7 @@ textarea {
   -webkit-appearance: none;
   appearance: none;
 }
+
 
 #root {
   width: 100%;

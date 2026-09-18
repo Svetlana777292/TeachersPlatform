@@ -21,6 +21,10 @@ function App() {
       return <Loading />
   }
 
+  const position = window.matchMedia("(max-width: 768px)").matches
+        ? "top-center"
+        : "bottom-right";
+
   return (
     <>
       <Routes>
