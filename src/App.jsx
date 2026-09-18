@@ -1,3 +1,4 @@
+import React from "react";
 import {Route, Routes, Navigate} from "react-router-dom";
 import RegisterPage from "./pages/Auth/RegisterPage/RegisterPage.jsx";
 import LoginPage from "./pages/Auth/LoginPage.jsx";
@@ -32,13 +33,20 @@ function App() {
         <Route path="/finance/" element={<ProtectedRoute><FinancePage/></ProtectedRoute>}/>
         <Route path="/lessons/" element={<ProtectedRoute><StudentLessonPage/></ProtectedRoute>}/>
 
-        <Route path="/payments/*" element={<Navigate to="/finance/" replace />} />
-        
+        <Route path="/payments/*" element={<PaymentRedirect />} />
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <ToastContainer autoClose={3000} position={"top-center"} toastClassName="appToast" className="appToastContainer" hideProgressBar={true}/>
     </>
   )
+}
+
+function PaymentRedirect() {
+  React.useEffect(() => {
+    window.location.href = "/finance/";
+  }, []);
+  return <Loading />;
 }
 
 export default App

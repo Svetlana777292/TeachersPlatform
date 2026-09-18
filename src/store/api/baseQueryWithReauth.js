@@ -17,11 +17,8 @@ export const baseQueryWithReauth = async (args, api, extraOptions) => {
         )
 
         if (!refreshResult.error) {
-            // refresh удался — повторяем исходный запрос
             result = await baseQuery(args, api, extraOptions)
         }
-        // refresh не удался — оставляем 401 как есть:
-        // verifyUser завершится с isSuccess:false, и ProtectedRoute сам редиректит на /login
     }
 
     return result
