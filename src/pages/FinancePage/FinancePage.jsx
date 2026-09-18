@@ -46,7 +46,7 @@ const FinancePage = () => {
     async function addNewCard() {
         try {
             const result = await initCard().unwrap()
-            window.open(result.redirect_url)
+            window.location.href = result.redirect_url
         } catch (err) {
             console.error("Failed to init card:", err)
         }
@@ -60,7 +60,7 @@ const FinancePage = () => {
                     <h1 className="financePageTitle">Finance</h1>
                     <h3 className="financePageDescription">Your saved cards and full transaction history.</h3>
 
-                    {user.role === "teacher" ? (<section className="financeStatsContainer">
+                    {user?.role === "teacher" ? (<section className="financeStatsContainer">
                         <article className="financeStats">
                             <MoneyIcon className="financeStatsIcon financeStatsMoneyIcon"/>
                             <h3 className="financeStatsTitle">Earned this month</h3>
@@ -81,8 +81,8 @@ const FinancePage = () => {
                             <span className="balanceDollars">{`$${getDollarsPart(balance.balance)}`}</span>
                             <span className="balanceCent">{`.${getCentsPart(balance.balance)}`}</span>
                         </div>
-                        {user.role !== "teacher" ? (<Button className="topUpButton" onClick={() => setBalanceChanging(true)}>+ Top up</Button>) : null}
-                        {user.role === "teacher" ? (<Button className="withdrawButton" onClick={() => setBalanceChanging(true)}>- Withdraw</Button>) : null}
+                        {user?.role !== "teacher" ? (<Button className="topUpButton" onClick={() => setBalanceChanging(true)}>+ Top up</Button>) : null}
+                        {user?.role === "teacher" ? (<Button className="withdrawButton" onClick={() => setBalanceChanging(true)}>- Withdraw</Button>) : null}
                     </section>
 
                     <h2 className="financePaymentCardsTitle">Your payment cards</h2>

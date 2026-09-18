@@ -1,10 +1,10 @@
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, Navigate} from "react-router-dom";
 import RegisterPage from "./pages/Auth/RegisterPage/RegisterPage.jsx";
 import LoginPage from "./pages/Auth/LoginPage.jsx";
 import ProfilePage from "./pages/Profile/ProfilePage.jsx";
 import Loading from "./components/Loading/Loading.jsx";
 import SchedulePage from "./pages/SchedulePage/SchedulePage.jsx";
-import {useGetUserQuery, useVerifyUserQuery} from "./store/api/userApi.js";
+import {useVerifyUserQuery} from "./store/api/userApi.js";
 import PeoplePage from "./pages/People/PeoplePage/PeoplePage.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import {ToastContainer} from "react-toastify";
@@ -15,15 +15,10 @@ import StudentLessonPage from "./pages/StudentLessonsPage/StudentLessonPage.jsx"
 
 function App() {
   const {isSuccess: isTokenValid, isLoading} = useVerifyUserQuery()
-    const {data: user} = useGetUserQuery()
 
   if(isLoading){
       return <Loading />
   }
-
-  const position = window.matchMedia("(max-width: 768px)").matches
-        ? "top-center"
-        : "bottom-right";
 
   return (
     <>
@@ -36,6 +31,10 @@ function App() {
         <Route path="/schedule/" element={<ProtectedRoute><SchedulePage/></ProtectedRoute>}/>
         <Route path="/finance/" element={<ProtectedRoute><FinancePage/></ProtectedRoute>}/>
         <Route path="/lessons/" element={<ProtectedRoute><StudentLessonPage/></ProtectedRoute>}/>
+
+        <Route path="/payments/*" element={<Navigate to="/finance/" replace />} />
+        
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <ToastContainer autoClose={3000} position={"top-center"} toastClassName="appToast" className="appToastContainer" hideProgressBar={true}/>
     </>
