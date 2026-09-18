@@ -18,19 +18,18 @@ import {formatMoney, getDollarsPart, getCentsPart} from "../../utils/moneyUtils.
 import TransactionsHistory from "../../components/TransactionsHistory/TransactionsHistory.jsx";
 import {toISOStringWithTZ} from "../../utils/getEndTimeString.js";
 
-
-const now = new Date()
-const start = new Date(now.getFullYear(), now.getMonth(), 1)
-
-console.log(toISOStringWithTZ(now))
-
-const params = new URLSearchParams({
-    period_start: toISOStringWithTZ(start),
-    period_end: toISOStringWithTZ(now),
-}).toString()
-
 const FinancePage = () => {
     const {data: user} = useGetUserQuery()
+
+    const params = useMemo(() => {
+        const now = new Date()
+        const start = new Date(now.getFullYear(), now.getMonth(), 1)
+        return new URLSearchParams({
+            period_start: toISOStringWithTZ(start),
+            period_end: toISOStringWithTZ(now),
+          }).toString()
+    }, [])
+
     const {data: financeStats} = useGetFinanceStatsQuery(params)
     const [initCard] = useInitCardMutation()
     const {data: {cards = []} = {}, isLoading: isCardsLoading} = useGetAllCardsQuery()
