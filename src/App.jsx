@@ -27,7 +27,7 @@ function App() {
         <Route path="/register/" element={<RegisterPage/>}/>
         <Route path="/login/" element={<LoginPage/>}/>
         <Route path="/" element={isTokenValid ? <ProfilePage /> : <LoginPage/>}/>
-        <Route path="/Profile/" element={<ProtectedRoute><ProfilePage/></ProtectedRoute>}/>
+        <Route path="/profile/" element={<ProtectedRoute><ProfilePage/></ProtectedRoute>}/>
         <Route path="/people/" element={<ProtectedRoute><PeoplePage /></ProtectedRoute>}/>
         <Route path="/schedule/" element={<ProtectedRoute><SchedulePage/></ProtectedRoute>}/>
         <Route path="/finance/" element={<ProtectedRoute><FinancePage/></ProtectedRoute>}/>
