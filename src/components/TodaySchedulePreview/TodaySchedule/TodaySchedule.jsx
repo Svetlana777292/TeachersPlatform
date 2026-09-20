@@ -1,6 +1,6 @@
 import CalendarIcon from "../../../assets/CalendarIcon.jsx"
 import "./TodaySchedule.css"
-import {getDateString, getWeekdayString} from "../../../utils/getEndTimeString.js";
+import {getDateString, getWeekdayString} from "../../../utils/getEndTimeString.ts";
 import {useSummary} from "../../../hooks/useSummary.js";
 import BookIcon from "../../../assets/BookIcon.jsx";
 import SummaryLessonPreview from "../SummaryLessonPreview/SummaryLessonPreview.jsx";

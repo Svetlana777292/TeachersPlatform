@@ -4,7 +4,7 @@ import InputField from "../Inputs/InputField.jsx";
 import Button from "../Button/Button.jsx";
 import ErrorField from "../ErrorField/ErrorField.jsx";
 import { useEditUserMutation, useGetUserQuery } from "../../store/api/userApi.js";
-import { getFetchErrorMessage } from "../../utils/errorsHandling.jsx";
+import { getFetchErrorMessage } from "../../utils/errorsHandling.ts";
 
 import "./UserInfoForm.css";
 

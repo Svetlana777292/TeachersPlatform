@@ -1,7 +1,7 @@
 import "./LessonCard.css"
-import {getEndTimeString, getTime, getTimeString, getEndTime} from "../../utils/getEndTimeString.js";
+import {getEndTimeString, getTime, getTimeString, getEndTime} from "../../utils/getEndTimeString.ts";
 import {useEffect, useState} from "react";
-import getNameById from "../../utils/getName.js";
+import getNameById from "../../utils/getName.ts";
 import {useMyStudents} from "../../hooks/useMyStudents.js";
 import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
 

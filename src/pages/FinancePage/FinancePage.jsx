@@ -14,9 +14,9 @@ import Button from "../../components/Button/Button.jsx";
 import PaymentCardPreview from "../../components/PaymentCardPreview/PaymentCardPreview.jsx";
 import Loading from "../../components/Loading/Loading.jsx";
 import BalanceTransferWindow from "../../components/BalanceTransferWindow/BalanceTransferWindow.jsx";
-import {formatMoney, getDollarsPart, getCentsPart} from "../../utils/moneyUtils.js";
+import {formatMoney, getDollarsPart, getCentsPart} from "../../utils/moneyUtils.ts";
 import TransactionsHistory from "../../components/TransactionsHistory/TransactionsHistory.jsx";
-import {toISOStringWithTZ} from "../../utils/getEndTimeString.js";
+import {toISOStringWithTZ} from "../../utils/getEndTimeString.ts";
 
 const FinancePage = () => {
     const {data: user} = useGetUserQuery()

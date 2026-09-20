@@ -4,7 +4,7 @@ import "./ScheduleList.css"
 import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
 import useMyLessons from "../../hooks/useMyLessons.js";
 import Loading from "../Loading/Loading.jsx";
-import {getWeekDays} from "../../utils/getEndTimeString.js";
+import {getWeekDays} from "../../utils/getEndTimeString.ts";
 import ScheduleMobile from "./ScheduleMobile.jsx";
 import ScheduleDesktop from "./ScheduleDesktop.jsx";
 import useIsDesktop from "../../hooks/useIsDesktop.js";

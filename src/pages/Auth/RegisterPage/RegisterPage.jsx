@@ -4,7 +4,7 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import FirstRegisterStep from "./FirstRegisterStep.jsx";
 import SecondRegisterStep from "./SecondRegisterStep.jsx";
-import {getFetchErrorMessage} from "../../../utils/errorsHandling.jsx";
+import {getFetchErrorMessage} from "../../../utils/errorsHandling.ts";
 import ErrorField from "../../../components/ErrorField/ErrorField.jsx";
 import {useRegisterUserMutation} from "../../../store/api/userApi.js";
 

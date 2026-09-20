@@ -7,7 +7,7 @@ import {useGetAllCardsQuery, useGetBalanceQuery} from "../../store/api/financeAp
 import Button from "../Button/Button.jsx";
 import {useRenderWindowAttributes} from "./useRenderWindowAttributes.js";
 import {toast} from "react-toastify";
-import {formatMoney} from "../../utils/moneyUtils.js";
+import {formatMoney} from "../../utils/moneyUtils.ts";
 import ErrorField from "../ErrorField/ErrorField.jsx";
 
 function renderCardBrandIcon(brand) {

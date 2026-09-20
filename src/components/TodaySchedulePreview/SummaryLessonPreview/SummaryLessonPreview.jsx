@@ -1,5 +1,5 @@
-import getNameById from "../../../utils/getName.js";
-import {getEndTimeString, getTimeString} from "../../../utils/getEndTimeString.js";
+import getNameById from "../../../utils/getName.ts";
+import {getEndTimeString, getTimeString} from "../../../utils/getEndTimeString.ts";
 import {useMyStudents} from "../../../hooks/useMyStudents.js";
 import {useMyTeachers} from "../../../hooks/useMyTeachers.js";
 import {useGetUserQuery} from "../../../store/api/userApi.js";

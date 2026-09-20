@@ -1,9 +1,9 @@
 import {
     getDateString, getTimeString,
     getWeekdayString
-} from "../../../utils/getEndTimeString.js";
+} from "../../../utils/getEndTimeString.ts";
 import "./ProfileSummary.css"
-import getNameById from "../../../utils/getName.js";
+import getNameById from "../../../utils/getName.ts";
 import CalendarIcon from "../../../assets/CalendarIcon.jsx";
 import PeopleIcon from "../../../assets/PeopleIcon.jsx";
 import {useSummary} from "../../../hooks/useSummary.js";

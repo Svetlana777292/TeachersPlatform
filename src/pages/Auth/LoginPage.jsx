@@ -4,7 +4,7 @@ import AuthRedirection from "../../components/AuthRedirection/AuthRedirection.js
 import RadioField from "../../components/Inputs/RadioField.jsx";
 import "./AuthPage.css"
 import {useState} from "react";
-import {getFetchErrorMessage} from "../../utils/errorsHandling.jsx";
+import {getFetchErrorMessage} from "../../utils/errorsHandling.ts";
 import ErrorField from "../../components/ErrorField/ErrorField.jsx";
 import {useLoginUserMutation} from "../../store/api/userApi.js";
 import {useNavigate} from "react-router-dom";

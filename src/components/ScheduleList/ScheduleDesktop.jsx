@@ -1,5 +1,5 @@
-import {formatDateLocal, getEndTimeString, getTimeString} from "../../utils/getEndTimeString.js";
-import getNameById from "../../utils/getName.js";
+import {formatDateLocal, getEndTimeString, getTimeString} from "../../utils/getEndTimeString.ts";
+import getNameById from "../../utils/getName.ts";
 import LessonCard from "../LessonCard/LessonCard.jsx";
 import useMyLessons from "../../hooks/useMyLessons.js";
 import {HOUR_HEIGHT, HOURS, WEEK_DAYS} from "./scheduleConstants.js";

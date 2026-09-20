@@ -1,7 +1,7 @@
 import "./TransactionsHistory.css"
 import TransactionCard from "../TransactionCard/TransactionCard.jsx";
 import {useTransactionHistory} from "./useTransactionHistory.jsx";
-import {getDateString, getWeekdayString} from "../../utils/getEndTimeString.js";
+import {getDateString, getWeekdayString} from "../../utils/getEndTimeString.ts";
 
 const TransactionsHistory = () => {
     const {transactionsByDate} = useTransactionHistory()

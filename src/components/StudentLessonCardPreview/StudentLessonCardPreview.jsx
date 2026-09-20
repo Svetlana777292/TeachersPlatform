@@ -3,11 +3,11 @@ import {useGetAvatarQuery} from "../../store/api/storageApi.js";
 import {
     getEndTimeString,
     getTimeString,
-} from "../../utils/getEndTimeString.js";
+} from "../../utils/getEndTimeString.ts";
 import Button from "../Button/Button.jsx";
 import {usePayForLessonMutation} from "../../store/api/financeApi.js";
 import {useMyTeachers} from "../../hooks/useMyTeachers.js";
-import getNameById from "../../utils/getName.js";
+import getNameById from "../../utils/getName.ts";
 
 function renderLessonDateBackgroundColor(cardColor) {
     switch (cardColor) {

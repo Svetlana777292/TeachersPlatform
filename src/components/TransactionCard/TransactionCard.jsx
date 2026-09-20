@@ -5,7 +5,7 @@ import {
     renderTransactionIcon,
     renderTransactionName, renderTransactionStatus
 } from "../TransactionsHistory/transactionUtils.jsx";
-import getNameById from "../../utils/getName.js";
+import getNameById from "../../utils/getName.ts";
 
 const TransactionCard = ({transaction}) => {
     const {data: {students = []} = {}} = useGetAllStudentsQuery()
