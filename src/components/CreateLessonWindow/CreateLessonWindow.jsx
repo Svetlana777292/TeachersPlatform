@@ -8,7 +8,7 @@ import {useMyStudents} from "../../hooks/useMyStudents.js";
 import {useCreateLesson} from "./useCreateLesson.js";
 import {TrashIcon} from "../../assets/Trash.jsx";
 import Button from "../Button/Button.jsx";
-import {useDeleteLessonMutation} from "../../store/api/lessonsApi.js";
+import {useDeleteLessonMutation} from "../../store/api/lessonsApi.ts";
 
 const CreateLessonWindow = ({ isOpen, isEditing, fieldsValues, onClose, title, onSubmitText, lesson_id}) => {
     const { isStudentsLoading } = useMyStudents()

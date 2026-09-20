@@ -1,7 +1,7 @@
 import {useMemo} from "react"
 import {formatDateLocal, getEndTime, getTime} from "../utils/getEndTimeString.ts";
 import {splitLessonByDay} from "../utils/lessonsUtils.ts";
-import {useGetAllLessonsQuery} from "../store/api/lessonsApi.js";
+import {useGetAllLessonsQuery} from "../store/api/lessonsApi.ts";
 
 function useMyLessons() {
     const {data: { lessons: myLessons = [] } = {}, isLoading: lessonsIsLoading} = useGetAllLessonsQuery()
