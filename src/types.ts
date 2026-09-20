@@ -28,3 +28,13 @@ export interface Card {
     is_default: boolean;
     created_at: string;
 }
+
+export interface Transaction {
+    id: number;
+    user_id: number;
+    type: string;
+    amount: number;
+    status: string;
+    crated_at: string;
+    updated_at: string;
+}
