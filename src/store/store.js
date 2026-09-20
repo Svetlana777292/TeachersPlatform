@@ -1,6 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit"
 import {userApi} from "./api/userApi.js"
-import {studentsApi} from "./api/studentsApi.js";
+import {studentsApi} from "./api/studentsApi.ts";
 import {lessonsApi} from "./api/lessonsApi.ts";
 import {storageApi} from "./api/storageApi.js";
 import {teachersApi} from "./api/teachersApi.js";

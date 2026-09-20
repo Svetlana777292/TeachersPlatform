@@ -1,7 +1,7 @@
 import Modal from "react-modal";
 import "./AddStudentModal.css"
 import Button from "../Button/Button.jsx";
-import {useAddStudentMutation} from "../../store/api/studentsApi.js";
+import {useAddStudentMutation} from "../../store/api/studentsApi.ts";
 
 const AddStudentModal = (props) => {
     const [addStudent, {error}] = useAddStudentMutation()
@@ -14,7 +14,6 @@ const AddStudentModal = (props) => {
                 <Button type="submit" className="agreeButton" onClick={(e) => {
                     e.preventDefault()
                     addStudent(props.student)
-                    console.log('student:', props.student)
                     props.onClose()
                 }}>Yes</Button>
             </div>

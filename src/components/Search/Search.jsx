@@ -1,7 +1,7 @@
 import {useState, useRef, useEffect} from "react";
 import "./Search.css"
 import AddStudentModal from "../AddStudentModal/AddStudentModal.jsx";
-import {useSearchStudentQuery} from "../../store/api/studentsApi.js";
+import {useSearchStudentQuery} from "../../store/api/studentsApi.ts";
 import SearchIcon from "../../assets/SearchIcon.jsx";
 
 const Search = () => {

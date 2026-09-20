@@ -102,7 +102,7 @@ Six RTK Query slices, each registered in [`store.js`](src/store/store.js) with i
 | Slice | Responsibility |
 | --- | --- |
 | [`userApi`](src/store/api/userApi.js) | register, login, logout, token verification, profile |
-| [`studentsApi`](src/store/api/studentsApi.js) | student roster, search, add, remove |
+| [`studentsApi`](src/store/api/studentsApi.ts) | student roster, search, add, remove |
 | [`teachersApi`](src/store/api/teachersApi.js) | a student's teachers |
 | [`lessonsApi`](src/store/api/lessonsApi.ts) | lesson CRUD |
 | [`financeApi`](src/store/api/financeApi.ts) | balance, cards, transactions, charges, withdrawals |

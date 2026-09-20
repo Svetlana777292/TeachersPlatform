@@ -1,5 +1,5 @@
 import "./TransactionCard.css"
-import {useGetAllStudentsQuery} from "../../store/api/studentsApi.js";
+import {useGetAllStudentsQuery} from "../../store/api/studentsApi.ts";
 import {
     renderTransactionAmount,
     renderTransactionIcon,
