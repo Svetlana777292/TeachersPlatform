@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import {useState} from "react";
 import {VisaIcon} from "../../assets/Visa.jsx";
 import {MastercardIcon} from "../../assets/Mastercard.jsx";
-import {useGetAllCardsQuery, useGetBalanceQuery} from "../../store/api/financeApi.js";
+import {useGetAllCardsQuery, useGetBalanceQuery} from "../../store/api/financeApi.ts";
 import Button from "../Button/Button.jsx";
 import {useRenderWindowAttributes} from "./useRenderWindowAttributes.js";
 import {toast} from "react-toastify";

@@ -9,7 +9,7 @@ import {
     useGetBalanceQuery,
     useGetFinanceStatsQuery,
     useInitCardMutation
-} from "../../store/api/financeApi.js";
+} from "../../store/api/financeApi.ts";
 import Button from "../../components/Button/Button.jsx";
 import PaymentCardPreview from "../../components/PaymentCardPreview/PaymentCardPreview.jsx";
 import Loading from "../../components/Loading/Loading.jsx";

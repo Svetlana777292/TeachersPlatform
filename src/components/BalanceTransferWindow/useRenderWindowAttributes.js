@@ -1,4 +1,4 @@
-import {useChargeMutation, useWithdrawMoneyMutation} from "../../store/api/financeApi.js";
+import {useChargeMutation, useWithdrawMoneyMutation} from "../../store/api/financeApi.ts";
 import {useGetUserQuery} from "../../store/api/userApi.js";
 
 export function useRenderWindowAttributes() {

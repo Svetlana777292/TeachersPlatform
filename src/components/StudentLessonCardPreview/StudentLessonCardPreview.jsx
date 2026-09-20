@@ -5,7 +5,7 @@ import {
     getTimeString,
 } from "../../utils/getEndTimeString.ts";
 import Button from "../Button/Button.jsx";
-import {usePayForLessonMutation} from "../../store/api/financeApi.js";
+import {usePayForLessonMutation} from "../../store/api/financeApi.ts";
 import {useMyTeachers} from "../../hooks/useMyTeachers.js";
 import getNameById from "../../utils/getName.ts";
 

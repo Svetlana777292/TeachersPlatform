@@ -1,4 +1,4 @@
-import {useGetAllTransactionsQuery} from "../../store/api/financeApi.js";
+import {useGetAllTransactionsQuery} from "../../store/api/financeApi.ts";
 import {useMemo} from "react";
 
 function useTransactionHistory() {

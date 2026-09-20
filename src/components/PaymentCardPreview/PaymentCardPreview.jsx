@@ -3,7 +3,7 @@ import {VisaIcon} from "../../assets/Visa.jsx";
 import {MastercardIcon} from "../../assets/Mastercard.jsx";
 import {useGetUserQuery} from "../../store/api/userApi.js";
 import Button from "../Button/Button.jsx";
-import {useMakeCardDefaultMutation} from "../../store/api/financeApi.js";
+import {useMakeCardDefaultMutation} from "../../store/api/financeApi.ts";
 
 function renderCardBrandIcon(brand) {
     switch (brand) {

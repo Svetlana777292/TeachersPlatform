@@ -105,7 +105,7 @@ Six RTK Query slices, each registered in [`store.js`](src/store/store.js) with i
 | [`studentsApi`](src/store/api/studentsApi.js) | student roster, search, add, remove |
 | [`teachersApi`](src/store/api/teachersApi.js) | a student's teachers |
 | [`lessonsApi`](src/store/api/lessonsApi.ts) | lesson CRUD |
-| [`financeApi`](src/store/api/financeApi.js) | balance, cards, transactions, charges, withdrawals |
+| [`financeApi`](src/store/api/financeApi.ts) | balance, cards, transactions, charges, withdrawals |
 | [`storageApi`](src/store/api/storageApi.js) | avatar upload and retrieval |
 
 Derived data lives in dedicated hooks rather than components — [`useSummary`](src/hooks/useSummary.js) composes `useMyLessons`, `useMyStudents` and `useMyTeachers`, then memoises the weekly statistics the profile dashboard renders.
