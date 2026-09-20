@@ -17,3 +17,14 @@ export interface Lesson {
 }
 
 export type LessonsByDate = Record<string, Lesson[]>
+
+export interface Card {
+    id: number;
+    user_id: number;
+    brand: string;
+    last_numbers: string;
+    exp_month: number;
+    exp_year: number;
+    is_default: boolean;
+    created_at: string;
+}
