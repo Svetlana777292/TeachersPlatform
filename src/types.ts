@@ -52,3 +52,17 @@ export interface Student {
     isActive: boolean;
     createdAt: string;
 }
+
+export interface Teacher {
+    username: string;
+    email: string;
+    role: string;
+    id: number;
+    name: string;
+    surname: string;
+    phoneNumber: string;
+    description: string;
+    discipline: string;
+    isActive: boolean;
+    createdAt: string;
+}
