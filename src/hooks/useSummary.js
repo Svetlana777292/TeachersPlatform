@@ -1,10 +1,10 @@
-import {formatDateLocal, getWeekDays} from "../utils/getEndTimeString.js";
+import {formatDateLocal, getWeekDays} from "../utils/getEndTimeString.ts";
 import useMyLessons from "./useMyLessons.js";
 import {
     calcTotalDayLessonsDuration,
     calcWeekLessonsCount, getTodayLessons,
     getUpcomingLesson
-} from "../utils/lessonsUtils.js";
+} from "../utils/lessonsUtils.ts";
 import {useMemo} from "react";
 import {useMyStudents} from "./useMyStudents.js"
 import {useMyTeachers} from "./useMyTeachers.js";

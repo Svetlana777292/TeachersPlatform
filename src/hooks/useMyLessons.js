@@ -1,6 +1,6 @@
 import {useMemo} from "react"
-import {formatDateLocal, getEndTime, getTime} from "../utils/getEndTimeString.js";
-import {splitLessonByDay} from "../utils/lessonsUtils.js";
+import {formatDateLocal, getEndTime, getTime} from "../utils/getEndTimeString.ts";
+import {splitLessonByDay} from "../utils/lessonsUtils.ts";
 import {useGetAllLessonsQuery} from "../store/api/lessonsApi.js";
 
 function useMyLessons() {

@@ -1,7 +1,5 @@
-import ErrorField from "../components/ErrorField/ErrorField.jsx";
-
-export function getFetchErrorMessage(status) {
-    const messages = {
+export function getFetchErrorMessage(status: number): string {
+    const messages: Record<number, string> = {
         400: 'Bad request. Please check your input',
         401: 'Please log in to continue',
         403: 'You don\'t have permission to access this',

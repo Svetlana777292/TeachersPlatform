@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import {useCreateLessonMutation, useDeleteLessonMutation, useEditLessonMutation} from "../../store/api/lessonsApi.js"
 import {toast} from "react-toastify";
 import "../../utils/toastStyles.css"
-import {dollarsToCents} from "../../utils/moneyUtils.js"
+import {dollarsToCents} from "../../utils/moneyUtils.ts"
 
 const initialLessonData = {
     topic: "",
