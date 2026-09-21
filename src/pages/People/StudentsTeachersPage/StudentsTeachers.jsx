@@ -1,4 +1,4 @@
-import {useMyTeachers} from "../../../hooks/useMyTeachers.js";
+import {useMyTeachers} from "../../../hooks/useMyTeachers.ts";
 import TeacherCard from "../TeachersCard/TeacherCard.jsx";
 import "./StudentsTeachers.css"
 

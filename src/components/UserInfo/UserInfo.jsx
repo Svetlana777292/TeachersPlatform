@@ -1,7 +1,7 @@
 import { useGetUserQuery }                        from "../../store/api/userApi.ts";
 import { useGetAvatarQuery, useSetAvatarMutation } from "../../store/api/storageApi.ts";
 import "./UserInfo.css";
-import {useSummary} from "../../hooks/useSummary.js";
+import {useSummary} from "../../hooks/useSummary.ts";
 
 const UserInfo = () => {
     const { data: user }              = useGetUserQuery();

@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import {selectStyles} from "../selectStyles.js";
 import InputField from "../../Inputs/InputField.jsx";
 import Button from "../../Button/Button.jsx";
-import {useMyStudents} from "../../../hooks/useMyStudents.js";
+import {useMyStudents} from "../../../hooks/useMyStudents.ts";
 
 const FirstStep = (props) => {
     const {myStudents} = useMyStudents()

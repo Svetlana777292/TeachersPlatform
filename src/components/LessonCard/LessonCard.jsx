@@ -2,7 +2,7 @@ import "./LessonCard.css"
 import {getEndTimeString, getTime, getTimeString, getEndTime} from "../../utils/getEndTimeString.ts";
 import {useEffect, useState} from "react";
 import getNameById from "../../utils/getName.ts";
-import {useMyStudents} from "../../hooks/useMyStudents.js";
+import {useMyStudents} from "../../hooks/useMyStudents.ts";
 import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
 
 const LessonCard = (props) => {

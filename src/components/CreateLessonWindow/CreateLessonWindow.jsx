@@ -4,7 +4,7 @@ import "./CreateLessonWindow.css"
 import Loading from "../Loading/Loading.jsx";
 import FirstStep from "./FirstStep/FirstStep.jsx";
 import SecondStep from "./SecondStep/SecondStep.jsx";
-import {useMyStudents} from "../../hooks/useMyStudents.js";
+import {useMyStudents} from "../../hooks/useMyStudents.ts";
 import {useCreateLesson} from "./useCreateLesson.js";
 import {TrashIcon} from "../../assets/Trash.jsx";
 import Button from "../Button/Button.jsx";

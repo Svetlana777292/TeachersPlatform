@@ -6,10 +6,10 @@ import "./ProfileSummary.css"
 import getNameById from "../../../utils/getName.ts";
 import CalendarIcon from "../../../assets/CalendarIcon.jsx";
 import PeopleIcon from "../../../assets/PeopleIcon.jsx";
-import {useSummary} from "../../../hooks/useSummary.js";
-import {useMyStudents} from "../../../hooks/useMyStudents.js";
+import {useSummary} from "../../../hooks/useSummary.ts";
+import {useMyStudents} from "../../../hooks/useMyStudents.ts";
 import TodaySchedule from "../../TodaySchedulePreview/TodaySchedule/TodaySchedule.jsx";
-import {useMyTeachers} from "../../../hooks/useMyTeachers.js";
+import {useMyTeachers} from "../../../hooks/useMyTeachers.ts";
 
 const ProfileSummary = ({user}) => {
     const {myStudents} = useMyStudents()

@@ -6,7 +6,7 @@ import {
 } from "../../utils/getEndTimeString.ts";
 import Button from "../Button/Button.jsx";
 import {usePayForLessonMutation} from "../../store/api/financeApi.ts";
-import {useMyTeachers} from "../../hooks/useMyTeachers.js";
+import {useMyTeachers} from "../../hooks/useMyTeachers.ts";
 import getNameById from "../../utils/getName.ts";
 
 function renderLessonDateBackgroundColor(cardColor) {

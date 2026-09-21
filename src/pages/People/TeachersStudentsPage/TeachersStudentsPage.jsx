@@ -4,8 +4,8 @@ import Modal from "react-modal";
 import "./TeachersStudentsPage.css"
 import Search from "../../../components/Search/Search.jsx";
 import StudentCard from "../StudentCard/StudentCard.jsx";
-import {useMyStudents} from "../../../hooks/useMyStudents.js";
-import {useSummary} from "../../../hooks/useSummary.js";
+import {useMyStudents} from "../../../hooks/useMyStudents.ts";
+import {useSummary} from "../../../hooks/useSummary.ts";
 import PeopleIcon from "../../../assets/PeopleIcon.jsx";
 import ChartIcon from "../../../assets/ChartIcon.jsx";
 Modal.setAppElement('#root');

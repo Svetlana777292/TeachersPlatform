@@ -3,7 +3,7 @@ import getNameById from "../../utils/getName.ts";
 import LessonCard from "../LessonCard/LessonCard.jsx";
 import useMyLessons from "../../hooks/useMyLessons.ts";
 import {HOUR_HEIGHT, HOURS, WEEK_DAYS} from "./scheduleConstants.js";
-import {useMyStudents} from "../../hooks/useMyStudents.js";
+import {useMyStudents} from "../../hooks/useMyStudents.ts";
 
 const ScheduleDesktop = ({days, setEditingLesson, isTeacher, creatingLesson}) => {
     const {lessonsByDate} = useMyLessons()

@@ -108,7 +108,7 @@ Six RTK Query slices, each registered in [`store.js`](src/store/store.js) with i
 | [`financeApi`](src/store/api/financeApi.ts) | balance, cards, transactions, charges, withdrawals |
 | [`storageApi`](src/store/api/storageApi.ts) | avatar upload and retrieval |
 
-Derived data lives in dedicated hooks rather than components — [`useSummary`](src/hooks/useSummary.js) composes `useMyLessons`, `useMyStudents` and `useMyTeachers`, then memoises the weekly statistics the profile dashboard renders.
+Derived data lives in dedicated hooks rather than components — [`useSummary`](src/hooks/useSummary.ts) composes `useMyLessons`, `useMyStudents` and `useMyTeachers`, then memoises the weekly statistics the profile dashboard renders.
 
 ## Routes
 

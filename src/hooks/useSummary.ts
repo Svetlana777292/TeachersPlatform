@@ -6,12 +6,21 @@ import {
     getUpcomingLesson
 } from "../utils/lessonsUtils.ts";
 import {useMemo} from "react";
-import {useMyStudents} from "./useMyStudents.js"
-import {useMyTeachers} from "./useMyTeachers.js";
+import {useMyStudents} from "./useMyStudents.ts"
+import {useMyTeachers} from "./useMyTeachers.ts";
+import {Lesson} from "../types.ts";
 
-export function useSummary() {
+interface UseSummaryReturn {
+    upcomingLesson?: Lesson,
+    todayLessons: Lesson[],
+    weekLessonsCount: number,
+    totalDayLessonsDuration: number,
+    studentsCount: number,
+    teachersCount: number
+}
+
+export function useSummary(): UseSummaryReturn {
     const { lessonsByDate } = useMyLessons()
-    const currentDay = formatDateLocal(new Date())
     const {myStudents} = useMyStudents()
     const {myTeachers} = useMyTeachers()
 
@@ -21,13 +30,13 @@ export function useSummary() {
     )
 
     const weekLessonsCount = useMemo(
-        () => calcWeekLessonsCount(lessonsByDate, getWeekDays(0)),
+        () => calcWeekLessonsCount(lessonsByDate),
         [lessonsByDate]
     )
 
     const totalDayLessonsDuration = useMemo(
-        () => calcTotalDayLessonsDuration(lessonsByDate, currentDay),
-        [lessonsByDate, currentDay]
+        () => calcTotalDayLessonsDuration(lessonsByDate),
+        [lessonsByDate]
     )
 
     const todayLessons = useMemo(

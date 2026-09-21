@@ -2,7 +2,7 @@ import "./ScheduleDayCard.css"
 import LessonCard from "../LessonCard/LessonCard.jsx"
 import getNameById from "../../utils/getName.ts"
 import {getTimeString, getEndTimeString} from "../../utils/getEndTimeString.ts";
-import {useMyStudents} from "../../hooks/useMyStudents.js";
+import {useMyStudents} from "../../hooks/useMyStudents.ts";
 
 const ScheduleDayCard = ({lessons, dayLabel, setEditingLesson, isTeacher, creatingLesson}) => {
     const {myStudents} = useMyStudents()
