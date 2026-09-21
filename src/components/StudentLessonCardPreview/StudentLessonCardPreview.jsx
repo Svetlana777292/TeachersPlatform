@@ -1,5 +1,5 @@
 import "./StudentLessonCardPreview.css"
-import {useGetAvatarQuery} from "../../store/api/storageApi.js";
+import {useGetAvatarQuery} from "../../store/api/storageApi.ts";
 import {
     getEndTimeString,
     getTimeString,

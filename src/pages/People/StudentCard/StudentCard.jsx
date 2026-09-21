@@ -1,4 +1,4 @@
-import { useGetAvatarQuery } from "../../../store/api/storageApi.js";
+import { useGetAvatarQuery } from "../../../store/api/storageApi.ts";
 
 import Button from "../../../components/Button/Button.jsx";
 

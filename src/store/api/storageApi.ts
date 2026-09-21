@@ -5,14 +5,14 @@ export const storageApi = createApi({
     reducerPath: "storageApi",
     baseQuery: baseQueryWithReauth,
     endpoints: (builder) => ({
-        setAvatar: builder.mutation({
+        setAvatar: builder.mutation<{file_type: string, file_name: string, file_id: number, storage_key: string}, FormData>({
             query: (photo) => ({
                 url: '/storage/avatar',
                 method: 'POST',
                 body: photo
             }),
         }),
-        getAvatar: builder.query({
+        getAvatar: builder.query<{url: string}, number>({
             query: (userId) => `/storage/avatar/${userId}`,
         })
     })

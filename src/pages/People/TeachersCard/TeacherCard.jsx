@@ -1,5 +1,5 @@
 import Button from "../../../components/Button/Button.jsx";
-import {useGetAvatarQuery} from "../../../store/api/storageApi.js";
+import {useGetAvatarQuery} from "../../../store/api/storageApi.ts";
 import "./TeacherCard.css"
 
 const TeacherCard = ({teacher}) => {
