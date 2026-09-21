@@ -2,7 +2,7 @@ import Button from "../Button/Button.jsx";
 import {useState} from "react";
 import "./ScheduleList.css"
 import CreateLessonWindow from "../CreateLessonWindow/CreateLessonWindow.jsx";
-import useMyLessons from "../../hooks/useMyLessons.js";
+import useMyLessons from "../../hooks/useMyLessons.ts";
 import Loading from "../Loading/Loading.jsx";
 import {getWeekDays} from "../../utils/getEndTimeString.ts";
 import ScheduleMobile from "./ScheduleMobile.jsx";

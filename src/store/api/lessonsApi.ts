@@ -7,7 +7,7 @@ export const lessonsApi = createApi({
     baseQuery: baseQueryWithReauth,
     tagTypes: ['lessons'],
     endpoints: (builder) => ({
-        getAllLessons: builder.query<Lesson[], void>({
+        getAllLessons: builder.query<{ lessons: Lesson[] }, void>({
             query: () => '/lessons',
             providesTags: ['lessons'],
         }),

@@ -2,8 +2,17 @@ import {useMemo} from "react"
 import {formatDateLocal, getEndTime, getTime} from "../utils/getEndTimeString.ts";
 import {splitLessonByDay} from "../utils/lessonsUtils.ts";
 import {useGetAllLessonsQuery} from "../store/api/lessonsApi.ts";
+import {Lesson, LessonsByDate} from "../types.ts";
 
-function useMyLessons() {
+interface UseMyLessonsReturn {
+    lessonsIsLoading: boolean;
+    myLessons: Lesson[];
+    lessonsByDate: LessonsByDate;
+    upcomingLessons: Lesson[];
+    pastLessons: Lesson[];
+}
+
+function useMyLessons(): UseMyLessonsReturn {
     const {data: { lessons: myLessons = [] } = {}, isLoading: lessonsIsLoading} = useGetAllLessonsQuery()
 
     const lessonsByDate = useMemo(() => {
@@ -21,16 +30,16 @@ function useMyLessons() {
             acc[dateKey].push(lesson)
 
             return acc
-        }, {})
+        }, {} as LessonsByDate)
     }, [myLessons])
 
     const upcomingLessons = useMemo(
-        () => myLessons.filter(lesson => getTime(lesson?.date) > new Date().getTime()),
+        () => myLessons.filter(lesson => getTime(lesson?.date) > new Date()),
         [myLessons]
     )
 
     const pastLessons = useMemo(
-        () => myLessons.filter(lesson => getTime(lesson?.date) < new Date().getTime()),
+        () => myLessons.filter(lesson => getTime(lesson?.date) < new Date()),
         [myLessons]
     )
 

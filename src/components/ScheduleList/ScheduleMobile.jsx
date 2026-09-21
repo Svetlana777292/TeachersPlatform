@@ -1,6 +1,6 @@
 import {formatDateLocal} from "../../utils/getEndTimeString.ts";
 import ScheduleDayCard from "../ScheduleDayCard/ScheduleDayCard.jsx";
-import useMyLessons from "../../hooks/useMyLessons.js";
+import useMyLessons from "../../hooks/useMyLessons.ts";
 import {WEEK_DAYS} from "./scheduleConstants.js";
 
 const ScheduleMobile = ({days, setEditingLesson, isTeacher, creatingLesson}) => {

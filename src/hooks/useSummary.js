@@ -1,5 +1,5 @@
 import {formatDateLocal, getWeekDays} from "../utils/getEndTimeString.ts";
-import useMyLessons from "./useMyLessons.js";
+import useMyLessons from "./useMyLessons.ts";
 import {
     calcTotalDayLessonsDuration,
     calcWeekLessonsCount, getTodayLessons,

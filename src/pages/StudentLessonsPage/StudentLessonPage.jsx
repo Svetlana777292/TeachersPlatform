@@ -2,7 +2,7 @@ import Header from "../../components/Header/Header.jsx";
 import "./StudentLessonPage.css"
 import StudentLessonCardPreview from "../../components/StudentLessonCardPreview/StudentLessonCardPreview.jsx";
 import Loading from "../../components/Loading/Loading.jsx";
-import useMyLessons from "../../hooks/useMyLessons.js";
+import useMyLessons from "../../hooks/useMyLessons.ts";
 
 const StudentLessonPage = () => {
     const {upcomingLessons, pastLessons, lessonsIsLoading} = useMyLessons()
