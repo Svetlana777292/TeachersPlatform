@@ -42,7 +42,7 @@ export interface Transaction {
 export interface User {
     username: string;
     email: string;
-    role: string;
+    role: "teacher" | "student";
     id: number;
     name: string;
     surname: string;

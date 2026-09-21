@@ -1,5 +1,5 @@
 import Header from "../../../components/Header/Header.jsx";
-import {useGetUserQuery} from "../../../store/api/userApi.js";
+import {useGetUserQuery} from "../../../store/api/userApi.ts";
 import StudentsTeachers from "../StudentsTeachersPage/StudentsTeachers.jsx";
 import TeachersStudentsPage from "../TeachersStudentsPage/TeachersStudentsPage.jsx";
 

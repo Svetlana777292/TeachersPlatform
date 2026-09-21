@@ -8,7 +8,7 @@ import Header from "../../components/Header/Header.jsx";
 import Button from "../../components/Button/Button.jsx";
 import {useState} from "react";
 import ProfileSummary from "../../components/ProfileSummary/ProfileSummary/ProfileSummary.jsx";
-import {useGetUserQuery} from "../../store/api/userApi.js";
+import {useGetUserQuery} from "../../store/api/userApi.ts";
 
 Modal.setAppElement('#root');
 

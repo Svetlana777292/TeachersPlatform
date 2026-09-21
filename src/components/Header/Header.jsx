@@ -2,7 +2,7 @@ import NavBar from "../NavBar/NavBar.jsx";
 import Button from "../Button/Button.jsx";
 import {useState} from "react";
 import "./Header.css"
-import {useGetUserQuery} from "../../store/api/userApi.js";
+import {useGetUserQuery} from "../../store/api/userApi.ts";
 
 const Header = ({currentPage}) => {
     const {data: user} = useGetUserQuery()

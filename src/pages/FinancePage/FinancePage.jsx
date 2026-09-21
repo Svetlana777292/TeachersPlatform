@@ -1,6 +1,6 @@
 import {useMemo, useState} from "react";
 import Header from "../../components/Header/Header.jsx";
-import {useGetUserQuery} from "../../store/api/userApi.js";
+import {useGetUserQuery} from "../../store/api/userApi.ts";
 import "./FinancePage.css"
 import MoneyIcon from "../../assets/MoneyIcon.jsx";
 import ChartIcon from "../../assets/ChartIcon.jsx";

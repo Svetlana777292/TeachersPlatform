@@ -6,7 +6,7 @@ import "./AuthPage.css"
 import {useState} from "react";
 import {getFetchErrorMessage} from "../../utils/errorsHandling.ts";
 import ErrorField from "../../components/ErrorField/ErrorField.jsx";
-import {useLoginUserMutation} from "../../store/api/userApi.js";
+import {useLoginUserMutation} from "../../store/api/userApi.ts";
 import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {

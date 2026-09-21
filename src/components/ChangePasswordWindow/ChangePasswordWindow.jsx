@@ -5,7 +5,7 @@ import Modal from "react-modal";
 import '../../pages/Profile/ProfilePage.css';
 import {useState} from "react";
 import "./ChangePasswordWindow.css"
-import {useEditUserMutation} from "../../store/api/userApi.js";
+import {useEditUserMutation} from "../../store/api/userApi.ts";
 
 const ChangePasswordWindow = (props) => {
     const [error, setError] = useState(null)

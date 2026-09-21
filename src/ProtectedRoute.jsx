@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useVerifyUserQuery } from "./store/api/userApi.js";
+import { useVerifyUserQuery } from "./store/api/userApi.ts";
 import Loading from "./components/Loading/Loading.jsx";
 
 const ProtectedRoute = ({ children }) => {

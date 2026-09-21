@@ -101,7 +101,7 @@ Six RTK Query slices, each registered in [`store.js`](src/store/store.js) with i
 
 | Slice | Responsibility |
 | --- | --- |
-| [`userApi`](src/store/api/userApi.js) | register, login, logout, token verification, profile |
+| [`userApi`](src/store/api/userApi.ts) | register, login, logout, token verification, profile |
 | [`studentsApi`](src/store/api/studentsApi.ts) | student roster, search, add, remove |
 | [`teachersApi`](src/store/api/teachersApi.ts) | a student's teachers |
 | [`lessonsApi`](src/store/api/lessonsApi.ts) | lesson CRUD |

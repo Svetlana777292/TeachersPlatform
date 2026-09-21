@@ -6,7 +6,7 @@ const LoginPage = lazy(() => import("./pages/Auth/LoginPage.jsx"));
 import Loading from "./components/Loading/Loading.jsx";
 const ProfilePage = lazy(() => import("./pages/Profile/ProfilePage.jsx"));
 const SchedulePage = lazy(() => import("./pages/SchedulePage/SchedulePage.jsx"));
-import {useVerifyUserQuery} from "./store/api/userApi.js";
+import {useVerifyUserQuery} from "./store/api/userApi.ts";
 const PeoplePage = lazy(() => import ("./pages/People/PeoplePage/PeoplePage.jsx"))
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import {ToastContainer} from "react-toastify";

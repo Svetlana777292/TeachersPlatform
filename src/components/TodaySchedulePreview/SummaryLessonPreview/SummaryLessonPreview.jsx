@@ -2,7 +2,7 @@ import getNameById from "../../../utils/getName.ts";
 import {getEndTimeString, getTimeString} from "../../../utils/getEndTimeString.ts";
 import {useMyStudents} from "../../../hooks/useMyStudents.js";
 import {useMyTeachers} from "../../../hooks/useMyTeachers.js";
-import {useGetUserQuery} from "../../../store/api/userApi.js";
+import {useGetUserQuery} from "../../../store/api/userApi.ts";
 import "./SummaryLessonPreview.css"
 import BookIcon from "../../../assets/BookIcon.jsx";
 

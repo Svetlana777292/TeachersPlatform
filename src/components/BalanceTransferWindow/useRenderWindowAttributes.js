@@ -1,5 +1,5 @@
 import {useChargeMutation, useWithdrawMoneyMutation} from "../../store/api/financeApi.ts";
-import {useGetUserQuery} from "../../store/api/userApi.js";
+import {useGetUserQuery} from "../../store/api/userApi.ts";
 
 export function useRenderWindowAttributes() {
     const windowAttributes = {}

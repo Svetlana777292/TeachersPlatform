@@ -1,4 +1,4 @@
-import { useGetUserQuery }                        from "../../store/api/userApi.js";
+import { useGetUserQuery }                        from "../../store/api/userApi.ts";
 import { useGetAvatarQuery, useSetAvatarMutation } from "../../store/api/storageApi.ts";
 import "./UserInfo.css";
 import {useSummary} from "../../hooks/useSummary.js";

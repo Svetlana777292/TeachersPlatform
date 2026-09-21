@@ -1,12 +1,29 @@
 import { createApi } from "@reduxjs/toolkit/query/react"
 import { baseQueryWithReauth } from "./baseQueryWithReauth.js"
+import {User} from "../../types.ts";
+
+interface RegisterData {
+    username: string;
+    email: string;
+    role: "teacher" | "student";
+    name: string;
+    surname: string;
+    password: string;
+}
+
+interface LoginData {
+    email: string;
+    password: string;
+    role: "teacher" | "student";
+    long_login: boolean;
+}
 
 export const userApi = createApi({
     reducerPath: "userApi",
     baseQuery: baseQueryWithReauth,
     tagTypes: ['user'],
     endpoints: (builder) => ({
-        registerUser: builder.mutation({
+        registerUser: builder.mutation<User, RegisterData>({
             query: (userData) => ({
                 url: '/register',
                 method: 'POST',
@@ -14,7 +31,7 @@ export const userApi = createApi({
             }),
             invalidatesTags: ['user'],
         }),
-        loginUser: builder.mutation({
+        loginUser: builder.mutation<string, LoginData>({
             query: (userData) => ({
                 url: '/login',
                 method: 'POST',
@@ -22,30 +39,29 @@ export const userApi = createApi({
             }),
             invalidatesTags: ['user'],
         }),
-        verifyUser: builder.query({
+        verifyUser: builder.query<{valid: boolean, username: string}, void>({
             query: () => ({
                 url: '/token/verify',
                 method: 'POST',
             }),
             providesTags: ['user'],
         }),
-        logoutUser: builder.mutation({
-            query: (user) => ({
+        logoutUser: builder.mutation<string, void>({
+            query: () => ({
                 url: '/logout',
                 method: 'POST',
-                body: user,
             }),
             invalidatesTags: ['user'],
         }),
-        getUser: builder.query({
+        getUser: builder.query<User, void>({
             query: () => "/me",
             providesTags: ['user'],
         }),
-        getUserById: builder.query({
+        getUserById: builder.query<User, number>({
             query: (id) => `/user/${id}`,
             providesTags: ['user'],
         }),
-        editUser: builder.mutation({
+        editUser: builder.mutation<User, Omit<User, "id" | "isActive" | "createdAt">>({
             query: (user) => ({
                 url: "/me",
                 method: "PATCH",
