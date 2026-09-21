@@ -39,7 +39,7 @@ export interface Transaction {
     updated_at: string;
 }
 
-export interface Student {
+export interface User {
     username: string;
     email: string;
     role: string;
@@ -53,16 +53,5 @@ export interface Student {
     createdAt: string;
 }
 
-export interface Teacher {
-    username: string;
-    email: string;
-    role: string;
-    id: number;
-    name: string;
-    surname: string;
-    phoneNumber: string;
-    description: string;
-    discipline: string;
-    isActive: boolean;
-    createdAt: string;
-}
+export type Student = User
+export type Teacher = User
